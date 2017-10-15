@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class PopupRegister {
@@ -13,6 +14,7 @@ public class PopupRegister {
 		try {
 			
 			Stage popStage = new Stage();
+			popStage.initModality(Modality.APPLICATION_MODAL);
 			AnchorPane popPane = FXMLLoader.load(getClass().getClassLoader().getResource("view/registerPane.fxml"));
 			Scene popScene = new Scene(popPane, 400, 600);
 			
