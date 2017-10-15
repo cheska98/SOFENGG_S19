@@ -1,0 +1,20 @@
+#initPane {
+	
+	-fx-background-color: #2d4250;
+}
+
+#label_wel {
+	
+	-fx-background-color: transparent;
+	-fx-text-fill: rgb(184,192,165);
+}
+
+#btnlogin {
+	
+	-fx-background-color: #289b01;
+}
+
+#btnreg {
+	
+	-fx-background-color: #f14343;
+}

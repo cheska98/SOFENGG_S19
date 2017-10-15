@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Label id="userlbl" layoutX="47.0" layoutY="68.0" prefHeight="54.0" prefWidth="205.0" text="Username">
+         <font>
+            <Font name="Segoe MDL2 Assets" size="30.0" />
+         </font>
+      </Label>
+      <TextField id="textusername" fx:id="loginun" layoutX="47.0" layoutY="128.0" prefHeight="40.0" prefWidth="273.0" />
+      <Label id="passlbl" layoutX="47.0" layoutY="188.0" prefHeight="54.0" prefWidth="205.0" text="Password">
+         <font>
+            <Font name="Segoe MDL2 Assets" size="30.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="loginpwd" layoutX="47.0" layoutY="248.0" prefHeight="40.0" prefWidth="273.0" />
+      <Button id="btnlogin" fx:id="loginbtn" layoutX="47.0" layoutY="378.0" mnemonicParsing="false" onAction="#loginuser" prefHeight="40.0" prefWidth="200.0" stylesheets="@../css/loginPaneStyle.css" text="Login" textFill="#f1f8ee">
+         <font>
+            <Font name="Segoe MDL2 Assets" size="30.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
