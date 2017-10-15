@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="reportsSidePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="955.0" style="-fx-background-color: #f1f1f1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="rdLbl1" alignment="CENTER" layoutX="372.0" layoutY="30.0" prefHeight="37.0" prefWidth="211.0" text="Daily Report for">
+         <font>
+            <Font name="Calibri" size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="rdLblDate" alignment="CENTER" layoutX="348.0" layoutY="74.0" prefHeight="37.0" prefWidth="260.0" text="10/15/17">
+         <font>
+            <Font name="Calibri Bold" size="32.0" />
+         </font>
+      </Label>
+      <ScrollPane fx:id="rdScrPane" layoutX="48.0" layoutY="139.0" prefHeight="830.0" prefWidth="860.0" style="-fx-background-color: #ffffff;">
+        <content>
+          <AnchorPane fx:id="rdAchrPane" minHeight="0.0" minWidth="0.0" prefHeight="830.0" prefWidth="860.0" style="-fx-background-color: #ffffff;" />
+        </content>
+      </ScrollPane>
+      <Button fx:id="rdBtnDownload" layoutX="739.0" layoutY="998.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="169.0" style="-fx-background-color: #289b01;" text="Download" textFill="WHITE">
+         <font>
+            <Font name="Calibri" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
