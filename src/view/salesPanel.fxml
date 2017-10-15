@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
 
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65">
+   <children>
+      <TableView layoutX="288.0" layoutY="44.0" prefHeight="948.0" prefWidth="1104.0">
+        <columns>
+          <TableColumn minWidth="276.0" prefWidth="276.0" text="Item" />
+          <TableColumn minWidth="276.0" prefWidth="276.0" text="Quantity/CM/KG" />
+            <TableColumn minWidth="276.0" prefWidth="276.0" text=" Unit Cost" />
+            <TableColumn minWidth="276.0" prefWidth="276.0" text="Price" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
