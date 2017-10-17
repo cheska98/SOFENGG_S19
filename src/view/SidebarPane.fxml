@@ -32,7 +32,7 @@
          <graphic>
             <ImageView fx:id="salesIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@sales.png" />
+                  <Image url="@../img/sales.png" />
                </image>
             </ImageView>
          </graphic>
@@ -41,7 +41,7 @@
          <graphic>
             <ImageView fx:id="displayIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@display.png" />
+                  <Image url="@../img/display.png" />
                </image>
             </ImageView>
          </graphic>
@@ -50,7 +50,7 @@
          <graphic>
             <ImageView fx:id="inventoryIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@inventory.png" />
+                  <Image url="@../img/inventory.png" />
                </image>
             </ImageView>
          </graphic>
@@ -59,7 +59,7 @@
          <graphic>
             <ImageView fx:id="reportsIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@reports.png" />
+                  <Image url="@../img/reports.png" />
                </image>
             </ImageView>
          </graphic>
@@ -68,7 +68,7 @@
          <graphic>
             <ImageView fx:id="debtListIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@debt_list.png" />
+                  <Image url="@../img/debt_list.png" />
                </image>
             </ImageView>
          </graphic>
