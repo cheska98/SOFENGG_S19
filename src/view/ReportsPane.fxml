@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="reportsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="357.0" style="-fx-background-color: #f1f1f1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="rpLbl1" layoutX="21.0" layoutY="33.0" prefHeight="33.0" prefWidth="341.0" text="Select date to view daily report.">
+         <font>
+            <Font name="Calibri" size="20.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dp" layoutX="21.0" layoutY="66.0" maxWidth="300.0" prefHeight="40.0" promptText="10/18/2017" style="-fx-font-size: 18;" />
+      <Label fx:id="rpLbl2" layoutX="21.0" layoutY="427.0" prefHeight="33.0" prefWidth="341.0" text="Select month to view monthly report.">
+         <font>
+            <Font name="Calibri" size="20.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cb" layoutX="21.0" layoutY="460.0" prefHeight="39.0" prefWidth="262.0" promptText="Month" style="-fx-font-size: 18;" />
+   </children>
+</AnchorPane>
