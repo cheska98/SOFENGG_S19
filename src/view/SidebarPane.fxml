@@ -8,31 +8,6 @@
 
 <AnchorPane fx:id="sidebarPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="175.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="sbBtnSales" fitHeight="162.0" fitWidth="175.0" layoutY="195.0">
-         <image>
-            <Image url="@sales.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="sbBtnDisplay" fitHeight="162.0" fitWidth="175.0" layoutY="350.0">
-         <image>
-            <Image url="@display.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="sbBtnInventory" fitHeight="162.0" fitWidth="175.0" layoutY="505.0">
-         <image>
-            <Image url="@inventory.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="sbBtnReports" fitHeight="162.0" fitWidth="175.0" layoutY="660.0">
-         <image>
-            <Image url="@reports.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="sbBtnDebtList" fitHeight="162.0" fitWidth="175.0" layoutY="815.0">
-         <image>
-            <Image url="@debt_list.png" />
-         </image>
-      </ImageView>
       <Label fx:id="sbLblCurrDate" alignment="CENTER" layoutY="995.0" prefHeight="57.0" prefWidth="175.0" text="10/15/2017">
          <font>
             <Font name="Calibri Bold" size="30.0" />
@@ -52,6 +27,51 @@
          <font>
             <Font name="Calibri" size="18.0" />
          </font>
+      </Button>
+      <Button fx:id="sbBtnSales" layoutY="195.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0">
+         <graphic>
+            <ImageView fx:id="salesIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@sales.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="sbBtnDisplay" layoutY="349.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0">
+         <graphic>
+            <ImageView fx:id="displayIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@display.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="sbBtnInventory" layoutY="505.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0">
+         <graphic>
+            <ImageView fx:id="inventoryIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@inventory.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="sbBtnReports" layoutY="660.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0">
+         <graphic>
+            <ImageView fx:id="reportsIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@reports.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="sbBtnDebtList" layoutY="815.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0">
+         <graphic>
+            <ImageView fx:id="debtListIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@debt_list.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </AnchorPane>
