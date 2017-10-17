@@ -24,10 +24,12 @@ public class ReportsSideController {
 		
 		//get input from dp or cb
 		
+		lv = new ListView<String>();
 		lv.getItems().add("<Date and Time>");
 		lv.getItems().add("<List of Items Bought>");
 		lv.getItems().add("Top Items Bought");
 		
+		rdBtnDownload = new Button();
 		rdBtnDownload.setOnAction(event -> {
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Download");

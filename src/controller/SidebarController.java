@@ -49,29 +49,35 @@ public class SidebarController {
 			day = Integer.toString(now.get(Calendar.DATE));
 		
 		currDate = month + "/" + day + "/" + year;
-			
-		sbLbl1.setText(currDate);
 		
+		sbLbl1 = new Label(currDate);
+		
+		sbBtnLogout = new Button();
 		sbBtnLogout.setOnAction(event -> {
 			//go back to initPane
 		});
 		
+		sbBtnSales = new Button();
 		sbBtnSales.setOnAction(event -> {
 			//view salesPanel
 		});
 		
+		sbBtnDisplay = new Button();
 		sbBtnDisplay.setOnAction(event -> {
 			//view DisplayPanel
 		});
 		
+		sbBtnInventory = new Button();
 		sbBtnInventory.setOnAction(event -> {
 			//view InventoryPanel
 		});
 		
+		sbBtnReports = new Button();
 		sbBtnReports.setOnAction(event -> {
 			//view ReportsPane and ReportsSidePane
 		});
 		
+		sbBtnDebtList = new Button();
 		sbBtnDebtList.setOnAction(event -> {
 			//view DebtListPanel
 		});

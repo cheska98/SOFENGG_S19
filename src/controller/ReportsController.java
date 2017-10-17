@@ -22,6 +22,7 @@ public class ReportsController {
 	
 	@FXML
 	public void initialize() {
+		
 		 ObservableList<String> months = 
 	        	    FXCollections.observableArrayList(
 	        	        "January",
@@ -39,6 +40,7 @@ public class ReportsController {
 	        	    );
 	    cb = new ComboBox<String>(months);
 	    	
+	    dp = new DatePicker();
 	    dp.setOnAction(event -> {
 	    	date = dp.getValue().format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
 		});
