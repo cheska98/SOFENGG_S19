@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddCustController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddCustController">
    <children>
-      <Label fx:id="NameLabel" layoutX="61.0" layoutY="24.0" text="Name:" />
-      <Label fx:id="DateLabel" layoutX="58.0" layoutY="171.0" text="Date of last transaction:" />
-      <Label fx:id="BalanceLabel" layoutX="60.0" layoutY="250.0" text="Outstanding Balance:" />
-      <TextField fx:id="tf_Name" layoutX="59.0" layoutY="53.0" />
-      <TextField fx:id="tf_Balance" layoutX="57.0" layoutY="284.0" />
-      <Button fx:id="ConfirmBtn" layoutX="111.0" layoutY="342.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="36.0" prefWidth="79.0" styleClass="ConfirmBtn" stylesheets="@AddPopUp.css" text="Confirm" />
-      <Label layoutX="136.0" layoutY="14.0" />
-      <Label fx:id="ItemLabel" layoutX="61.0" layoutY="93.0" text="Item:" />
-      <TextField fx:id="tf_Item" layoutX="61.0" layoutY="122.0" />
-      <DatePicker fx:id="tf_DatePicker" layoutX="57.0" layoutY="200.0" />
+      <Label fx:id="NameLabel" layoutX="65.0" layoutY="33.0" text="Name:" />
+      <Label fx:id="DateLabel" layoutX="62.0" layoutY="180.0" text="Date of last transaction:" />
+      <Label fx:id="BalanceLabel" layoutX="64.0" layoutY="259.0" text="Outstanding Balance:" />
+      <TextField fx:id="tf_Name" layoutX="63.0" layoutY="62.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="tf_Balance" layoutX="61.0" layoutY="293.0" prefHeight="25.0" prefWidth="174.0" />
+      <Button fx:id="ConfirmBtn" layoutX="111.0" layoutY="342.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #289b01;" styleClass="ConfirmBtn" stylesheets="@AddPopUp.css" text="Confirm" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Button>
+      <Label layoutX="140.0" layoutY="23.0" />
+      <Label fx:id="ItemLabel" layoutX="65.0" layoutY="102.0" text="Item:" />
+      <TextField fx:id="tf_Item" layoutX="65.0" layoutY="131.0" prefHeight="25.0" prefWidth="174.0" />
+      <DatePicker fx:id="tf_DatePicker" layoutX="61.0" layoutY="209.0" />
    </children>
 </AnchorPane>

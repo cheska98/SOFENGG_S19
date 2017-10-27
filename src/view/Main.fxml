@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="mainPane" maxHeight="1080.0" maxWidth="1541.0" minHeight="1080.0" minWidth="1541.0" prefHeight="1080.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <fx:include fx:id="sidebarPane" source="Sidebar.fxml" />
+      <StackPane fx:id="stackPane" layoutX="175.0" maxHeight="1080.0" maxWidth="1366.0" minHeight="1080.0" minWidth="1366.0" prefHeight="1080.0" prefWidth="1366.0">
+         <children>
+	  			<fx:include fx:id="reportsPane" source="Reports.fxml" />
+				<fx:include fx:id="debtList" source="DebtList.fxml" />
+				<fx:include fx:id="display" source="Display.fxml" />
+				<fx:include fx:id="inventory" source="inventory.fxml" />
+				<fx:include fx:id="refundReplacePane" source="RefundReplace.fxml" />
+				<fx:include fx:id="salesPanel" source="Sales.fxml" />
+				<fx:include fx:id="debtListCust" source="DebtListCust.fxml" />
+	  			<fx:include fx:id="reportsPopupPane" source="ReportsPopup.fxml" />
+				<fx:include fx:id="addCustPop" source="AddCustPopUp.fxml" />
+				<fx:include fx:id="addPopUp" source="AddPopUp.fxml" />
+				<fx:include fx:id="alertDebtList" source="AlertDebtList.fxml" /> 
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

@@ -21,7 +21,7 @@
          </font>
       </Label>
       <PasswordField fx:id="loginpwd" layoutX="47.0" layoutY="248.0" prefHeight="40.0" prefWidth="273.0" />
-      <Button id="btnlogin" fx:id="loginbtn" layoutX="47.0" layoutY="378.0" mnemonicParsing="false" onAction="#loginuser" prefHeight="40.0" prefWidth="200.0" stylesheets="@../css/loginPaneStyle.css" text="Login" textFill="#f1f8ee">
+      <Button id="btnlogin" fx:id="loginbtn" layoutX="47.0" layoutY="378.0" mnemonicParsing="false" onAction="#loginuser" prefHeight="40.0" prefWidth="200.0" stylesheets="@../css/LoginStyle.css" text="Login" textFill="#f1f8ee">
          <font>
             <Font name="Segoe MDL2 Assets" size="30.0" />
          </font>

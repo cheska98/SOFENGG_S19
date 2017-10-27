@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DisplayController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DisplayController">
    <children>
-      <Button id="Search_Btn" fx:id="SearchBtn" layoutX="809.0" layoutY="34.0" mnemonicParsing="false" onAction="#onSearchClick" prefHeight="25.0" prefWidth="89.0" styleClass="SearchBtn" stylesheets="@Display.css" text="Search" />
-      <TextField id="Search_Field" fx:id="tf_search" layoutX="402.0" layoutY="34.0" prefHeight="25.0" prefWidth="395.0" />
-      <TableView id="Display_Table" fx:id="DisplayTable" editable="true" layoutX="402.0" layoutY="80.0" prefHeight="555.0" prefWidth="502.0" stylesheets="@Display.css">
+      <Button id="Search_Btn" fx:id="SearchBtn" layoutX="809.0" layoutY="158.0" mnemonicParsing="false" onAction="#onSearchClick" prefHeight="25.0" prefWidth="89.0" styleClass="SearchBtn" stylesheets="@Display.css" text="Search">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Button>
+      <TextField id="Search_Field" fx:id="tf_search" layoutX="402.0" layoutY="158.0" prefHeight="27.0" prefWidth="395.0" />
+      <TableView id="Display_Table" fx:id="DisplayTable" editable="true" layoutX="402.0" layoutY="204.0" prefHeight="555.0" prefWidth="502.0" style="-fx-font-size: 14;" stylesheets="@Display.css">
         <columns>
           <TableColumn editable="false" prefWidth="264.33331298828125" text="Item" />
           <TableColumn prefWidth="236.66668701171875" text="Quantity/CM/KG" />
         </columns>
       </TableView>
-      <Button id="Add_Btn" fx:id="AddBtn" layoutX="402.0" layoutY="647.0" mnemonicParsing="false" onAction="#onAddClick" prefHeight="44.0" prefWidth="93.0" styleClass="AddBtn" stylesheets="@Display.css" text="Add Item" />
+      <Button id="Add_Btn" fx:id="AddBtn" layoutX="402.0" layoutY="780.0" mnemonicParsing="false" onAction="#onAddClick" prefHeight="44.0" prefWidth="93.0" styleClass="AddBtn" stylesheets="@Display.css" text="Add Item">
+         <font>
+            <Font name="Segoe UI" size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>

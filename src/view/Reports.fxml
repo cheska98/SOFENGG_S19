@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane fx:id="reportsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportsController">
+   <children>
+      <Label fx:id="label1" layoutX="44.0" layoutY="54.0" text="Select date for daily report:">
+         <font>
+            <Font name="Segoe UI" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="label2" layoutX="44.0" layoutY="506.0" text="Select month for monthly report:">
+         <font>
+            <Font name="Segoe UI" size="19.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="datePicker" layoutX="44.0" layoutY="96.0" prefHeight="39.0" prefWidth="257.0" style="-fx-font-size: 18;" />
+      <ComboBox fx:id="monthCB" layoutX="44.0" layoutY="550.0" prefHeight="39.0" prefWidth="257.0" style="-fx-font-size: 18;" />
+      <ScrollPane fx:id="scrollPane" layoutX="466.0" layoutY="135.0" prefHeight="761.0" prefWidth="743.0">
+         <content>
+            <TableView fx:id="reportsTable" prefHeight="761.0" prefWidth="729.0" style="-fx-font-size: 15;">
+              <columns>
+                <TableColumn fx:id="transIDCol" prefWidth="251.0" text="TRANSACTION ID" />
+                <TableColumn fx:id="dateTimeCol" minWidth="0.0" prefWidth="268.0" text="DATE AND TIME" />
+                  <TableColumn fx:id="purchaseCol" prefWidth="211.0" text="TOTAL PURCHASE" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <Label fx:id="reportLabel" alignment="CENTER" layoutX="730.0" layoutY="54.0" prefHeight="24.0" prefWidth="215.0" text="Daily Report for" textAlignment="CENTER">
+         <font>
+            <Font name="Segoe UI Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="dateMonthLabel" alignment="CENTER" layoutX="700.0" layoutY="86.0" prefHeight="32.0" prefWidth="275.0" text="October 27, 2017" textAlignment="CENTER">
+         <font>
+            <Font name="Segoe UI Bold" size="25.0" />
+         </font>
+      </Label>
+      <Button fx:id="viewButton" layoutX="765.0" layoutY="959.0" mnemonicParsing="false" style="-fx-background-color: #289b01;" text="View Top Items" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
