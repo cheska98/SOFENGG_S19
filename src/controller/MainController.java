@@ -1,8 +1,5 @@
 package controller;
 	
-import java.io.IOException;
-
-import controller.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -51,13 +48,11 @@ public class MainController extends Application {
 		try { 
 			
 			window = primaryStage;
-			AnchorPane paneInit = FXMLLoader.load(getClass().getClassLoader().getResource("view/initPanel.fxml"));
-			AnchorPane paneSale = FXMLLoader.load(getClass().getClassLoader().getResource("view/salesPanel.fxml"));
-			AnchorPane paneStart = FXMLLoader.load(getClass().getClassLoader().getResource("view/startPanel.fxml"));
+			AnchorPane paneInit = FXMLLoader.load(getClass().getClassLoader().getResource("view/Initial.fxml"));
+			AnchorPane paneSale = FXMLLoader.load(getClass().getClassLoader().getResource("view/Sales.fxml"));
 			
-			initPane = new Scene(paneInit,1920,1080);
-			startPane = new Scene(paneStart, 1920, 1080);
-			salePane = new Scene(paneSale, 1920, 1080);
+			initPane = new Scene(paneInit,1541,1080);
+			salePane = new Scene(paneSale, 1541, 1080);
 			
 			//initPane.getStylesheets().add(gtClass().getClassLoader().getResource("css/initPanelStyle.css").toExternalForm());
 			window.setScene(initPane);
