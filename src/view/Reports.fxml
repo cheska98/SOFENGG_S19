@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane fx:id="reportsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportsController">
    <children>
       <Label fx:id="label1" layoutX="44.0" layoutY="54.0" text="Select date for daily report:">
@@ -41,7 +40,12 @@
             <Font name="Segoe UI Bold" size="25.0" />
          </font>
       </Label>
-      <Button fx:id="viewButton" layoutX="765.0" layoutY="959.0" mnemonicParsing="false" style="-fx-background-color: #289b01;" text="View Top Items" textFill="WHITE">
+      <Button fx:id="viewButton" layoutX="633.0" layoutY="964.0" mnemonicParsing="false" onAction="#handleView" prefHeight="35.0" prefWidth="146.0" style="-fx-background-color: #289b01;" text="View Top Items" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="downloadButton" layoutX="902.0" layoutY="964.0" mnemonicParsing="false" onAction="#handleDownload" prefHeight="35.0" prefWidth="146.0" style="-fx-background-color: #289b01;" text="Download" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="18.0" />
          </font>
