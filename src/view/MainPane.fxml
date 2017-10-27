@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SuperMainController">
+   <children>
+   		<AnchorPane fx:id="sidebar" prefHeight="1080.0" prefWidth="175.0">
+	         <children>
+   	  				<fx:include fx:id="sidebarPane" source="SidebarPane.fxml" />		
+         	</children>
+        </AnchorPane>
+        <AnchorPane fx:id="reports" layoutX="176.0" prefHeight="1080.0" prefWidth="357.0">
+	         <children>
+   	  				<fx:include fx:id="reportsPane" source="ReportsPane.fxml" />		
+         	</children>
+        </AnchorPane>
+        <AnchorPane fx:id="reportsSide" layoutX="533.0" prefHeight="1080.0" prefWidth="955.0">
+	         <children>
+   	  				<fx:include fx:id="reportsSidePane" source="ReportsSidePane.fxml" />	
+         	</children>
+        </AnchorPane>
+   </children>
+</AnchorPane>

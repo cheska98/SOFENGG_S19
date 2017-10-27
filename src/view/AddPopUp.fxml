@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddPopUpController">
+   <children>
+      <Label fx:id="UnitCostLabel" layoutX="60.0" layoutY="57.0" text="Unit Cost:" />
+      <Label fx:id="ItemNameLabel" layoutX="58.0" layoutY="148.0" text="Item Name:" />
+      <Label fx:id="QuantityLabel" layoutX="60.0" layoutY="230.0" text="Quantity:" />
+      <TextField fx:id="tf_UnitCost" layoutX="59.0" layoutY="93.0" />
+      <TextField fx:id="tf_ItemName" layoutX="57.0" layoutY="175.0" />
+      <TextField fx:id="tf_Quantity" layoutX="57.0" layoutY="257.0" />
+      <Button fx:id="ConfirmBtn" layoutX="111.0" layoutY="328.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="36.0" prefWidth="79.0" styleClass="ConfirmBtn" stylesheets="@AddPopUp.css" text="Confirm" />
+      <Label layoutX="136.0" layoutY="14.0" />
+   </children>
+</AnchorPane>
