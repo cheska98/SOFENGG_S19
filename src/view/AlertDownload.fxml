@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="alertDebtList" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AlertDebtList">
+<AnchorPane fx:id="alertDownload" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AlertDownloadController">
    <children>
       <VBox layoutX="25.0" layoutY="23.0" maxHeight="+Infinity" maxWidth="+Infinity" minHeight="-Infinity" prefWidth="400.0" spacing="7.0">
          <children>
-            <Label fx:id="messageLabel" text="WARNING" textAlignment="LEFT" wrapText="true">
+            <Label fx:id="messageLabel" text="DOWNLOAD" textAlignment="LEFT" wrapText="true">
                <font>
                   <Font name="Segoe UI Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="detailsLabel" text="Are you sure you want to remove this customer from debt list?" textAlignment="LEFT" wrapText="true">
+            <Label fx:id="detailsLabel" text="Are you sure you want to download this report?" textAlignment="LEFT" wrapText="true">
                <font>
                   <Font name="Segoe UI" size="14.0" />
                </font>
