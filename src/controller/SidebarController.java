@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.Calendar;
+<<<<<<< HEAD
 import java.util.Optional;
 
 import javafx.event.ActionEvent;
@@ -10,6 +11,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+=======
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+>>>>>>> 42a4e614c3972c5e9ca3720e31a279414f3a165d
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -31,12 +38,17 @@ public class SidebarController {
 	@FXML private ImageView reportsIcon;
 	@FXML private ImageView debtListIcon;
 
+<<<<<<< HEAD
 	public SidebarController() {
 		
 	}
 	
 	@FXML
 	void initialize() {
+=======
+	@FXML
+	public void initialize() {
+>>>>>>> 42a4e614c3972c5e9ca3720e31a279414f3a165d
 		
 		//get first name
 		//set sbLblName to first name
@@ -59,6 +71,7 @@ public class SidebarController {
 		
 		currDate = month + "/" + day + "/" + year;
 		
+<<<<<<< HEAD
 		//System.out.println(currDate);
 		sbLblCurrDate.setText(currDate);
 		
@@ -102,4 +115,40 @@ public class SidebarController {
     void handleDebtList(ActionEvent event) {
 
     }
+=======
+		sbLbl1 = new Label(currDate);
+		
+		sbBtnLogout = new Button();
+		sbBtnLogout.setOnAction(event -> {
+			//go back to initPane
+		});
+		
+		sbBtnSales = new Button();
+		sbBtnSales.setOnAction(event -> {
+			//view salesPanel
+		});
+		
+		sbBtnDisplay = new Button();
+		sbBtnDisplay.setOnAction(event -> {
+			//view DisplayPanel
+		});
+		
+		sbBtnInventory = new Button();
+		sbBtnInventory.setOnAction(event -> {
+			//view InventoryPanel
+		});
+		
+		sbBtnReports = new Button();
+		sbBtnReports.setOnAction(event -> {
+			//view ReportsPane and ReportsSidePane
+		});
+		
+		sbBtnDebtList = new Button();
+		sbBtnDebtList.setOnAction(event -> {
+			//view DebtListPanel
+		});
+		
+		
+	}
+>>>>>>> 42a4e614c3972c5e9ca3720e31a279414f3a165d
 }

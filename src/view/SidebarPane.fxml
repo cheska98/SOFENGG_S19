@@ -28,7 +28,11 @@
             <Font name="Calibri" size="18.0" />
          </font>
       </Button>
+<<<<<<< HEAD
       <Button fx:id="sbBtnSales" layoutY="195.0" mnemonicParsing="false" onAction="#handleSales" prefHeight="156.0" prefWidth="175.0">
+=======
+      <Button fx:id="sbBtnSales" layoutY="195.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0">
+>>>>>>> 42a4e614c3972c5e9ca3720e31a279414f3a165d
          <graphic>
             <ImageView fx:id="salesIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -37,7 +41,11 @@
             </ImageView>
          </graphic>
       </Button>
+<<<<<<< HEAD
       <Button fx:id="sbBtnDisplay" layoutY="349.0" mnemonicParsing="false" onAction="#handleDisplay" prefHeight="156.0" prefWidth="175.0">
+=======
+      <Button fx:id="sbBtnDisplay" layoutY="349.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0">
+>>>>>>> 42a4e614c3972c5e9ca3720e31a279414f3a165d
          <graphic>
             <ImageView fx:id="displayIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -46,7 +54,11 @@
             </ImageView>
          </graphic>
       </Button>
+<<<<<<< HEAD
       <Button fx:id="sbBtnInventory" layoutY="505.0" mnemonicParsing="false" onAction="#handleInventory" prefHeight="156.0" prefWidth="175.0">
+=======
+      <Button fx:id="sbBtnInventory" layoutY="505.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0">
+>>>>>>> 42a4e614c3972c5e9ca3720e31a279414f3a165d
          <graphic>
             <ImageView fx:id="inventoryIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -55,7 +67,11 @@
             </ImageView>
          </graphic>
       </Button>
+<<<<<<< HEAD
       <Button fx:id="sbBtnReports" layoutY="660.0" mnemonicParsing="false" onAction="#handleReports" prefHeight="156.0" prefWidth="175.0">
+=======
+      <Button fx:id="sbBtnReports" layoutY="660.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0">
+>>>>>>> 42a4e614c3972c5e9ca3720e31a279414f3a165d
          <graphic>
             <ImageView fx:id="reportsIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -64,7 +80,11 @@
             </ImageView>
          </graphic>
       </Button>
+<<<<<<< HEAD
       <Button fx:id="sbBtnDebtList" layoutY="815.0" mnemonicParsing="false" onAction="#handleDebtList" prefHeight="156.0" prefWidth="175.0">
+=======
+      <Button fx:id="sbBtnDebtList" layoutY="815.0" mnemonicParsing="false" prefHeight="156.0" prefWidth="175.0">
+>>>>>>> 42a4e614c3972c5e9ca3720e31a279414f3a165d
          <graphic>
             <ImageView fx:id="debtListIcon" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
                <image>

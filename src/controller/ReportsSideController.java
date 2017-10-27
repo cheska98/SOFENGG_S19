@@ -2,7 +2,10 @@ package controller;
 
 import java.util.Optional;
 
+<<<<<<< HEAD
 import javafx.event.ActionEvent;
+=======
+>>>>>>> 42a4e614c3972c5e9ca3720e31a279414f3a165d
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -20,6 +23,7 @@ public class ReportsSideController {
 	@FXML private ListView<String> lv;
 	@FXML private Button rdBtnDownload;
 	
+<<<<<<< HEAD
 	public ReportsSideController() {
 		
 	}
@@ -47,4 +51,30 @@ public class ReportsSideController {
 		}
     }
 	
+=======
+	@FXML
+	public void initialize() {
+		
+		//get input from dp or cb
+		
+		lv = new ListView<String>();
+		lv.getItems().add("<Date and Time>");
+		lv.getItems().add("<List of Items Bought>");
+		lv.getItems().add("Top Items Bought");
+		
+		rdBtnDownload = new Button();
+		rdBtnDownload.setOnAction(event -> {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Download");
+			String s = "Download daily report on 10/18/2017?";
+			alert.setContentText(s);
+			Optional<ButtonType> result = alert.showAndWait();
+			if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+			    //download excel file
+			}
+
+		});
+	}
+	
+>>>>>>> 42a4e614c3972c5e9ca3720e31a279414f3a165d
 }

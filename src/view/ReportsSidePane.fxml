@@ -5,20 +5,32 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
+<<<<<<< HEAD
 <AnchorPane fx:id="reportsSidePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1388.0" style="-fx-background-color: #f1f1f1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportsSideController">
+=======
+<AnchorPane fx:id="reportsSidePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1388.0" style="-fx-background-color: #f1f1f1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+>>>>>>> 42a4e614c3972c5e9ca3720e31a279414f3a165d
    <children>
       <Label fx:id="rdLbl1" alignment="CENTER" layoutX="595.0" layoutY="37.0" prefHeight="37.0" prefWidth="211.0" text="Daily Report for">
          <font>
             <Font name="Calibri" size="32.0" />
          </font>
       </Label>
+<<<<<<< HEAD
       <Label fx:id="rdLblDate" alignment="CENTER" layoutX="564.0" layoutY="74.0" prefHeight="37.0" prefWidth="260.0" text="10/18/17">
+=======
+      <Label fx:id="rdLblDate" alignment="CENTER" layoutX="564.0" layoutY="74.0" prefHeight="37.0" prefWidth="260.0" text="10/15/17">
+>>>>>>> 42a4e614c3972c5e9ca3720e31a279414f3a165d
          <font>
             <Font name="Calibri Bold" size="32.0" />
          </font>
       </Label>
       <ListView fx:id="lv" layoutX="109.0" layoutY="123.0" prefHeight="838.0" prefWidth="1170.0" />
+<<<<<<< HEAD
       <Button fx:id="rdBtnDownload" layoutX="1110.0" layoutY="989.0" mnemonicParsing="false" onAction="#handleDownload" prefHeight="48.0" prefWidth="169.0" style="-fx-background-color: #289b01;" text="Download" textFill="WHITE">
+=======
+      <Button fx:id="rdBtnDownload" layoutX="1110.0" layoutY="989.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="169.0" style="-fx-background-color: #289b01;" text="Download" textFill="WHITE">
+>>>>>>> 42a4e614c3972c5e9ca3720e31a279414f3a165d
          <font>
             <Font name="Calibri" size="20.0" />
          </font>
