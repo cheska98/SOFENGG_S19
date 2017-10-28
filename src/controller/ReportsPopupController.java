@@ -1,21 +1,25 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
-public class ReportsPopupController {
+public class ReportsPopUpController {
 
     @FXML
-    private AnchorPane reportsPopupPane;
+    private AnchorPane reportsPopUpPane;
     
     @FXML
     private ScrollPane scrollPane;
+    
+    @FXML
+    private Label purchaseLabel;
 
     @FXML
-    private TableView<?> reportsPopupTable;
+    private TableView<?> reportsPopUpTable;
 
     @FXML
     private TableColumn<?, ?> itemCol;
