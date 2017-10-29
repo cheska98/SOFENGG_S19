@@ -8,31 +8,31 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class LoginController {
+public class RegisterController {
 
     @FXML
-    private AnchorPane login;
+    private AnchorPane register;
 
     @FXML
     private Label label1;
 
     @FXML
-    private TextField loginUsername;
+    private TextField registerUsername;
 
     @FXML
     private Label label2;
 
     @FXML
-    private PasswordField loginPassword;
+    private PasswordField registerPassword;
 
     @FXML
-    private Button loginButton;
+    private Button registerButton;
 
     @FXML
-    void loginuser(ActionEvent event) {
+    void handleRegister(ActionEvent event) {
     	
-    	String logUser = loginUsername.getText();
-    	String logPass = loginPassword.getText();
+    	String regUser = registerUsername.getText();
+    	String regPass = registerPassword.getText();
 
     }
 
