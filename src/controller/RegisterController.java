@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class RegisterController {
 
@@ -33,6 +34,9 @@ public class RegisterController {
     	
     	String regUser = registerUsername.getText();
     	String regPass = registerPassword.getText();
+    	Stage stage = (Stage) registerButton.getScene().getWindow();
+    	stage.close();
+
 
     }
 
