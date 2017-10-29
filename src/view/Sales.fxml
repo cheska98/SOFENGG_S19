@@ -7,14 +7,14 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="sales" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesController">
    <children>
-      <TableView layoutX="151.0" layoutY="66.0" prefHeight="948.0" prefWidth="1104.0" style="-fx-font-size: 14;">
+      <TableView fx:id="salesTable" layoutX="151.0" layoutY="66.0" prefHeight="948.0" prefWidth="1104.0" style="-fx-font-size: 14;">
         <columns>
-          <TableColumn minWidth="276.0" prefWidth="276.0" text="Item" />
-          <TableColumn minWidth="276.0" prefWidth="276.0" text="Quantity/CM/KG" />
-            <TableColumn minWidth="276.0" prefWidth="276.0" text=" Unit Cost" />
-            <TableColumn minWidth="276.0" prefWidth="276.0" text="Price" />
+          <TableColumn fx:id="itemCol" minWidth="276.0" prefWidth="276.0" text="Item" />
+          <TableColumn fx:id="quantityCol" minWidth="276.0" prefWidth="276.0" text="Quantity/CM/KG" />
+            <TableColumn fx:id="costCol" minWidth="276.0" prefWidth="276.0" text=" Unit Cost" />
+            <TableColumn fx:id="priceCol" minWidth="276.0" prefWidth="276.0" text="Price" />
         </columns>
       </TableView>
    </children>
