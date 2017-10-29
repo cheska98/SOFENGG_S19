@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -7,23 +11,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="420.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="register" prefHeight="420.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="47.0" layoutY="48.0" prefHeight="40.0" prefWidth="205.0" text="Username">
+      <Label id="userlbl" fx:id="label1" layoutX="64.0" layoutY="64.0" prefHeight="54.0" prefWidth="205.0" text="Username">
          <font>
-            <Font name="Segoe MDL2 Assets" size="30.0" />
+            <Font name="Segoe MDL2 Assets" size="26.0" />
          </font>
       </Label>
-      <TextField layoutX="47.0" layoutY="108.0" prefHeight="40.0" prefWidth="273.0" />
-      <Label layoutX="47.0" layoutY="168.0" prefHeight="40.0" prefWidth="205.0" text="Password">
+      <TextField id="textusername" fx:id="registerUsername" layoutX="64.0" layoutY="124.0" prefHeight="40.0" prefWidth="273.0" />
+      <Label id="passlbl" fx:id="label2" layoutX="64.0" layoutY="184.0" prefHeight="54.0" prefWidth="205.0" text="Password">
          <font>
-            <Font name="Segoe MDL2 Assets" size="30.0" />
+            <Font name="Segoe MDL2 Assets" size="26.0" />
          </font>
       </Label>
-      <PasswordField layoutX="47.0" layoutY="228.0" prefHeight="40.0" prefWidth="273.0" />
-      <Button id="btnRregister" layoutX="50.0" layoutY="293.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #f14343;" text="Register" textFill="WHITE">
+      <PasswordField fx:id="registerPassword" layoutX="64.0" layoutY="244.0" prefHeight="40.0" prefWidth="273.0" />
+      <Button id="button" fx:id="registerButton" layoutX="172.0" layoutY="338.0" mnemonicParsing="false" onAction="#loginuser" prefHeight="46.0" prefWidth="165.0" stylesheets="@../css/LoginStyle.css" text="Register" textFill="WHITE">
          <font>
-            <Font name="Segoe MDL2 Assets" size="30.0" />
+            <Font name="Segoe MDL2 Assets" size="26.0" />
          </font>
       </Button>
    </children>

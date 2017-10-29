@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -7,23 +11,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane fx:id="login" prefHeight="420.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <Label id="userlbl" layoutX="47.0" layoutY="68.0" prefHeight="54.0" prefWidth="205.0" text="Username">
+      <Label id="userlbl" fx:id="label1" layoutX="64.0" layoutY="64.0" prefHeight="54.0" prefWidth="205.0" text="Username">
          <font>
-            <Font name="Segoe MDL2 Assets" size="30.0" />
+            <Font name="Segoe MDL2 Assets" size="26.0" />
          </font>
       </Label>
-      <TextField id="textusername" fx:id="loginun" layoutX="47.0" layoutY="128.0" prefHeight="40.0" prefWidth="273.0" />
-      <Label id="passlbl" layoutX="47.0" layoutY="188.0" prefHeight="54.0" prefWidth="205.0" text="Password">
+      <TextField id="textusername" fx:id="loginUsername" layoutX="64.0" layoutY="124.0" prefHeight="40.0" prefWidth="273.0" />
+      <Label id="passlbl" fx:id="label2" layoutX="64.0" layoutY="184.0" prefHeight="54.0" prefWidth="205.0" text="Password">
          <font>
-            <Font name="Segoe MDL2 Assets" size="30.0" />
+            <Font name="Segoe MDL2 Assets" size="26.0" />
          </font>
       </Label>
-      <PasswordField fx:id="loginpwd" layoutX="47.0" layoutY="248.0" prefHeight="40.0" prefWidth="273.0" />
-      <Button id="btnlogin" fx:id="loginbtn" layoutX="47.0" layoutY="378.0" mnemonicParsing="false" onAction="#loginuser" prefHeight="40.0" prefWidth="200.0" stylesheets="@../css/LoginStyle.css" text="Login" textFill="#f1f8ee">
+      <PasswordField fx:id="loginPassword" layoutX="64.0" layoutY="244.0" prefHeight="40.0" prefWidth="273.0" />
+      <Button id="button" fx:id="loginButton" layoutX="172.0" layoutY="338.0" mnemonicParsing="false" onAction="#loginuser" prefHeight="46.0" prefWidth="165.0" stylesheets="@../css/LoginStyle.css" text="Login" textFill="WHITE">
          <font>
-            <Font name="Segoe MDL2 Assets" size="30.0" />
+            <Font name="Segoe MDL2 Assets" size="26.0" />
          </font>
       </Button>
    </children>

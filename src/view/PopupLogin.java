@@ -15,8 +15,8 @@ public class PopupLogin {
 			
 			Stage popStage = new Stage();
 			popStage.initModality(Modality.APPLICATION_MODAL);
-			AnchorPane popPane = FXMLLoader.load(getClass().getClassLoader().getResource("view/loginPane.fxml"));
-			Scene popScene = new Scene(popPane, 400, 500);
+			AnchorPane popPane = FXMLLoader.load(getClass().getClassLoader().getResource("view/Login.fxml"));
+			Scene popScene = new Scene(popPane, 400, 420);
 			
 			popStage.setScene(popScene);
 			popStage.showAndWait();

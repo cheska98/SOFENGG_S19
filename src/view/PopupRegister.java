@@ -15,8 +15,8 @@ public class PopupRegister {
 			
 			Stage popStage = new Stage();
 			popStage.initModality(Modality.APPLICATION_MODAL);
-			AnchorPane popPane = FXMLLoader.load(getClass().getClassLoader().getResource("view/registerPane.fxml"));
-			Scene popScene = new Scene(popPane, 400, 600);
+			AnchorPane popPane = FXMLLoader.load(getClass().getClassLoader().getResource("view/Register.fxml"));
+			Scene popScene = new Scene(popPane, 400, 420);
 			
 			popStage.setScene(popScene);
 			popStage.showAndWait();
