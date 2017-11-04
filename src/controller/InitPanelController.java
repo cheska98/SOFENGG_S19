@@ -1,38 +1,41 @@
 package controller;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import view.PopupLogin;
-import view.PopupRegister;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 public class InitPanelController {
-	
-	private PopupLogin popUpLogin;
-	private PopupRegister popupRegister;
 
     @FXML
     private Button loginbtn;
 
-    
-    
-    public InitPanelController() {
-    	
-    	popUpLogin = new PopupLogin();
-    	popupRegister = new PopupRegister();
-    	
-    }
-    
+    @FXML
+    private Button registerBtn;
+
+    @FXML
+    private TextField username;
+
+    @FXML
+    private PasswordField password;
+
     @FXML
     void handlelogin(ActionEvent event) {
     	
-    	    popUpLogin.display();
+    	String logUser = username.getText();
+    	String logPass = password.getText();
+    	
+    	System.out.println(logUser);
+
     }
-    
+
     @FXML
     void handleregister(ActionEvent event) {
     	
-    	popupRegister.display();
-    	
+    	String regUser = username.getText();
+    	String regPass = password.getText();
+
     }
 
 }

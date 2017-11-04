@@ -7,9 +7,9 @@ public class SaleEntry {
 	
     public SimpleStringProperty itemName = new SimpleStringProperty("<Name>"); 
     public SimpleStringProperty price = new SimpleStringProperty();
-    public SimpleIntegerProperty qty = new SimpleIntegerProperty();
-    public int invoiceId;
- 
+    public SimpleStringProperty ucost= new SimpleStringProperty();
+	public SimpleIntegerProperty qty = new SimpleIntegerProperty();
+	
     public String getItemName() {
         return itemName.get();
     }
@@ -20,5 +20,14 @@ public class SaleEntry {
  
     public Integer getQty() {
         return qty.get();
-    }
+    } 
+    
+    public String getUcost() {
+		return ucost.get();
+	}
+
+	public void setUcost(SimpleStringProperty string) {
+		this.ucost = string;
+	}
+
 }
