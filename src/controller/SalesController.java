@@ -1,21 +1,22 @@
 package controller;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 
 public class SalesController implements Initializable {
@@ -33,7 +34,7 @@ public class SalesController implements Initializable {
     private TableColumn<SaleEntry, Integer> quantityCol;
 
     @FXML
-    private TableColumn<?, ?> costCol;
+    private TableColumn<SaleEntry, String> costCol;
 
     @FXML
     private TableColumn<SaleEntry, String> priceCol;
@@ -58,8 +59,9 @@ public class SalesController implements Initializable {
     	String item = itemText.getText();
     	String price = priceText.getText();
     	int qty = Integer.parseInt(qtyText.getText()); 
+    	String ucost = "";
     	
-    	generateSaleEntry(item, price, qty);
+    	generateSaleEntry(item, price, qty, ucost);
  
 
     }
@@ -67,29 +69,46 @@ public class SalesController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+		
 			itemCol.setCellValueFactory(
-			    new PropertyValueFactory<SaleEntry,String>("itemName")
+			    new PropertyValueFactory<SaleEntry, String>("itemName")
 			);
 			quantityCol.setCellValueFactory(
-			    new PropertyValueFactory<SaleEntry,Integer>("qty")
+			    new PropertyValueFactory<SaleEntry, Integer>("qty")
 			    
 			);
 			priceCol.setCellValueFactory(
-			    new PropertyValueFactory<SaleEntry,String>("price")
+			    new PropertyValueFactory<SaleEntry, String>("price")
 			);
+			
+			costCol.setCellFactory(TextFieldTableCell.<SaleEntry>forTableColumn());
+	        costCol.setOnEditCommit(
+	                new EventHandler<CellEditEvent<SaleEntry, String>>() {
+	                    @Override
+	                    public void handle(CellEditEvent<SaleEntry, String> t) {
+	                        ((SaleEntry) t.getTableView().getItems().get(
+	                                t.getTablePosition().getRow())
+	                                ).setUcost(new SimpleStringProperty(t.getNewValue()));
+	                    }
+	                }
+	                );
 			
 			data = FXCollections.observableArrayList(); // create the data
 			salesTable.setItems(data); //
 		
 	}
 	
-	private void generateSaleEntry(String item, String price, int qty) {
+	
+	private void generateSaleEntry(String item, String price, int qty, String ucost) {
 		
 		SaleEntry entry = new SaleEntry();
 	    entry.itemName.set(item);
 	    entry.price.set(price);
 	    entry.qty.set(qty);
+	    entry.ucost.set(ucost);
 	    data.add(entry);
 	}
+	
+	
 
 }

@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="sales" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesController">
    <children>
-      <TableView fx:id="salesTable" layoutX="45.0" layoutY="100.0" prefHeight="848.0" prefWidth="894.0" style="-fx-font-size: 14;">
+      <TableView fx:id="salesTable" editable="true" layoutX="45.0" layoutY="100.0" prefHeight="848.0" prefWidth="894.0" style="-fx-font-size: 14;">
         <columns>
           <TableColumn fx:id="itemCol" minWidth="223.5" prefWidth="223.5" text="Item" />
           <TableColumn fx:id="quantityCol" minWidth="223.5" prefWidth="223.5" text="Quantity/CM/KG" />
