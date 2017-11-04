@@ -1,7 +1,12 @@
 package controller;
 	
+import java.io.IOException;
+
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -12,7 +17,7 @@ public class MainController extends Application {
 	Scene initPane;
 	Scene salePane;
 	Scene startPane;
-	LoginController logController;
+	@FXML LoginController logController;
 	//RegisterController regController;
 	
 	private static MainController instance;
@@ -54,8 +59,10 @@ public class MainController extends Application {
 			initPane = new Scene(paneInit,1541,1080);
 			salePane = new Scene(paneSale, 1541, 1080);
 			
+			//logController = new LoginController(getInstance());
+			
 			//initPane.getStylesheets().add(gtClass().getClassLoader().getResource("css/initPanelStyle.css").toExternalForm());
-			window.setScene(initPane);
+			window.setScene(salePane);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -64,19 +71,19 @@ public class MainController extends Application {
 		
 	}
 	
-//	public void changeScene(String fxml) {
-//		
-//		try {
-//			Parent page = (Parent) FXMLLoader.load(MainController.class.getResource(fxml), null, new JavaFXBuilderFactory());
-//			Scene scene = window.getScene();
-//	        window.getScene().setRoot(page);
-//			
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//        
-//	}
+	public void changeScene(String fxml) {
+		
+		try {
+			Parent page = (Parent) FXMLLoader.load(MainController.class.getResource(fxml), null, new JavaFXBuilderFactory());
+			Scene scene = window.getScene();
+	        window.getScene().setRoot(page);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+	}
 	
 	public static void main(String[] args) {
 		launch(args);
