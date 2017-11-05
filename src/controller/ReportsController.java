@@ -13,48 +13,26 @@ import javafx.scene.layout.AnchorPane;
 
 public class ReportsController {
 
-    @FXML
-    private TableColumn<?, ?> purchaseCol;
+    @FXML private TableColumn<?, ?> purchaseCol;
+    @FXML private Button downloadButton;
+    @FXML private ScrollPane scrollPane;
+    @FXML private TableView<?> reportsTable;
+    @FXML private DatePicker datePicker;
+    @FXML private ComboBox<?> monthCB;
+    @FXML private TableColumn<?, ?> dateTimeCol;
+    @FXML private Label label1;
+    @FXML private Label label2;
+    @FXML private Label dateMonthLabel;
+    @FXML private AnchorPane reportsPane;
+    @FXML private Label reportLabel;
+    @FXML private Button viewButton;
+    @FXML private TableColumn<?, ?> transIDCol;
 
     @FXML
-    private Button downloadButton;
-
-    @FXML
-    private ScrollPane scrollPane;
-
-    @FXML
-    private TableView<?> reportsTable;
-
-    @FXML
-    private DatePicker datePicker;
-
-    @FXML
-    private ComboBox<?> monthCB;
-
-    @FXML
-    private TableColumn<?, ?> dateTimeCol;
-
-    @FXML
-    private Label label1;
-
-    @FXML
-    private Label label2;
-
-    @FXML
-    private Label dateMonthLabel;
-
-    @FXML
-    private AnchorPane reportsPane;
-
-    @FXML
-    private Label reportLabel;
-
-    @FXML
-    private Button viewButton;
-
-    @FXML
-    private TableColumn<?, ?> transIDCol;
-
+    public void initialize() {
+    	
+    }
+    
     @FXML
     void handleView(ActionEvent event) {
 

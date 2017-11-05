@@ -1,26 +1,18 @@
 package controller;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class DisplayController{
 
-    @FXML
-    private TextField tf_search;
-
-    @FXML
-    private Button AddBtn;
-
-    @FXML
-    private Button SearchBtn;
+    @FXML private TextField tf_search;
+    @FXML private Button addBtn;
+    @FXML private Button searchBtn;
 
     
     public DisplayController() {
