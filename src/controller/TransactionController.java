@@ -61,6 +61,7 @@ public class TransactionController implements Initializable {
     @FXML
     private Label totalAmount;
     
+    ObservableList<SaleEntry> data;
     private float amtPaid;
     private float totalAmt = 0;
 
@@ -80,9 +81,6 @@ public class TransactionController implements Initializable {
     	
     }
 
-    
-    ObservableList<SaleEntry> data;
-
     @FXML
     void handleCart(ActionEvent event) {
     	
@@ -93,10 +91,8 @@ public class TransactionController implements Initializable {
     	
     	DecimalFormat f = new DecimalFormat("##.00");
     	totalAmt += price * qty;
-    	f.format(totalAmt);
+    	f.format(totalAmt);	
     	totalAmount.setText(f.format(totalAmt));
-    	
- 
     	
     	generateSaleEntry(item, price * qty, qty, ucost);
     	
@@ -123,6 +119,7 @@ public class TransactionController implements Initializable {
 			costCol.setCellValueFactory(
 					new PropertyValueFactory<SaleEntry, String>("ucost")
 			);
+			
 			costCol.setCellFactory(TextFieldTableCell.<SaleEntry>forTableColumn());
 	        costCol.setOnEditCommit(
 	                new EventHandler<CellEditEvent<SaleEntry, String>>() {
@@ -133,7 +130,7 @@ public class TransactionController implements Initializable {
 	                                ).setUcost(new SimpleStringProperty(t.getNewValue()));
 	                    }
 	                }
-	                );
+	           );
 			
 			data = FXCollections.observableArrayList(); // create the data
 			salesTable.setItems(data); //
