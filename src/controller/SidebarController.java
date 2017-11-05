@@ -74,7 +74,7 @@ public class SidebarController {
     	});
     	
     	salesButton.setOnAction(event -> {
-    		smc.setSalesVisible();
+    		smc.setTransactionVisible();
     	});
 
     	displayButton.setOnAction(event -> {

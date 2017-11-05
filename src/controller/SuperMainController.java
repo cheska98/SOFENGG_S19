@@ -16,7 +16,6 @@ public class SuperMainController {
 	@FXML SidebarController sidebarCtr;
 	@FXML TransactionController transactionCtr;
 	@FXML DisplayController displayCtr;
-	@FXML InventoryController inventoryCtr;
 	@FXML ReportsController reportsCtr;
 	@FXML DebtListController debtListCtr;
 	@FXML RefundReplaceController refundReplaceCtr;
@@ -28,7 +27,7 @@ public class SuperMainController {
 	public void initialize() {
 		sidebarCtr.initialize();
 		sidebarCtr.initializeButtons(this);
-		setSalesVisible();
+		setTransactionVisible();
 	}
 	
 	public void setTransactionVisible() {
