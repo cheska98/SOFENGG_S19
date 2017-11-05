@@ -1,21 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="mainPane" maxHeight="1080.0" maxWidth="1541.0" minHeight="1080.0" minWidth="1541.0" prefHeight="1080.0" prefWidth="1541.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SuperMainController">
+<AnchorPane fx:id="mainPane" prefHeight="1080.0" prefWidth="1541.0" style="-fx-background-color: #f1f1f1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SuperMainController">
    <children>
-      <fx:include fx:id="sidebarPane" source="Sidebar.fxml" />
-      <StackPane fx:id="stackPane" layoutX="175.0" maxHeight="1080.0" maxWidth="1366.0" minHeight="1080.0" minWidth="1366.0" prefHeight="1080.0" prefWidth="1366.0">
-         <children>
-            <fx:include source="Transaction.fxml" />
-            <fx:include source="Display.fxml" />
-            <fx:include source="Inventory.fxml" />
-            <fx:include source="Reports.fxml" />
-            <fx:include source="DebtList.fxml" />
-            <fx:include source="RefundReplace.fxml" />
-         </children></StackPane>
+      <ScrollPane prefHeight="1080.0" prefWidth="1541.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1390.0" prefWidth="1700.0">
+               <children>
+                  <AnchorPane fx:id="sidebar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="175.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <Label fx:id="currDateLabel" alignment="CENTER" layoutX="1.0" layoutY="1017.0" prefHeight="57.0" prefWidth="175.0" text="10/15/2017">
+                           <font>
+                              <Font name="Segoe UI Bold" size="27.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="label1" alignment="CENTER" layoutY="25.0" prefHeight="40.0" prefWidth="175.0" text="Welcome">
+                           <font>
+                              <Font name="Segoe UI" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="nameLabel" alignment="CENTER" layoutY="73.0" prefHeight="48.0" prefWidth="175.0" text="Cris!">
+                           <font>
+                              <Font name="Segoe UI Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="logoutButton" layoutX="20.0" layoutY="141.0" mnemonicParsing="false" onAction="#logoutAction" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #289b01;" text="LOGOUT" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="transactionButton" layoutX="13.0" layoutY="195.0" mnemonicParsing="false" onAction="#transactionAction" prefHeight="137.0" prefWidth="147.0">
+                           <graphic>
+                              <ImageView fx:id="transactionIcon" fitHeight="117.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/transaction.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="displayButton" layoutX="13.0" layoutY="332.0" mnemonicParsing="false" onAction="#displayAction" prefHeight="137.0" prefWidth="147.0">
+                           <graphic>
+                              <ImageView fx:id="displayIcon" fitHeight="117.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/display.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="inventoryButton" layoutX="13.0" layoutY="469.0" mnemonicParsing="false" onAction="#inventoryAction" prefHeight="137.0" prefWidth="147.0">
+                           <graphic>
+                              <ImageView fx:id="inventoryIcon" fitHeight="117.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/inventory.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="reportsButton" layoutX="13.0" layoutY="606.0" mnemonicParsing="false" onAction="#reportsAction" prefHeight="137.0" prefWidth="147.0">
+                           <graphic>
+                              <ImageView fx:id="reportsIcon" fitHeight="117.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/reports.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="debtListButton" layoutX="13.0" layoutY="743.0" mnemonicParsing="false" onAction="#debtListAction" prefHeight="137.0" prefWidth="147.0">
+                           <graphic>
+                              <ImageView fx:id="debtListIcon" fitHeight="117.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/debt_list.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="refundReplaceButton" layoutX="13.0" layoutY="880.0" mnemonicParsing="false" onAction="#refundReplaceAction" prefHeight="137.0" prefWidth="147.0">
+                           <graphic>
+                              <ImageView fx:id="refundReplaceIcon" fitHeight="117.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/refund-replace.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <StackPane fx:id="stackPane" layoutX="175.0" prefHeight="1080.0" prefWidth="1366.0">
+                     <children>
+                        <fx:include fx:id="debtList" source="DebtList.fxml" />
+                        <fx:include fx:id="display" source="Display.fxml" />
+                        <fx:include fx:id="inventory" source="Inventory.fxml" />
+                        <fx:include fx:id="refundReplace" source="RefundReplace.fxml" />
+                        <fx:include fx:id="reports" source="Reports.fxml" />
+                        <fx:include fx:id="transaction" source="Transaction.fxml" />
+                     </children>
+                  </StackPane>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

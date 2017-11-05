@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane fx:id="topItemsPopUp" prefHeight="550.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.TopItemsPopUpController">
+<AnchorPane fx:id="topItemsPopUp" prefHeight="550.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TopItemsPopUpController">
    <children>
       <Label fx:id="label1" layoutX="201.0" layoutY="29.0" text="Top Items">
          <font>
@@ -16,7 +15,7 @@
       </Label>
       <ScrollPane fx:id="scrollPane" layoutX="52.0" layoutY="67.0" prefHeight="413.0" prefWidth="396.0">
          <content>
-            <TableView fx:id="topItemsTable" prefHeight="413.0" prefWidth="394.0" style="-fx-font-size: 14;">
+            <TableView id="Display_Table" fx:id="topItemsTable" prefHeight="413.0" prefWidth="394.0" style="-fx-font-size: 14;" stylesheets="@../css/Display.css">
               <columns>
                 <TableColumn fx:id="itemCol" prefWidth="198.0" style="-fx-font-size: 14;" text="ITEM" />
                 <TableColumn fx:id="quantityCol" prefWidth="198.0" text="QUANTITY/CM/KG" />

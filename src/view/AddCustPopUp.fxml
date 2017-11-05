@@ -12,7 +12,7 @@
       <Label fx:id="BalanceLabel" layoutX="64.0" layoutY="259.0" text="Outstanding Balance:" />
       <TextField fx:id="tf_Name" layoutX="63.0" layoutY="62.0" prefHeight="25.0" prefWidth="174.0" />
       <TextField fx:id="tf_Balance" layoutX="61.0" layoutY="293.0" prefHeight="25.0" prefWidth="174.0" />
-      <Button fx:id="ConfirmBtn" layoutX="111.0" layoutY="342.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="36.0" prefWidth="79.0" style="-fx-background-color: #289b01;" styleClass="ConfirmBtn" stylesheets="@AddPopUp.css" text="Confirm" textFill="WHITE">
+      <Button fx:id="ConfirmBtn" layoutX="111.0" layoutY="342.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="36.0" prefWidth="79.0" styleClass="ConfirmBtn" stylesheets="@../css/AddPopUp.css" text="Confirm" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="13.0" />
          </font></Button>

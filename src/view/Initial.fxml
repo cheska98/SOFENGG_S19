@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -7,31 +11,44 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="initPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1366.0" stylesheets="@../css/InitialStyle.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InitPanelController">
+<AnchorPane id="initPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1366.0" stylesheets="@../css/InitialStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InitPanelController">
    <children>
-      <Label id="label_wel" layoutX="454.0" layoutY="84.0" prefHeight="300.0" prefWidth="436.0" text="Welcome!" textAlignment="CENTER">
-         <font>
-            <Font name="Segoe MDL2 Assets" size="96.0" />
-         </font>
-      </Label>
-      <Button id="btnlogin" fx:id="loginbtn" layoutX="423.0" layoutY="737.0" mnemonicParsing="false" onAction="#handlelogin" prefHeight="69.0" prefWidth="213.0" text="Login" textFill="#f4e0e0">
-         <font>
-            <Font name="Segoe MDL2 Assets" size="30.0" />
-         </font></Button>
-      <Button id="btnreg" fx:id="registerBtn" layoutX="731.0" layoutY="737.0" mnemonicParsing="false" onAction="#handleregister" prefHeight="69.0" prefWidth="213.0" text="Register" textFill="#f4e0e0">
-         <font>
-            <Font name="Segoe MDL2 Assets" size="30.0" />
-         </font>
-      </Button>
-      <TextField fx:id="username" layoutX="486.0" layoutY="386.0" prefHeight="61.0" prefWidth="368.0" promptText="User Name">
-         <font>
-            <Font name="Segoe UI" size="36.0" />
-         </font>
-      </TextField>
-      <PasswordField fx:id="password" layoutX="486.0" layoutY="566.0" prefHeight="61.0" prefWidth="368.0" promptText="Password">
-         <font>
-            <Font name="Segoe UI" size="36.0" />
-         </font>
-      </PasswordField>
+      <ScrollPane id="initPane" prefHeight="1080.0" prefWidth="1541.0" stylesheets="@../css/InitialStyle.css">
+        <content>
+          <AnchorPane id="initPane" minHeight="0.0" minWidth="0.0" prefHeight="1390.0" prefWidth="1700.0" stylesheets="@../css/InitialStyle.css">
+               <children>
+                  <Label id="label_wel" alignment="CENTER" layoutX="465.0" layoutY="179.0" prefHeight="155.0" prefWidth="436.0" text="Welcome!" textAlignment="CENTER">
+                     <font>
+                        <Font name="Segoe MDL2 Assets" size="96.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="389.0" layoutY="389.0" prefHeight="487.0" prefWidth="588.0" style="-fx-background-color: #f0f0f0;">
+                     <children>
+                        <Button id="btnlogin" fx:id="loginbtn" layoutX="323.0" layoutY="393.0" mnemonicParsing="false" onAction="#handlelogin" prefHeight="47.0" prefWidth="155.0" text="Login" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe MDL2 Assets" size="22.0" />
+                           </font>
+                        </Button>
+                        <Button id="btnreg" fx:id="registerBtn" layoutX="101.0" layoutY="393.0" mnemonicParsing="false" onAction="#handleregister" prefHeight="47.0" prefWidth="155.0" text="Register" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe MDL2 Assets" size="22.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="username" layoutX="110.0" layoutY="89.0" prefHeight="55.0" prefWidth="368.0" promptText="Username">
+                           <font>
+                              <Font name="Segoe UI" size="24.0" />
+                           </font>
+                        </TextField>
+                        <PasswordField fx:id="password" layoutX="110.0" layoutY="207.0" prefHeight="55.0" prefWidth="368.0" promptText="Password">
+                           <font>
+                              <Font name="Segoe UI" size="24.0" />
+                           </font>
+                        </PasswordField>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

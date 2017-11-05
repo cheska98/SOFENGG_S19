@@ -10,7 +10,7 @@
    <children>
       <ScrollPane fx:id="scrollPane" layoutY="50.0" prefHeight="500.0" prefWidth="800.0">
          <content>
-            <TableView fx:id="reportsPopUpTable" prefHeight="500.0" prefWidth="798.0" style="-fx-font-size: 15;">
+            <TableView id="Display_Table" fx:id="reportsPopUpTable" prefHeight="500.0" prefWidth="798.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
               <columns>
                 <TableColumn fx:id="itemCol" maxWidth="400.0" minWidth="329.0" prefWidth="341.0" text="ITEM" />
                 <TableColumn fx:id="quantityCol" maxWidth="161.0" minWidth="90.0" prefWidth="149.0" text="QUANTITY/CM/KG" />
@@ -20,7 +20,7 @@
             </TableView>
          </content>
       </ScrollPane>
-      <Label fx:id="purchaseLabel" alignment="CENTER_RIGHT" layoutX="551.0" layoutY="8.0" prefHeight="35.0" prefWidth="235.0" text="Php">
+      <Label fx:id="purchaseLabel" alignment="CENTER_RIGHT" layoutX="551.0" layoutY="8.0" prefHeight="35.0" prefWidth="235.0" style="-fx-background-color: #ffffff;" text="Php">
          <font>
             <Font name="Segoe UI" size="19.0" />
          </font>
