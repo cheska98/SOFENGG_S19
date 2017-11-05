@@ -1,12 +1,13 @@
 package controller;
 
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
  
 public class SaleEntry {
 	
     public SimpleStringProperty itemName = new SimpleStringProperty("<Name>"); 
-    public SimpleStringProperty price = new SimpleStringProperty();
+    public SimpleFloatProperty price = new SimpleFloatProperty();
     public SimpleStringProperty ucost= new SimpleStringProperty();
 	public SimpleIntegerProperty qty = new SimpleIntegerProperty();
 	
@@ -14,7 +15,7 @@ public class SaleEntry {
         return itemName.get();
     }
  
-    public String getPrice() {
+    public Float getPrice() {
         return price.get();
     }
  
