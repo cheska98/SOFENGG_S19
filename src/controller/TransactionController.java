@@ -19,7 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 
-public class SalesController implements Initializable {
+public class TransactionController implements Initializable {
 
     @FXML
     private AnchorPane sales;

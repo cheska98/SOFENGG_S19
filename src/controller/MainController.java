@@ -46,7 +46,7 @@ public class MainController extends Application {
 			
 			window = primaryStage;
 			AnchorPane paneInit = FXMLLoader.load(getClass().getClassLoader().getResource("view/Initial.fxml"));
-			paneSale = FXMLLoader.load(getClass().getClassLoader().getResource("view/Sales.fxml"));
+			paneSale = FXMLLoader.load(getClass().getClassLoader().getResource("view/Transaction.fxml"));
 			
 			initPane = new Scene(paneInit,1541,1080);
 			salePane = new Scene(paneSale, 1541, 1080);

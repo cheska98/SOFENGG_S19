@@ -10,19 +10,12 @@
       <fx:include fx:id="sidebarPane" source="Sidebar.fxml" />
       <StackPane fx:id="stackPane" layoutX="175.0" maxHeight="1080.0" maxWidth="1366.0" minHeight="1080.0" minWidth="1366.0" prefHeight="1080.0" prefWidth="1366.0">
          <children>
-				<fx:include fx:id="sales" source="Sales.fxml" />
-				<fx:include fx:id="display" source="Display.fxml" />
-				<fx:include fx:id="inventory" source="Inventory.fxml" />
-	  			<fx:include fx:id="reports" source="Reports.fxml" />
-				<fx:include fx:id="addPopUp" source="AddPopUp.fxml" />
-	  			<fx:include fx:id="reportsPopUp" source="ReportsPopUp.fxml" />
-				<fx:include fx:id="topItemsPopUp" source="TopItemsPopUp.fxml" /> 
-				<fx:include fx:id="debtList" source="DebtList.fxml" />
-				<fx:include fx:id="alertDebtList" source="AlertDebtList.fxml" />
-				<fx:include fx:id="debtListCust" source="DebtListCust.fxml" />
-				<fx:include fx:id="addCustPop" source="AddCustPopUp.fxml" />
-				<fx:include fx:id="refundReplace" source="RefundReplace.fxml" />
-         </children>
-      </StackPane>
+            <fx:include source="Transaction.fxml" />
+            <fx:include source="Display.fxml" />
+            <fx:include source="Inventory.fxml" />
+            <fx:include source="Reports.fxml" />
+            <fx:include source="DebtList.fxml" />
+            <fx:include source="RefundReplace.fxml" />
+         </children></StackPane>
    </children>
 </AnchorPane>
