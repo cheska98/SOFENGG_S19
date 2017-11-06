@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="reportsPopUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportsPopUpController">
+<AnchorPane fx:id="reportsPopUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="219.0" prefWidth="511.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportsPopUpController">
    <children>
-      <ScrollPane fx:id="scrollPane" layoutY="50.0" prefHeight="500.0" prefWidth="800.0">
-         <content>
-            <TableView id="Display_Table" fx:id="reportsPopUpTable" prefHeight="500.0" prefWidth="798.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
-              <columns>
-                <TableColumn fx:id="itemCol" maxWidth="400.0" minWidth="329.0" prefWidth="341.0" text="ITEM" />
-                <TableColumn fx:id="quantityCol" maxWidth="161.0" minWidth="90.0" prefWidth="149.0" text="QUANTITY/CM/KG" />
-                  <TableColumn fx:id="unitCostCol" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="UNIT COST" />
-                  <TableColumn fx:id="priceCol" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="PRICE" />
-              </columns>
-            </TableView>
-         </content>
-      </ScrollPane>
-      <Label fx:id="purchaseLabel" alignment="CENTER_RIGHT" layoutX="551.0" layoutY="8.0" prefHeight="35.0" prefWidth="235.0" style="-fx-background-color: #ffffff;" text="Php">
+      <TableView fx:id="reportsPopUpTable" layoutX="46.0" layoutY="38.0" prefHeight="78.0" prefWidth="420.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
+        <columns>
+          <TableColumn fx:id="transIDCol" prefWidth="150.0" text="TRANSACTION ID" />
+          <TableColumn fx:id="dateCol" minWidth="0.0" prefWidth="129.0" text="DATE" />
+            <TableColumn fx:id="timeCol" prefWidth="140.0" text="TIME" />
+        </columns>
+      </TableView>
+      <Button fx:id="okButton" layoutX="370.0" layoutY="147.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="34.0" prefWidth="96.0" style="-fx-background-color: #289b01;" text="OK" textFill="WHITE">
          <font>
-            <Font name="Segoe UI" size="19.0" />
+            <Font name="Segoe UI" size="15.0" />
          </font>
-      </Label>
+      </Button>
    </children>
 </AnchorPane>

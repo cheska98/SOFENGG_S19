@@ -19,19 +19,19 @@
                <children>
                   <Label id="label_wel" alignment="CENTER" layoutX="465.0" layoutY="179.0" prefHeight="155.0" prefWidth="436.0" text="Welcome!" textAlignment="CENTER">
                      <font>
-                        <Font name="Segoe MDL2 Assets" size="96.0" />
+                        <Font name="Segoe UI" size="96.0" />
                      </font>
                   </Label>
                   <Pane layoutX="389.0" layoutY="389.0" prefHeight="487.0" prefWidth="588.0" style="-fx-background-color: #f0f0f0;">
                      <children>
                         <Button id="btnlogin" fx:id="loginbtn" layoutX="323.0" layoutY="393.0" mnemonicParsing="false" onAction="#handlelogin" prefHeight="47.0" prefWidth="155.0" text="Login" textFill="WHITE">
                            <font>
-                              <Font name="Segoe MDL2 Assets" size="22.0" />
+                              <Font name="Segoe UI" size="22.0" />
                            </font>
                         </Button>
                         <Button id="btnreg" fx:id="registerBtn" layoutX="101.0" layoutY="393.0" mnemonicParsing="false" onAction="#handleregister" prefHeight="47.0" prefWidth="155.0" text="Register" textFill="WHITE">
                            <font>
-                              <Font name="Segoe MDL2 Assets" size="22.0" />
+                              <Font name="Segoe UI" size="22.0" />
                            </font>
                         </Button>
                         <TextField fx:id="username" layoutX="110.0" layoutY="89.0" prefHeight="55.0" prefWidth="368.0" promptText="Username">
