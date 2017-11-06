@@ -22,6 +22,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
+import model.SaleEntry;
 
 public class TransactionController implements Initializable {
 
@@ -61,7 +62,6 @@ public class TransactionController implements Initializable {
     @FXML
     private Label totalAmount;
     
-    ObservableList<SaleEntry> data;
     private float amtPaid;
     private float totalAmt = 0;
 
@@ -81,17 +81,20 @@ public class TransactionController implements Initializable {
     	
     }
 
+    
+    ObservableList<SaleEntry> data;
+
     @FXML
     void handleCart(ActionEvent event) {
     	
     	String item = itemText.getText();
-    	float price = Integer.parseInt(priceText.getText());
+    	float price = Float.valueOf((priceText.getText()));
     	int qty = Integer.parseInt(qtyText.getText()); 
     	String ucost = "";
     	
     	DecimalFormat f = new DecimalFormat("##.00");
     	totalAmt += price * qty;
-    	f.format(totalAmt);	
+    	f.format(totalAmt);
     	totalAmount.setText(f.format(totalAmt));
     	
     	generateSaleEntry(item, price * qty, qty, ucost);
@@ -119,7 +122,6 @@ public class TransactionController implements Initializable {
 			costCol.setCellValueFactory(
 					new PropertyValueFactory<SaleEntry, String>("ucost")
 			);
-			
 			costCol.setCellFactory(TextFieldTableCell.<SaleEntry>forTableColumn());
 	        costCol.setOnEditCommit(
 	                new EventHandler<CellEditEvent<SaleEntry, String>>() {
@@ -130,7 +132,7 @@ public class TransactionController implements Initializable {
 	                                ).setUcost(new SimpleStringProperty(t.getNewValue()));
 	                    }
 	                }
-	           );
+	                );
 			
 			data = FXCollections.observableArrayList(); // create the data
 			salesTable.setItems(data); //

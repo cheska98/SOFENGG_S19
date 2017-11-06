@@ -45,22 +45,32 @@ public class SuperMainController {
 	
 	@FXML TransactionController transactionCtr;
 	@FXML DisplayController displayCtr;
-	@FXML ReportsController reportsCtr;
+	@FXML ReportsController reportsCtr = new ReportsController();
 	@FXML DebtListController debtListCtr;
 	@FXML RefundReplaceController refundReplaceCtr;
+	
+	Calendar now = Calendar.getInstance();
+	String currDate = null;
+	String month = null;
+	String day = null;
+	String year = Integer.toString(now.get(Calendar.YEAR));
+	
 	
 	@FXML
 	public void initialize() {
 		
-		//get username
-    	
-		//set nameLabel to username
+		setCurrDate();
+		setTransactionVisible();
 		
-		Calendar now = Calendar.getInstance();
-		String currDate = null;
-		String month = null;
-		String day = null;
-		String year = Integer.toString(now.get(Calendar.YEAR));
+	}
+	
+	public void setUsername(String username) {
+		
+		nameLabel.setText(username);
+		
+	}
+	
+	public void setCurrDate() {
 		
 		if (now.get(Calendar.MONTH)+1 < 10)
 			month = 0 + Integer.toString(now.get(Calendar.MONTH)+1);
@@ -75,20 +85,23 @@ public class SuperMainController {
 		currDate = month + "/" + day + "/" + year;
 		
 		currDateLabel.setText(currDate);
-		//setSidebar();
-		setTransactionVisible();
+		
+		reportsCtr.setCurrDate(currDate);
+		
 	}
 	
 	@FXML
     void logoutAction(ActionEvent event) {
+		
     	Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Logout");
+		alert.setTitle("LOGOUT");
 		String s = "Are you sure?";
 		alert.setContentText(s);
 		Optional<ButtonType> result = alert.showAndWait();
 		if ((result.isPresent()) && (result.get() == ButtonType.YES)) {
 		    //go back to initPanel
 		}
+		
     }
     
     @FXML

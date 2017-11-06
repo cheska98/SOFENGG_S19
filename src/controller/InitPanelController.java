@@ -19,13 +19,17 @@ public class InitPanelController {
     @FXML private Button registerBtn; 
     @FXML private TextField username; 
     @FXML private PasswordField password;
-    Stage primaryStage;
+    private Stage primaryStage;
+    private String uname = null;
+    SuperMainController smc;
+    
 
     @FXML
     void handlelogin(ActionEvent event) {
     	
     	String logUser = username.getText();
     	String logPass = password.getText();
+    	uname = logUser;
     	
     	System.out.println(logUser);
     	if (logUser != null && logPass != null)
@@ -58,6 +62,10 @@ public class InitPanelController {
     	
     }
     
+    public void setUsername() {
+    	smc.setUsername(uname);
+    }
+    
     private void setFields() {
     	
     	username.clear();
@@ -78,7 +86,8 @@ public class InitPanelController {
 			loader.setLocation(getClass().getResource("/view/Main.fxml"));
 			Scene scene = new Scene(loader.load(), 1541, 1080);
 		
-			SuperMainController smc = loader.getController();
+			smc = loader.getController();
+	    	setUsername();
 			
 			primaryStage.setScene(scene);
 			primaryStage.show();

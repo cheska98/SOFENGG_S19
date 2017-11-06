@@ -11,31 +11,23 @@ import javafx.scene.layout.AnchorPane;
 
 public class TopItemsPopUpController {
 
-    @FXML
-    private ScrollPane scrollPane;
+    @FXML private AnchorPane topItemsPopUp;
+    @FXML private ScrollPane scrollPane;
+    @FXML private Label label1;
+    @FXML private TableView<?> topItemsTable;
+    @FXML private TableColumn<?, ?> itemCol;
+    @FXML private TableColumn<?, ?> quantityCol;
+    @FXML private Button okButton;
+    private ReportsController rc;
 
-    @FXML
-    private TableColumn<?, ?> quantityCol;
-
-    @FXML
-    private Button okButton;
-
-    @FXML
-    private TableView<?> topItemsTable;
-
-    @FXML
-    private Label label1;
-
-    @FXML
-    private AnchorPane topItemsPopUp;
-
-    @FXML
-    private TableColumn<?, ?> itemCol;
-
-
+    
+    public void initialize(ReportsController rc) {
+    	this.rc = rc;
+    }
+    
     @FXML
     void handleOk(ActionEvent event) {
-
+    	rc.closeView();
     }
     
 }
