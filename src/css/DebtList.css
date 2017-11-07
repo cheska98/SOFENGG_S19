@@ -8,3 +8,8 @@
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
+
+.btns{
+	-fx-background-color: #289b01;
+	-fx-text-fill: white;
+}

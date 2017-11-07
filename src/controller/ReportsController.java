@@ -117,7 +117,7 @@ public class ReportsController implements Initializable {
 			loader.setLocation(getClass().getResource("/view/ReportsPopUp.fxml"));
 			Scene scene = new Scene(loader.load(), 511, 219);
 		
-			ReportsPopUpController rep = loader.getController();
+			ReportsPopupController rep = loader.getController();
 			rep.initialize(this);
 			
 			stage.setScene(scene);

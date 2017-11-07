@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DebtListLoansController">
+   <children>
+      <TableView id="DebtList_Table" fx:id="DebtListTransactionTable" layoutX="420.0" layoutY="165.0" prefHeight="574.0" prefWidth="548.0" style="-fx-font-size: 14;" stylesheets="@../css/DebtList.css">
+        <columns>
+            <TableColumn fx:id="TransDateCol" prefWidth="161.0" text="Transaction Date" />
+            <TableColumn fx:id="ItemCol" prefWidth="202.0" text="Item" />
+          <TableColumn fx:id="UnitCostCol" minWidth="7.0" prefWidth="184.0" text="Unit Cost" />
+        </columns>
+      </TableView>
+      <Button fx:id="DLbtn" layoutX="420.0" layoutY="759.0" mnemonicParsing="false" onAction="#onCLickDL" prefHeight="43.0" prefWidth="135.0" styleClass="btns" stylesheets="@../css/DebtList.css" text="Download">
+         <font>
+            <Font name="Segoe UI Bold" size="14.0" />
+         </font></Button>
+      <Pane layoutX="114.0" layoutY="166.0" prefHeight="327.0" prefWidth="285.0" style="-fx-background-color: #ffffff; -fx-border-width: 1px; -fx-border-color: #f1f1f1;">
+         <children>
+            <Label fx:id="totalLabel" layoutX="15.0" layoutY="157.0" prefHeight="27.0" prefWidth="102.0" text="Total:">
+               <font>
+                  <Font name="Segoe UI Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="total" layoutX="92.0" layoutY="158.0" prefHeight="27.0" prefWidth="102.0" text="₱ 200,000.10">
+               <font>
+                  <Font name="Segoe UI" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="CustomerLabel" layoutX="14.0" layoutY="32.0" text="Customer: ">
+               <font>
+                  <Font name="Segoe UI Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="customer" layoutX="129.0" layoutY="33.0" prefHeight="27.0" prefWidth="78.0" text="John Doe">
+               <font>
+                  <Font name="Segoe UI" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="CompanyLabel" layoutX="14.0" layoutY="93.0" text="Company:">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="company" layoutX="129.0" layoutY="97.0" prefHeight="27.0" prefWidth="102.0" text="Weyang Inc.">
+               <font>
+                  <Font name="Segoe UI" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="Paidbtn" layoutX="92.0" layoutY="232.0" mnemonicParsing="false" onAction="#onClickPaid" prefHeight="43.0" prefWidth="102.0" styleClass="btns" stylesheets="@../css/DebtList.css" text="Paid">
+               <font>
+                  <Font name="Segoe UI" size="14.0" />
+               </font></Button>
+         </children>
+      </Pane>
+      <Pane layoutX="995.0" layoutY="166.0" prefHeight="555.0" prefWidth="315.0" style="-fx-background-color: #ffffff; -fx-border-width: 1px; -fx-border-color: #f1f1f1;">
+         <children>
+            <Label fx:id="itemLabel" layoutX="39.0" layoutY="163.0" text="Item:">
+               <font>
+                  <Font name="Segoe UI" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateLabel" layoutX="39.0" layoutY="53.0" text="Transaction date:">
+               <font>
+                  <Font name="Segoe UI" size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_Item" layoutX="39.0" layoutY="211.0" prefHeight="38.0" prefWidth="238.0" />
+            <Label fx:id="UnitCostLabel" layoutX="39.0" layoutY="291.0" text="Unit cost:">
+               <font>
+                  <Font name="Segoe UI" size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tf_Unitcost" layoutX="39.0" layoutY="337.0" prefHeight="38.0" prefWidth="238.0" />
+            <Button fx:id="Addtransbtn" layoutX="91.0" layoutY="436.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="43.0" prefWidth="135.0" styleClass="btns" stylesheets="@../css/DebtList.css" text="Add Transaction">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Button>
+            <DatePicker fx:id="dp_Transactiondate" layoutX="39.0" layoutY="109.0" prefHeight="38.0" prefWidth="238.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

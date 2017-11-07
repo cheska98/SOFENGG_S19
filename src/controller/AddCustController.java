@@ -10,28 +10,46 @@ import javafx.scene.control.TextField;
 public class AddCustController {
 
     @FXML
-    private Label NameLabel;
+    private Label FirstnameLabel;
 
     @FXML
-    private TextField tf_Balance;
+    private Label LastnameLabel;
+
+    @FXML
+    private Label CompanyLabel;
 
     @FXML
     private DatePicker tf_DatePicker;
 
     @FXML
-    private Label BalanceLabel;
+    private Label DateLabel;
 
     @FXML
-    private TextField tf_Name;
+    private Label UnitCostLabel;
+
+    @FXML
+    private TextField tf_FirstName;
+
+    @FXML
+    private TextField tf_company;
+
+    @FXML
+    private TextField tf_UnitCost;
+
+    @FXML
+    private Label ContactLabel;
+
+    @FXML
+    private TextField tf_Contact;
 
     @FXML
     private Button ConfirmBtn;
 
     @FXML
-    private Label DateLabel;
+    private TextField tf_Item;
 
     @FXML
-    private TextField tf_Item;
+    private TextField tf_Lasname;
 
     @FXML
     private Label ItemLabel;

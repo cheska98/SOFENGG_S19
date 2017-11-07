@@ -1,45 +1,72 @@
 package controller;
-import javafx.event.ActionEvent;
+
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Customer;
+import model.Product;
+import model.Report;
 
-public class DebtListController {
-
-    @FXML
-    private TextField tf_search;
-
-    @FXML
-    private Button AddBtn;
+public class DebtListController implements Initializable{
 
     @FXML
-    private Button SearchBtn;
+    private TableColumn<Customer, Float> Balancecol;
 
     @FXML
-    private TableView<?> DebtListTable;
+    private TableColumn<Customer, String> contactcol;
 
     @FXML
-    void onSearchClick(ActionEvent event) {
-
-    }
+    private TableColumn<Customer, String> LTDatecol;
 
     @FXML
-    void onAddClick(ActionEvent event) {
-    	try{
-    		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddCustPopUp.fxml"));
-    		Parent root1 = (Parent) fxmlLoader.load();
-    		Stage stage = new Stage();
-    		stage.setTitle("Add customer");
-    		stage.setScene(new Scene(root1));
-    		stage.show();	
-    	}catch(Exception e){
-    		System.out.println("Cant load new window");
-    	}
+    private TableView<Customer> DebtListTable;
+
+    @FXML
+    private TableColumn<Customer, Integer> transIDcol;
+
+    @FXML
+    private TableColumn<Customer, String> CustNamecol;
+    
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+    	transIDcol.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("transID"));
+    	contactcol.setCellValueFactory(new PropertyValueFactory<Customer, String>("contactno"));
+    	LTDatecol.setCellValueFactory(new PropertyValueFactory<Customer, String>("lasttrans"));
+    	CustNamecol.setCellValueFactory(new PropertyValueFactory<Customer, String>("name"));
+    	Balancecol.setCellValueFactory(new PropertyValueFactory<Customer, Float>("balance"));
+    	
+    	DebtListTable.setRowFactory( tv -> {
+            TableRow<Customer> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    Customer rowData = row.getItem();
+                    
+                }
+            });
+            return row;
+        });
+    	
+    	
+    	
+    	DebtListTable.setItems(getCustomers());
+	}
+    
+    public ObservableList<Customer> getCustomers(){
+        ObservableList<Customer> customers = FXCollections.observableArrayList();
+        customers.add(new Customer("09234567789","10/11/2017","John Doe",Float.valueOf(500),115));
+        return customers;
     }
 
 }

@@ -5,20 +5,26 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddCustController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddCustController">
    <children>
-      <Label fx:id="NameLabel" layoutX="65.0" layoutY="33.0" text="Name:" />
-      <Label fx:id="DateLabel" layoutX="62.0" layoutY="180.0" text="Date of last transaction:" />
-      <Label fx:id="BalanceLabel" layoutX="64.0" layoutY="259.0" text="Outstanding Balance:" />
-      <TextField fx:id="tf_Name" layoutX="63.0" layoutY="62.0" prefHeight="25.0" prefWidth="174.0" />
-      <TextField fx:id="tf_Balance" layoutX="61.0" layoutY="293.0" prefHeight="25.0" prefWidth="174.0" />
-      <Button fx:id="ConfirmBtn" layoutX="111.0" layoutY="342.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="36.0" prefWidth="79.0" styleClass="ConfirmBtn" stylesheets="@../css/AddPopUp.css" text="Confirm" textFill="WHITE">
+      <Label fx:id="FirstnameLabel" layoutX="65.0" layoutY="33.0" text="First name:" />
+      <Label fx:id="DateLabel" layoutX="284.0" layoutY="111.0" text="Date of last transaction:" />
+      <Label fx:id="UnitCostLabel" layoutX="286.0" layoutY="190.0" text="Unit Cost:" />
+      <TextField fx:id="tf_FirstName" layoutX="63.0" layoutY="62.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="tf_UnitCost" layoutX="283.0" layoutY="224.0" prefHeight="25.0" prefWidth="174.0" />
+      <Button fx:id="ConfirmBtn" layoutX="220.0" layoutY="361.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="36.0" prefWidth="79.0" styleClass="ConfirmBtn" stylesheets="@../css/AddPopUp.css" text="Confirm" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="13.0" />
          </font></Button>
       <Label layoutX="140.0" layoutY="23.0" />
-      <Label fx:id="ItemLabel" layoutX="65.0" layoutY="102.0" text="Item:" />
-      <TextField fx:id="tf_Item" layoutX="65.0" layoutY="131.0" prefHeight="25.0" prefWidth="174.0" />
-      <DatePicker fx:id="tf_DatePicker" layoutX="61.0" layoutY="209.0" />
+      <Label fx:id="ItemLabel" layoutX="287.0" layoutY="33.0" text="Item:" />
+      <TextField fx:id="tf_Item" layoutX="287.0" layoutY="62.0" prefHeight="25.0" prefWidth="174.0" />
+      <DatePicker fx:id="tf_DatePicker" layoutX="283.0" layoutY="140.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label fx:id="LastnameLabel" layoutX="63.0" layoutY="111.0" text="Last name:" />
+      <TextField fx:id="tf_Lasname" layoutX="63.0" layoutY="140.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="tf_company" layoutX="63.0" layoutY="224.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label fx:id="CompanyLabel" layoutX="65.0" layoutY="190.0" text="Company:" />
+      <Label fx:id="ContactLabel" layoutX="65.0" layoutY="270.0" text="Contact number:" />
+      <TextField fx:id="tf_Contact" layoutX="63.0" layoutY="300.0" prefHeight="25.0" prefWidth="174.0" />
    </children>
 </AnchorPane>

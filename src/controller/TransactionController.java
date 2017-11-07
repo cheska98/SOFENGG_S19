@@ -18,12 +18,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
-import view.AmountPaidPopup;
 import model.SaleEntry;
-
 
 public class TransactionController implements Initializable {
 
@@ -65,30 +64,18 @@ public class TransactionController implements Initializable {
     
     private float amtPaid;
     private float totalAmt = 0;
-    private AmountPaidPopup tmp;
-    
-    public TransactionController() {
-    	
-    	tmp = new AmountPaidPopup();
-  
-    	
-    }
 
     @FXML
     void handlecomplete(ActionEvent event) {
     	
-//    	TextInputDialog dialog = new TextInputDialog();
-//    	dialog.setTitle("Complete Transaction");
-//    	dialog.setContentText("Total Amount Paid: ");
-//    	
-//    	Optional<String> result = dialog.showAndWait();
-//    	
-//    	result.ifPresent(amount -> amtPaid = Integer.parseInt(amount)
-//    	);
+    	TextInputDialog dialog = new TextInputDialog();
+    	dialog.setTitle("Complete Transaction");
+    	dialog.setContentText("Total Amount Paid: ");
     	
-    	tmp.display();
+    	Optional<String> result = dialog.showAndWait();
     	
-    	salesTable.getItems().clear();
+    	result.ifPresent(amount -> amtPaid = Integer.parseInt(amount)
+    	);
     	
     	//System.out.println(amtPaid);
     	

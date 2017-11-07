@@ -9,7 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
-public class ReportsPopUpController {
+public class ReportsPopupController {
 
 	@FXML private TableColumn<?, ?> dateCol;
     @FXML private AnchorPane reportsPopUp;
