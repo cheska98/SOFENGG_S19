@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DebtListLoansController">
+<AnchorPane fx:id="LoanAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DebtListLoansController">
    <children>
       <TableView id="DebtList_Table" fx:id="DebtListTransactionTable" layoutX="420.0" layoutY="165.0" prefHeight="574.0" prefWidth="548.0" style="-fx-font-size: 14;" stylesheets="@../css/DebtList.css">
         <columns>
@@ -53,7 +53,7 @@
             </Label>
             <Button fx:id="Paidbtn" layoutX="92.0" layoutY="232.0" mnemonicParsing="false" onAction="#onClickPaid" prefHeight="43.0" prefWidth="102.0" styleClass="btns" stylesheets="@../css/DebtList.css" text="Paid">
                <font>
-                  <Font name="Segoe UI" size="14.0" />
+                  <Font name="Segoe UI Bold" size="14.0" />
                </font></Button>
          </children>
       </Pane>

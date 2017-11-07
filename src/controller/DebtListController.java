@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Customer;
 import model.Product;
@@ -21,6 +22,9 @@ import model.Report;
 
 public class DebtListController implements Initializable{
 
+	@FXML
+    private AnchorPane AnchorDebtList;
+	
     @FXML
     private TableColumn<Customer, Float> Balancecol;
 
@@ -52,20 +56,24 @@ public class DebtListController implements Initializable{
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     Customer rowData = row.getItem();
-                    
+                    try {
+						AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/DebtListLoans.fxml"));
+						AnchorDebtList.getChildren().setAll(pane);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                 }
             });
             return row;
         });
-    	
-    	
     	
     	DebtListTable.setItems(getCustomers());
 	}
     
     public ObservableList<Customer> getCustomers(){
         ObservableList<Customer> customers = FXCollections.observableArrayList();
-        customers.add(new Customer("09234567789","10/11/2017","John Doe",Float.valueOf(500),115));
+        customers.add(new Customer("09234567789","10-11-2017","John Doe",Float.valueOf(500),115));
         return customers;
     }
 

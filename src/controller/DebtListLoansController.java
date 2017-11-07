@@ -1,12 +1,12 @@
 package controller;
 
-import java.awt.TextField;
+
+import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,13 +22,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import model.Loaned;
-import model.Product;
 
 public class DebtListLoansController implements Initializable{
 
 	 	@FXML
 	    private Button Addtransbtn;
+	 	
+	 	@FXML
+	    private AnchorPane LoanAnchorPane;
 
 	    @FXML
 	    private TableColumn<Loaned, Float> UnitCostCol;
@@ -131,8 +134,8 @@ public class DebtListLoansController implements Initializable{
     
     public ObservableList<Loaned> getProducts(){
         ObservableList<Loaned> products = FXCollections.observableArrayList();
-        products.add(new Loaned("Boysen Paint Green", Float.valueOf(100), "10/13/2017"));
-        products.add(new Loaned("Hammer", Float.valueOf(100), "10/17/2017"));
+        products.add(new Loaned("Boysen Paint Green", Float.valueOf(100), "10-13-2017"));
+        products.add(new Loaned("Hammer", Float.valueOf(100), "10-17-2017"));
         return products;
     }
 
