@@ -2,9 +2,9 @@ package controller;
 
 import java.net.URL;
 import java.text.DecimalFormat;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,15 +13,15 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.converter.IntegerStringConverter;
+import view.AmountPaidPopup;
 import model.SaleEntry;
 
 public class TransactionController implements Initializable {
@@ -46,13 +46,7 @@ public class TransactionController implements Initializable {
 
     @FXML
     private TextField itemText;
-
-    @FXML
-    private TextField priceText;
-
-    @FXML
-    private TextField qtyText;
-
+    
     @FXML
     private Button btnCart;
     
@@ -60,24 +54,31 @@ public class TransactionController implements Initializable {
     private Button btnComplete;
 
     @FXML
-    private Label totalAmount;
+    private TextField totalAmount;
+    
+    SaleEntry se;
     
     private float amtPaid;
     private float totalAmt = 0;
+    private AmountPaidPopup tmp;
+    
+    public TransactionController() {
+    	
+    	tmp = new AmountPaidPopup();
+    	se = new SaleEntry();
+        
+        se.setItemName(new SimpleStringProperty("Test"));
+        se.setUcost(new SimpleStringProperty("35"));			
+		
+  
+    	
+    }
 
     @FXML
     void handlecomplete(ActionEvent event) {
     	
-    	TextInputDialog dialog = new TextInputDialog();
-    	dialog.setTitle("Complete Transaction");
-    	dialog.setContentText("Total Amount Paid: ");
-    	
-    	Optional<String> result = dialog.showAndWait();
-    	
-    	result.ifPresent(amount -> amtPaid = Integer.parseInt(amount)
-    	);
-    	
-    	//System.out.println(amtPaid);
+    	tmp.display();
+    	salesTable.getItems().clear();
     	
     }
 
@@ -87,21 +88,22 @@ public class TransactionController implements Initializable {
     @FXML
     void handleCart(ActionEvent event) {
     	
-    	String item = itemText.getText();
-    	float price = Float.valueOf((priceText.getText()));
-    	int qty = Integer.parseInt(qtyText.getText()); 
-    	String ucost = "";
+//    	float price = Float.valueOf((priceText.getText()));
+//    	int qty = Integer.parseInt(qtyText.getText()); 
     	
+    	String item = se.getItemName();
+    	int qty = 1;
+    	String ucost = se.getUcost();
     	DecimalFormat f = new DecimalFormat("##.00");
-    	totalAmt += price * qty;
+    	totalAmt += Float.parseFloat(ucost) * qty;
     	f.format(totalAmt);
     	totalAmount.setText(f.format(totalAmt));
     	
-    	generateSaleEntry(item, price * qty, qty, ucost);
+    	generateSaleEntry(item, Float.parseFloat(ucost) * qty, qty, ucost);
     	
     	itemText.clear();
-    	priceText.clear();
-    	qtyText.clear();
+//    	priceText.clear();
+//    	qtyText.clear();
     }
 
 	@Override
@@ -115,6 +117,20 @@ public class TransactionController implements Initializable {
 			    new PropertyValueFactory<SaleEntry, Integer>("qty")
 			    
 			);
+
+			quantityCol.setCellFactory((TextFieldTableCell.<SaleEntry, Integer>forTableColumn(new IntegerStringConverter())));
+			
+	        quantityCol.setOnEditCommit(
+	                new EventHandler<CellEditEvent<SaleEntry, Integer>>() {
+	                    @Override
+	                    public void handle(CellEditEvent<SaleEntry, Integer> t) {
+	                        ((SaleEntry) t.getTableView().getItems().get(
+	                                t.getTablePosition().getRow())
+	                                ).setQty(new SimpleIntegerProperty(t.getNewValue().intValue()));
+	                    }
+	                }
+	                );
+			
 			priceCol.setCellValueFactory(
 			    new PropertyValueFactory<SaleEntry, Integer>("price")
 			);
@@ -133,12 +149,10 @@ public class TransactionController implements Initializable {
 	                    }
 	                }
 	                );
-			
-			data = FXCollections.observableArrayList(); // create the data
-			salesTable.setItems(data); //
-		
+	        
+	        data = FXCollections.observableArrayList(); // create the data
 	}
-	
+
 	
 	private void generateSaleEntry(String item, float price, int qty, String ucost) {
 		
@@ -146,8 +160,10 @@ public class TransactionController implements Initializable {
 	    entry.itemName.set(item);
 	    entry.price.set(price);
 	    entry.qty.set(qty);
-	    //entry.ucost.set(ucost);
+	    entry.ucost.set(ucost);
 	    data.add(entry);
+	    
+	    salesTable.setItems(data); 
 	}
 	
 	

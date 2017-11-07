@@ -30,5 +30,19 @@ public class SaleEntry {
 	public void setUcost(SimpleStringProperty string) {
 		this.ucost = string;
 	}
+	
+	public void setQty(SimpleIntegerProperty qty) {
+		this.qty = qty;
+	}
+
+	public void setItemName(SimpleStringProperty itemName) {
+		this.itemName = itemName;
+	}
+
+	public void setPrice(SimpleFloatProperty price) {
+		this.price = price;
+	}
+	
+	
 
 }
