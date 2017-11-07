@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -27,66 +28,27 @@ import model.Loaned;
 
 public class DebtListLoansController implements Initializable{
 
-	 	@FXML
-	    private Button Addtransbtn;
-	 	
-	 	@FXML
-	    private AnchorPane LoanAnchorPane;
-
-	    @FXML
-	    private TableColumn<Loaned, Float> UnitCostCol;
-
-	    @FXML
-	    private TableView<Loaned> DebtListTransactionTable;
-
-	    @FXML
-	    private Label CompanyLabel;
-
-	    @FXML
-	    private TextField tf_Unitcost;
-
-	    @FXML
-	    private TableColumn<Loaned, String> TransDateCol;
-
-	    @FXML
-	    private DatePicker dp_Transactiondate;
-
-	    @FXML
-	    private Label itemLabel;
-
-	    @FXML
-	    private Label totalLabel;
-
-	    @FXML
-	    private Label dateLabel;
-
-	    @FXML
-	    private Label total;
-
-	    @FXML
-	    private Label UnitCostLabel;
-
-	    @FXML
-	    private Label CustomerLabel;
-
-	    @FXML
-	    private Button DLbtn;
-
-	    @FXML
-	    private TableColumn<Loaned, String> ItemCol;
-
-	    @FXML
-	    private Label company;
-
-	    @FXML
-	    private TextField tf_Item;
-
-	    @FXML
-	    private Label customer;
-
-	    @FXML
-	    private Button Paidbtn;
-
+	 @FXML private Button Addtransbtn;
+	 @FXML private AnchorPane LoanAnchorPane;
+	 @FXML private TableColumn<Loaned, Float> UnitCostCol;
+	 @FXML private TableView<Loaned> DebtListTransactionTable;
+	 @FXML private Label CompanyLabel;
+	 @FXML private TextField tf_Unitcost;
+	 @FXML private TableColumn<Loaned, String> TransDateCol;
+	 @FXML private DatePicker dp_Transactiondate;
+	 @FXML private Label itemLabel;
+	 @FXML private Label totalLabel;
+	 @FXML private Label dateLabel;
+	 @FXML private Label total;
+	 @FXML private Label UnitCostLabel;
+	 @FXML private Label CustomerLabel;
+	 @FXML private Button DLbtn;
+	 @FXML private TableColumn<Loaned, String> ItemCol;
+	 @FXML private Label company;
+	 @FXML private TextField tf_Item;
+	 @FXML private Label customer;
+	 @FXML private Button Paidbtn;
+	 @FXML private Button backbtn;
     
     @FXML
     void onCLickDL(ActionEvent event) {
@@ -97,6 +59,18 @@ public class DebtListLoansController implements Initializable{
 		Optional<ButtonType> result = alert.showAndWait();
 		if ((result.isPresent()) && (result.get() == ButtonType.YES)) {
 		    System.out.println("Downloading...");
+		}
+    }
+    
+    @FXML
+    void onClickBack(ActionEvent event) {
+    	try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/DebtList.fxml"));
+			LoanAnchorPane.getChildren().setAll(pane);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
     }
 

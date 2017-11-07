@@ -15,6 +15,10 @@
           <TableColumn fx:id="UnitCostCol" minWidth="7.0" prefWidth="184.0" text="Unit Cost" />
         </columns>
       </TableView>
+      <Button fx:id="backbtn" layoutX="420.0" layoutY="105.0" mnemonicParsing="false" onAction="#onClickBack" prefHeight="43.0" prefWidth="135.0" styleClass="btns" stylesheets="@../css/DebtList.css" text="Back to Debt List">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font></Button>
       <Button fx:id="DLbtn" layoutX="420.0" layoutY="759.0" mnemonicParsing="false" onAction="#onCLickDL" prefHeight="43.0" prefWidth="135.0" styleClass="btns" stylesheets="@../css/DebtList.css" text="Download">
          <font>
             <Font name="Segoe UI Bold" size="14.0" />
