@@ -10,8 +10,8 @@
       <TableView fx:id="reportsPopUpTable" layoutX="46.0" layoutY="38.0" prefHeight="78.0" prefWidth="420.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
         <columns>
           <TableColumn fx:id="transIDCol" prefWidth="150.0" text="TRANSACTION ID" />
-          <TableColumn fx:id="dateCol" minWidth="0.0" prefWidth="129.0" text="DATE" />
-            <TableColumn fx:id="timeCol" prefWidth="140.0" text="TIME" />
+          <TableColumn fx:id="dateCol" prefWidth="129.0" text="DATE" />
+            <TableColumn fx:id="timeCol" prefWidth="139.0" text="TIME" />
         </columns>
       </TableView>
       <Button fx:id="okButton" layoutX="370.0" layoutY="147.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="34.0" prefWidth="96.0" style="-fx-background-color: #289b01;" text="OK" textFill="WHITE">
