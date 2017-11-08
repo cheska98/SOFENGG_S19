@@ -5,11 +5,12 @@ import java.util.Optional;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -45,19 +46,19 @@ public class SuperMainController {
 	
 	@FXML TransactionController transactionCtr;
 	@FXML DisplayController displayCtr;
-	@FXML ReportsController reportsCtr = new ReportsController();
+	@FXML ReportsController reportsCtr;
 	@FXML DebtListController debtListCtr;
 	@FXML RefundReplaceController refundReplaceCtr;
 	
-	Calendar now = Calendar.getInstance();
-	String currDate = null;
-	String month = null;
-	String day = null;
-	String year = Integer.toString(now.get(Calendar.YEAR));
+	private Calendar now = Calendar.getInstance();
+	private String currDate = null;
+	private String month = null;
+	private String day = null;
+	private String year = Integer.toString(now.get(Calendar.YEAR));
 	
 	
 	@FXML
-	public void initialize() {
+	private void initialize() {
 		
 		setCurrDate();
 		setTransactionVisible();
@@ -66,11 +67,11 @@ public class SuperMainController {
 	
 	public void setUsername(String username) {
 		
-		nameLabel.setText(username);
+		nameLabel.setText(username + "!");
 		
 	}
 	
-	public void setCurrDate() {
+	private void setCurrDate() {
 		
 		if (now.get(Calendar.MONTH)+1 < 10)
 			month = 0 + Integer.toString(now.get(Calendar.MONTH)+1);
@@ -82,11 +83,9 @@ public class SuperMainController {
 		else
 			day = Integer.toString(now.get(Calendar.DATE));
 		
-		currDate = month + "/" + day + "/" + year;
+		currDate = year + "-" + month + "-" + day;
 		
 		currDateLabel.setText(currDate);
-		
-		reportsCtr.setCurrDate(currDate);
 		
 	}
 	
