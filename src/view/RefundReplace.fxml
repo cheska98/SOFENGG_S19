@@ -45,8 +45,8 @@
                <children>
                   <TableView id="Display_Table" fx:id="tableRR" prefHeight="370.0" prefWidth="628.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
                     <columns>
-                      <TableColumn fx:id="itemColumn" minWidth="310.0" prefWidth="310.0" text="Item" />
-                      <TableColumn fx:id="quantityColumn" minWidth="310.0" prefWidth="310.0" text="Quantity" />
+                      <TableColumn fx:id="itemColumn" minWidth="310.0" prefWidth="310.0" text="ITEM" />
+                      <TableColumn fx:id="quantityColumn" minWidth="310.0" prefWidth="310.0" text="QUANTITY/CM/KG" />
                     </columns>
                   </TableView>
                </children>
