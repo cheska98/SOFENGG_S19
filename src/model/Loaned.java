@@ -19,20 +19,20 @@ public class Loaned {
 		this.transdate = new SimpleStringProperty(transdate);
 	}
 	
-	public SimpleStringProperty getItem() {
-		return item;
+	public String getItem() {
+		return item.get();
 	}
 	public void setItem(SimpleStringProperty item) {
 		this.item = item;
 	}
-	public SimpleFloatProperty getUnitcost() {
-		return unitcost;
+	public Float getUnitcost() {
+		return unitcost.get();
 	}
 	public void setUnitcost(SimpleFloatProperty unitcost) {
 		this.unitcost = unitcost;
 	}
-	public SimpleStringProperty getTransdate() {
-		return transdate;
+	public String getTransdate() {
+		return transdate.get();
 	}
 	public void setTransdate(SimpleStringProperty transdate) {
 		this.transdate = transdate;

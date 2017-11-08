@@ -16,7 +16,7 @@ public class AmountPaidPopup {
 			Stage popStage = new Stage();
 			popStage.initModality(Modality.APPLICATION_MODAL);
 			AnchorPane popPane = FXMLLoader.load(getClass().getClassLoader().getResource("view/CompletePopUp.fxml"));
-			Scene popScene = new Scene(popPane, 392, 231);
+			Scene popScene = new Scene(popPane, 521, 231);
 			
 			popStage.setScene(popScene);
 			popStage.showAndWait();

@@ -55,30 +55,43 @@ public class TransactionController implements Initializable {
 
     @FXML
     private TextField totalAmount;
+
     
     SaleEntry se;
+    SaleEntry fe;
     
-    private float amtPaid;
     private float totalAmt = 0;
+    private String item;
+    private String ucost;
+    private int qty = 0;
+    private float price = 0;
+    DecimalFormat f = new DecimalFormat("##.00");
+    
     private AmountPaidPopup tmp;
     
     public TransactionController() {
     	
     	tmp = new AmountPaidPopup();
     	se = new SaleEntry();
-        
+    	fe = new SaleEntry();
+    	
         se.setItemName(new SimpleStringProperty("Test"));
-        se.setUcost(new SimpleStringProperty("35"));			
-		
-  
+        se.setUcost(new SimpleStringProperty("35"));		
+        
+
+        fe.setItemName(new SimpleStringProperty("tt"));
+        fe.setUcost(new SimpleStringProperty("45"));	
     	
     }
+
 
     @FXML
     void handlecomplete(ActionEvent event) {
     	
     	tmp.display();
     	salesTable.getItems().clear();
+
+    	totalAmount.setText("00.00");
     	
     }
 
@@ -88,22 +101,30 @@ public class TransactionController implements Initializable {
     @FXML
     void handleCart(ActionEvent event) {
     	
-//    	float price = Float.valueOf((priceText.getText()));
-//    	int qty = Integer.parseInt(qtyText.getText()); 
+//    	item = se.getItemName();
+//    	qty = 1;
+//    	ucost = se.getUcost();
+//    	totalAmt += Float.parseFloat(ucost) * qty;
+//    	f.format(totalAmt);
+//    	totalAmount.setText(f.format(totalAmt));
+//    	
+//    	generateSaleEntry(item, Float.parseFloat(ucost) * qty, qty, ucost);
+//    	
+//    	item = fe.getItemName();
+//    	qty = 1;
+//    	ucost = fe.getUcost();
+//    	totalAmt += Float.parseFloat(ucost) * qty;
+//    	f.format(totalAmt);
+//    	totalAmount.setText(f.format(totalAmt));
+//    	
+//    	generateSaleEntry(item, Float.parseFloat(ucost) * qty, qty, ucost);
     	
-    	String item = se.getItemName();
-    	int qty = 1;
-    	String ucost = se.getUcost();
-    	DecimalFormat f = new DecimalFormat("##.00");
-    	totalAmt += Float.parseFloat(ucost) * qty;
-    	f.format(totalAmt);
-    	totalAmount.setText(f.format(totalAmt));
+    	SaleEntry newEntry = new SaleEntry();
+    	newEntry.itemName.set(itemText.getText());
+    	newEntry.qty.set(1);
     	
-    	generateSaleEntry(item, Float.parseFloat(ucost) * qty, qty, ucost);
     	
     	itemText.clear();
-//    	priceText.clear();
-//    	qtyText.clear();
     }
 
 	@Override
@@ -124,9 +145,19 @@ public class TransactionController implements Initializable {
 	                new EventHandler<CellEditEvent<SaleEntry, Integer>>() {
 	                    @Override
 	                    public void handle(CellEditEvent<SaleEntry, Integer> t) {
+	                    	
 	                        ((SaleEntry) t.getTableView().getItems().get(
 	                                t.getTablePosition().getRow())
 	                                ).setQty(new SimpleIntegerProperty(t.getNewValue().intValue()));
+	                        
+	                        //setTotalAmount(t.getNewValue().intValue(), t.getTablePosition().getRow());
+	                        
+	                        
+	                        totalAmt += Float.parseFloat(ucost) * (t.getNewValue().intValue() - 1);
+
+	                    	f.format(totalAmt);
+	                    	totalAmount.setText(f.format(totalAmt));
+	                    	
 	                    }
 	                }
 	                );
@@ -151,6 +182,8 @@ public class TransactionController implements Initializable {
 	                );
 	        
 	        data = FXCollections.observableArrayList(); // create the data
+
+		    salesTable.setItems(data); 
 	}
 
 	
@@ -163,7 +196,15 @@ public class TransactionController implements Initializable {
 	    entry.ucost.set(ucost);
 	    data.add(entry);
 	    
-	    salesTable.setItems(data); 
+	}
+	
+	private void setTotalAmount (int newqty, int row) {
+		
+//		totalAmt += Float.parseFloat(ucost) * ;
+//    	f.format(totalAmt);
+//    	totalAmount.setText(f.format(totalAmt));
+		
+	
 	}
 	
 	

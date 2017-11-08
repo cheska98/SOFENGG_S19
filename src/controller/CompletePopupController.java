@@ -27,6 +27,9 @@ public class CompletePopupController implements Initializable {
 
     @FXML
     private ComboBox<String> debtListCB;
+
+    @FXML
+    private Button btnCancel;
     
     
     ObservableList<String> debtCustomer;
@@ -59,6 +62,15 @@ public class CompletePopupController implements Initializable {
     void handleOK(ActionEvent event) {
     	
     	Stage stage = (Stage) btnOK.getScene().getWindow();
+    	stage.close();
+
+    }
+    
+    @FXML
+    void handleCancel(ActionEvent event) {
+    	
+
+    	Stage stage = (Stage) btnCancel.getScene().getWindow();
     	stage.close();
 
     }

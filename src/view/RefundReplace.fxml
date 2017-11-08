@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="refundReplace" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RefundReplaceController">
+<AnchorPane fx:id="refundReplace" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RefundReplaceController">
    <children>
       <Pane layoutX="465.0" layoutY="673.0" prefHeight="78.0" prefWidth="436.0" style="-fx-background-color: #ffffff;">
          <children>
@@ -21,8 +19,11 @@
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="rrGroup" />
+               </toggleGroup>
             </RadioButton>
-            <RadioButton id="replaceRB" fx:id="refundRB" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="Refund">
+            <RadioButton id="replaceRB" fx:id="refundRB" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="Refund" toggleGroup="$rrGroup">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
