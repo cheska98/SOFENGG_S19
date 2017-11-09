@@ -2,6 +2,7 @@ package controller;
 
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleIntegerProperty;
@@ -12,17 +13,22 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.converter.IntegerStringConverter;
-import view.AmountPaidPopup;
 import model.SaleEntry;
+import view.AmountPaidPopup;
 
 public class TransactionController implements Initializable {
 
@@ -55,6 +61,24 @@ public class TransactionController implements Initializable {
 
     @FXML
     private TextField totalAmount;
+    
+    @FXML
+    private TextField paidTF;
+
+    @FXML
+    private Button btnOK;
+
+    @FXML
+    private ComboBox<String> debtListCB;
+
+    @FXML
+    private Button btnCancel;
+
+    @FXML
+    private AnchorPane completePopup;
+    
+    
+    ObservableList<String> debtCustomer;
 
     
     SaleEntry se;
@@ -83,49 +107,8 @@ public class TransactionController implements Initializable {
         fe.setUcost(new SimpleStringProperty("45"));	
     	
     }
-
-
-    @FXML
-    void handlecomplete(ActionEvent event) {
-    	
-    	tmp.display();
-    	salesTable.getItems().clear();
-
-    	totalAmount.setText("00.00");
-    	
-    }
-
     
     ObservableList<SaleEntry> data;
-
-    @FXML
-    void handleCart(ActionEvent event) {
-    	
-//    	item = se.getItemName();
-//    	qty = 1;
-//    	ucost = se.getUcost();
-//    	totalAmt += Float.parseFloat(ucost) * qty;
-//    	f.format(totalAmt);
-//    	totalAmount.setText(f.format(totalAmt));
-//    	
-//    	generateSaleEntry(item, Float.parseFloat(ucost) * qty, qty, ucost);
-//    	
-//    	item = fe.getItemName();
-//    	qty = 1;
-//    	ucost = fe.getUcost();
-//    	totalAmt += Float.parseFloat(ucost) * qty;
-//    	f.format(totalAmt);
-//    	totalAmount.setText(f.format(totalAmt));
-//    	
-//    	generateSaleEntry(item, Float.parseFloat(ucost) * qty, qty, ucost);
-    	
-    	SaleEntry newEntry = new SaleEntry();
-    	newEntry.itemName.set(itemText.getText());
-    	newEntry.qty.set(1);
-    	
-    	
-    	itemText.clear();
-    }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -184,16 +167,119 @@ public class TransactionController implements Initializable {
 	        data = FXCollections.observableArrayList(); // create the data
 
 		    salesTable.setItems(data); 
+		    
+		    debtCustomer = FXCollections.observableArrayList();
+	    	
+	    	debtCustomer.add("Takashi Shirogane");
+	    	debtCustomer.add("Keith Kogane");
+	    	
+	    	
+	    	debtListCB.setItems(debtCustomer);
+	    	
+
+	    	debtListCB.getItems().add("New Customer in Debt");
+	    	
+	    	completePopup.setVisible(false);
+	    	
+	    	
 	}
+	
+	 @FXML
+	    void handleDelete(MouseEvent event) {
+		 
+		 //System.out.println("Clicked on " + (salesTable.getSelectionModel().getSelectedCells().get(0)).getColumn());
+		 	if(event.getClickCount() == 2) {
+			    Alert alert = new Alert(AlertType.CONFIRMATION);
+			    alert.setTitle("Remove Item");
+			    alert.setContentText("Are you sure you want to remove this item?");
+	
+			    Optional<ButtonType> result = alert.showAndWait();
+			    if (result.get() == ButtonType.OK){
+			    	SaleEntry selectedItem = salesTable.getSelectionModel().getSelectedItem();
+				    salesTable.getItems().remove(selectedItem);
+				    
+			    } else {
+			        // ... user chose CANCEL or closed the dialog
+			    }
+		 	}
+
+	    }
+	
+	@FXML
+    void handlecomplete(ActionEvent event) {
+    	
+
+		completePopup.setVisible(true);
+    	salesTable.getItems().clear();
+
+    	totalAmount.setText("00.00");
+    	
+    }
+	
+
+    @FXML
+    void handleDebt(ActionEvent event) {
+    	
+    	String selectedPerson = debtListCB.getSelectionModel().getSelectedItem();
+	    System.out.println("ComboBox Action (selected: " + selectedPerson.toString() + ")");
+
+    }
+
+    @FXML
+    void handleOK(ActionEvent event) {
+    	
+    	completePopup.setVisible(false);
+
+    }
+    
+    @FXML
+    void handleCancel(ActionEvent event) {
+    	
+
+//    	Stage stage = (Stage) btnCancel.getScene().getWindow();
+//    	stage.close();
+
+    	completePopup.setVisible(false);
+
+    }
+    
+    @FXML
+    void handleCart(ActionEvent event) {
+    	
+//    	item = se.getItemName();
+//    	qty = 1;
+//    	ucost = se.getUcost();
+//    	totalAmt += Float.parseFloat(ucost) * qty;
+//    	f.format(totalAmt);
+//    	totalAmount.setText(f.format(totalAmt));
+//    	
+//    	generateSaleEntry(item, Float.parseFloat(ucost) * qty, qty, ucost);
+//    	
+//    	item = fe.getItemName();
+//    	qty = 1;
+//    	ucost = fe.getUcost();
+//    	totalAmt += Float.parseFloat(ucost) * qty;
+//    	f.format(totalAmt);
+//    	totalAmount.setText(f.format(totalAmt));
+//    	
+//    	generateSaleEntry(item, Float.parseFloat(ucost) * qty, qty, ucost);
+    	
+    	SaleEntry newEntry = new SaleEntry();
+    	newEntry.itemName.set(itemText.getText());
+    	newEntry.qty.set(1);
+    	
+    	generateSaleEntry(newEntry);
+    	itemText.clear();
+    }
 
 	
-	private void generateSaleEntry(String item, float price, int qty, String ucost) {
+	private void generateSaleEntry(SaleEntry entry) {
 		
-		SaleEntry entry = new SaleEntry();
-	    entry.itemName.set(item);
-	    entry.price.set(price);
-	    entry.qty.set(qty);
-	    entry.ucost.set(ucost);
+//		SaleEntry entry = new SaleEntry();
+//	    entry.itemName.set(item);
+//	    entry.price.set(price);
+//	    entry.qty.set(qty);
+//	    entry.ucost.set(ucost);
 	    data.add(entry);
 	    
 	}
