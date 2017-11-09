@@ -19,12 +19,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Callback;
+import model.BooleanCell;
 import model.Loaned;
+import model.Product;
 
 public class DebtListLoansController implements Initializable{
 
@@ -33,23 +37,21 @@ public class DebtListLoansController implements Initializable{
 	 @FXML private TableColumn<Loaned, Float> UnitCostCol;
 	 @FXML private TableView<Loaned> DebtListTransactionTable;
 	 @FXML private Label CompanyLabel;
-	 @FXML private TextField tf_Unitcost;
 	 @FXML private TableColumn<Loaned, String> TransDateCol;
-	 @FXML private DatePicker dp_Transactiondate;
 	 @FXML private Label itemLabel;
 	 @FXML private Label totalLabel;
 	 @FXML private Label dateLabel;
 	 @FXML private Label total;
+	 @FXML private TableColumn<Product, Boolean> SelectCol;
 	 @FXML private Label UnitCostLabel;
 	 @FXML private Label CustomerLabel;
 	 @FXML private Button DLbtn;
 	 @FXML private TableColumn<Loaned, String> ItemCol;
 	 @FXML private Label company;
-	 @FXML private TextField tf_Item;
 	 @FXML private Label customer;
 	 @FXML private Button Paidbtn;
 	 @FXML private Button backbtn;
-    
+	 
     @FXML
     void onCLickDL(ActionEvent event) {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -61,7 +63,17 @@ public class DebtListLoansController implements Initializable{
 		    System.out.println("Downloading...");
 		}
     }
-    
+    @FXML
+    void onDeleteClick(ActionEvent event) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Delete Item");
+		String s = "Are you sure you want to remove these items?";
+		alert.setContentText(s);
+		Optional<ButtonType> result = alert.showAndWait();
+		if ((result.isPresent()) && (result.get() == ButtonType.YES)) {
+		    System.out.println("Removing item from inventory...");
+		}
+    }
     @FXML
     void onClickBack(ActionEvent event) {
     	try {
@@ -86,23 +98,22 @@ public class DebtListLoansController implements Initializable{
 		}
     }
     
-    @FXML
-    void onAdd(ActionEvent event) {
-    	Loaned nproduct = new Loaned("",Float.valueOf(100),"");
-    	SimpleStringProperty itemname = new SimpleStringProperty(tf_Item.getText());
-        nproduct.setItem(itemname);
-        SimpleStringProperty transdate = new SimpleStringProperty(dp_Transactiondate.getValue().toString());
-        nproduct.setTransdate(transdate);
-        SimpleFloatProperty cost = new SimpleFloatProperty(Float.valueOf(tf_Unitcost.getText()));
-        nproduct.setUnitcost(cost);
-        DebtListTransactionTable.getItems().add(nproduct);
-    }
-    
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	UnitCostCol.setCellValueFactory(new PropertyValueFactory<Loaned, Float>("unitcost"));
     	ItemCol.setCellValueFactory(new PropertyValueFactory<Loaned, String>("item"));
     	TransDateCol.setCellValueFactory(new PropertyValueFactory<Loaned, String>("transdate"));
+    	Callback<TableColumn<Product, Boolean>, TableCell<Product, Boolean>> booleanCellFactory = 
+                new Callback<TableColumn<Product, Boolean>, TableCell<Product, Boolean>>() {
+                @Override
+                    public TableCell<Product, Boolean> call(TableColumn<Product, Boolean> p) {
+                        return new BooleanCell();
+                }
+            };
+            
+        SelectCol.setCellValueFactory(new PropertyValueFactory<Product, Boolean>("checkbox"));
+        SelectCol.setCellFactory(booleanCellFactory);
+        SelectCol.setEditable(true);
     	DebtListTransactionTable.setItems(getProducts());
     }
     

@@ -13,3 +13,7 @@
 	-fx-background-color: #289b01;
 	-fx-text-fill: white;
 }
+
+.DeleteBtn{
+	-fx-background-color: #ff0000;
+}

@@ -1,5 +1,6 @@
 package model;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -7,9 +8,11 @@ import javafx.beans.property.SimpleStringProperty;
 public class Product {
 
 	private SimpleStringProperty item = new SimpleStringProperty("");
+	private SimpleStringProperty daterestock = new SimpleStringProperty("");
+	private SimpleStringProperty dateupdate = new SimpleStringProperty("");
 	private SimpleIntegerProperty quantity = new SimpleIntegerProperty();
-	private SimpleFloatProperty unitcost = new SimpleFloatProperty();
-	
+	private SimpleFloatProperty price = new SimpleFloatProperty();
+	private SimpleBooleanProperty checkbox = new SimpleBooleanProperty();
 	
 	public Product(String item,int quantity){
 		this.item = new SimpleStringProperty(item);
@@ -17,9 +20,40 @@ public class Product {
 	}
 	
 	public Product(String item,int quantity, float unitcost){
-		this.unitcost = new SimpleFloatProperty(unitcost);
+		this.price = new SimpleFloatProperty(unitcost);
 		this.item = new SimpleStringProperty(item);
 		this.quantity = new SimpleIntegerProperty(quantity);
+	}
+	
+	public Product(String daterestock,String item,int quantity, float unitcost){
+		this.daterestock = new SimpleStringProperty(daterestock);
+		this.price = new SimpleFloatProperty(unitcost);
+		this.item = new SimpleStringProperty(item);
+		this.quantity = new SimpleIntegerProperty(quantity);
+	}
+	
+	public String getDateUpdate() {
+		return dateupdate.get();
+	}
+
+	public void setDateUpdate(SimpleStringProperty dateupdate) {
+		this.dateupdate = dateupdate;
+	}
+	
+	public String getDateRestock() {
+		return daterestock.get();
+	}
+
+	public void setDateRestock(SimpleStringProperty daterestock) {
+		this.daterestock = daterestock;
+	}
+	
+	public Boolean getCheckBox() {
+		return checkbox.get();
+	}
+
+	public void setCheckBox(SimpleBooleanProperty cb) {
+		this.checkbox = cb;
 	}
 
 	public String getItem() {
@@ -38,12 +72,12 @@ public class Product {
 		this.quantity = quantity;
 	}
 
-	public Float getUnitcost() {
-		return unitcost.get();
+	public Float getPrice() {
+		return price.get();
 	}
 
-	public void setUnitcost(SimpleFloatProperty unitcost) {
-		this.unitcost = unitcost;
+	public void setPrice(SimpleFloatProperty unitcost) {
+		this.price = unitcost;
 	}
 	
 }

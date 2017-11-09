@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleFloatProperty;
@@ -11,61 +12,59 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
 import javafx.util.StringConverter;
+import model.BooleanCell;
 import model.Product;
 
 public class InventoryController implements Initializable{
 
-    @FXML
-    private TableColumn<Product, Float> unitcostcol;
+    @FXML private TableColumn<Product, Float> pricecol;
+    @FXML private TextField tf_Unitcost;
+    @FXML private Button searchBtn;
+    @FXML private Label itemLabel;
+    @FXML private Label quantityLabel;
+    @FXML private TableColumn<Product, String> itemcol;
+    @FXML private TableColumn<Product, String> daterestockcol;
+    @FXML private TableColumn<Product, Boolean> selectedcol;
+    @FXML private TableView<Product> inventoryTable;
+    @FXML private TextField tf_search;
+    @FXML private Label UnitCostLabel;
+    @FXML private Button addBtn1;
+    @FXML private Button deleteBtn;
+    @FXML private TextField tf_Quantity;
+    @FXML private TableColumn<Product, Integer> quantitycol;
+    @FXML private TextField tf_Item;
 
-    @FXML
-    private TextField tf_Unitcost;
-
-    @FXML
-    private Button searchBtn;
-
-    @FXML
-    private Label itemLabel;
-
-    @FXML
-    private Label quantityLabel;
-
-    @FXML
-    private TableColumn<Product, String> itemcol;
-
-    @FXML
-    private TableView<Product> inventoryTable;
-
-    @FXML
-    private TextField tf_search;
-
-    @FXML
-    private Label UnitCostLabel;
-
-    @FXML
-    private Button addBtn1;
-
-    @FXML
-    private TextField tf_Quantity;
-
-    @FXML
-    private TableColumn<Product, Integer> quantitycol;
-
-    @FXML
-    private TextField tf_Item;
-
+    
     @FXML
     void onSearchClick(ActionEvent event) {
 
     }
+    
+    @FXML
+    void onClickDelete(ActionEvent event) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Delete Item");
+		String s = "Are you sure you want to remove these items?";
+		alert.setContentText(s);
+		Optional<ButtonType> result = alert.showAndWait();
+		if ((result.isPresent()) && (result.get() == ButtonType.YES)) {
+		    System.out.println("Removing item from inventory...");
+		}
+    }
+
 
     @FXML
     void onAddClick(ActionEvent event) {
@@ -75,15 +74,44 @@ public class InventoryController implements Initializable{
         SimpleIntegerProperty quant = new SimpleIntegerProperty(Integer.parseInt(tf_Quantity.getText()));
         nproduct.setQuantity(quant);
         SimpleFloatProperty cost = new SimpleFloatProperty(Float.valueOf(tf_Unitcost.getText()));
-        nproduct.setUnitcost(cost);
+        nproduct.setPrice(cost);
         inventoryTable.getItems().add(nproduct);
     }
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	itemcol.setCellValueFactory(new PropertyValueFactory<Product, String>("item"));
+    	daterestockcol.setCellValueFactory(new PropertyValueFactory<Product, String>("daterestock"));
     	quantitycol.setCellValueFactory(new PropertyValueFactory<Product, Integer>("quantity"));
-    	unitcostcol.setCellValueFactory(new PropertyValueFactory<Product, Float>("unitcost"));
+    	pricecol.setCellValueFactory(new PropertyValueFactory<Product, Float>("price"));
+ 
+		Callback<TableColumn<Product, Boolean>, TableCell<Product, Boolean>> booleanCellFactory = 
+                new Callback<TableColumn<Product, Boolean>, TableCell<Product, Boolean>>() {
+                @Override
+                    public TableCell<Product, Boolean> call(TableColumn<Product, Boolean> p) {
+                        return new BooleanCell();
+                }
+            };
+            
+        selectedcol.setCellValueFactory(new PropertyValueFactory<Product, Boolean>("checkbox"));
+        selectedcol.setCellFactory(booleanCellFactory);
+        selectedcol.setEditable(true);
+        itemcol.setCellFactory(TextFieldTableCell.forTableColumn());
+        daterestockcol.setCellFactory(TextFieldTableCell.forTableColumn());
+        pricecol.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Float>(){
+            @Override
+            public String toString(Float object) {
+                return object.toString();
+            }
+
+            @Override
+            public Float fromString(String string) {
+                return Float.valueOf(string);
+            }
+
+        }));
+
+		
     	inventoryTable.setItems(getProducts());
     	quantitycol.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Integer>(){
             @Override

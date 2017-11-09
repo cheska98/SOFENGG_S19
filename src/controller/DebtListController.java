@@ -9,35 +9,26 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.Customer;
+import model.Product;
 
 public class DebtListController implements Initializable{
 
-	@FXML
-    private AnchorPane AnchorDebtList;
-	
-    @FXML
-    private TableColumn<Customer, Float> Balancecol;
-
-    @FXML
-    private TableColumn<Customer, String> contactcol;
-
-    @FXML
-    private TableColumn<Customer, String> LTDatecol;
-
-    @FXML
-    private TableView<Customer> DebtListTable;
-
-    @FXML
-    private TableColumn<Customer, Integer> transIDcol;
-
-    @FXML
-    private TableColumn<Customer, String> CustNamecol;
+	@FXML private AnchorPane AnchorDebtList;
+    @FXML private TableColumn<Customer, Float> Balancecol;
+    @FXML private TableColumn<Customer, String> contactcol;
+    @FXML private TableColumn<Customer, String> LTDatecol;
+    @FXML private TableView<Customer> DebtListTable;
+    @FXML private TableColumn<Customer, Integer> transIDcol;
+    @FXML private TableColumn<Customer, String> CustNamecol;
+    
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -55,6 +46,7 @@ public class DebtListController implements Initializable{
                     try {
 						AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/DebtListLoans.fxml"));
 						AnchorDebtList.getChildren().setAll(pane);
+						
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
