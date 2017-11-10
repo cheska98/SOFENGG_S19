@@ -15,8 +15,8 @@ public class MainController extends Application {
 			
 			Scene scene = new Scene(loader.load(), 1541, 1080);
 			
-			InitPanelController initCtr = loader.getController();
-			initCtr.setPrimaryStage(primaryStage);
+			InitPanelController initialController = loader.getController();
+			initialController.setPrimaryStage(primaryStage);
 			
 			primaryStage.setTitle("Capatiran Point of Sales/Inventory System");
 			primaryStage.setResizable(true);
@@ -27,7 +27,7 @@ public class MainController extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

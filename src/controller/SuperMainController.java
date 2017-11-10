@@ -1,11 +1,9 @@
 package controller;
 
 import java.util.Calendar;
-import java.util.Optional;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -44,11 +42,12 @@ public class SuperMainController {
 	@FXML AnchorPane debtList;
 	@FXML AnchorPane refundReplace;
 	
-	@FXML TransactionController transactionCtr;
-	@FXML DisplayController displayCtr;
-	@FXML ReportsController reportsCtr;
-	@FXML DebtListController debtListCtr;
-	@FXML RefundReplaceController refundReplaceCtr;
+	@FXML TransactionController transactionController;
+	@FXML DisplayController displayController;
+	@FXML ReportsController reportsController;
+	@FXML DebtListController debtListController;
+	@FXML RefundReplaceController refundReplaceController;
+	InitPanelController initialController;
 	
 	private Calendar now = Calendar.getInstance();
 	private String currDate = null;
@@ -63,6 +62,17 @@ public class SuperMainController {
 		setCurrDate();
 		setTransactionVisible();
 		
+	}
+	
+	public void setController(InitPanelController initialController) {
+		this.initialController = initialController;
+	}
+	
+	private void setInitialStage() {
+		
+		System.out.println("init");
+		initialController.setInitialStage(initialController);
+	
 	}
 	
 	public void setUsername(String username) {
@@ -91,14 +101,13 @@ public class SuperMainController {
 	
 	@FXML
     void logoutAction(ActionEvent event) {
-		
-    	Alert alert = new Alert(AlertType.CONFIRMATION);
+	
+		Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
 		alert.setTitle("LOGOUT");
-		String s = "Are you sure?";
-		alert.setContentText(s);
-		Optional<ButtonType> result = alert.showAndWait();
-		if ((result.isPresent()) && (result.get() == ButtonType.YES)) {
-		    //go back to initPanel
+		alert.showAndWait();
+
+		if (alert.getResult() == ButtonType.YES) {
+		    setInitialStage();
 		}
 		
     }
@@ -161,6 +170,7 @@ public class SuperMainController {
 	}
 
 	public void setReportsVisible() {
+		reportsController.initialize();
 		transaction.setVisible(false);
 		display.setVisible(false);
 		inventory.setVisible(false);

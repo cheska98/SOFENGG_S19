@@ -15,27 +15,33 @@
                <children>
                   <AnchorPane fx:id="sidebar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="175.0" style="-fx-background-color: #ffffff;">
                      <children>
-                        <Label fx:id="currDateLabel" alignment="CENTER" layoutX="1.0" layoutY="1010.0" prefHeight="57.0" prefWidth="175.0">
-                           <font>
-                              <Font name="Segoe UI Bold" size="25.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="label1" alignment="CENTER" layoutX="1.0" layoutY="10.0" prefHeight="40.0" prefWidth="175.0" text="You are signed in as">
+                        <Label fx:id="label1" alignment="CENTER" layoutX="1.0" layoutY="30.0" prefHeight="40.0" prefWidth="175.0" text="You are signed in as">
                            <font>
                               <Font name="Segoe UI" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="nameLabel" alignment="CENTER" layoutX="1.0" layoutY="50.0" prefHeight="35.0" prefWidth="175.0">
+                        <Label fx:id="nameLabel" alignment="CENTER" layoutX="1.0" layoutY="70.0" prefHeight="35.0" prefWidth="175.0">
                            <font>
                               <Font name="Segoe UI Bold" size="23.0" />
                            </font>
                         </Label>
-                        <Button fx:id="logoutButton" layoutX="21.0" layoutY="97.0" mnemonicParsing="false" onAction="#logoutAction" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #289b01;" text="LOGOUT" textFill="WHITE">
+                        <Button fx:id="logoutButton" layoutX="21.0" layoutY="117.0" mnemonicParsing="false" onAction="#logoutAction" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: #289b01;" text="LOGOUT" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI" size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="transactionButton" layoutX="13.0" layoutY="161.0" mnemonicParsing="false" onAction="#transactionAction" prefHeight="137.0" prefWidth="147.0">
+                        <Pane layoutX="1127.0" layoutY="870.0" prefHeight="115.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" />
+                        <Label alignment="CENTER" layoutX="1127.0" layoutY="890.0" prefHeight="30.0" prefWidth="361.0" text="Today's Date">
+                           <font>
+                              <Font name="Segoe UI" size="22.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="currDateLabel" alignment="CENTER" layoutX="1127.0" layoutY="920.0" prefHeight="57.0" prefWidth="361.0">
+                           <font>
+                              <Font name="Segoe UI Bold" size="35.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="transactionButton" layoutX="13.0" layoutY="191.0" mnemonicParsing="false" onAction="#transactionAction" prefHeight="137.0" prefWidth="147.0">
                            <graphic>
                               <ImageView fx:id="transactionIcon" fitHeight="117.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -44,7 +50,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="displayButton" layoutX="13.0" layoutY="298.0" mnemonicParsing="false" onAction="#displayAction" prefHeight="137.0" prefWidth="147.0">
+                        <Button fx:id="displayButton" layoutX="13.0" layoutY="328.0" mnemonicParsing="false" onAction="#displayAction" prefHeight="137.0" prefWidth="147.0">
                            <graphic>
                               <ImageView fx:id="displayIcon" fitHeight="117.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -53,7 +59,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="inventoryButton" layoutX="13.0" layoutY="435.0" mnemonicParsing="false" onAction="#inventoryAction" prefHeight="137.0" prefWidth="147.0">
+                        <Button fx:id="inventoryButton" layoutX="13.0" layoutY="465.0" mnemonicParsing="false" onAction="#inventoryAction" prefHeight="137.0" prefWidth="147.0">
                            <graphic>
                               <ImageView fx:id="inventoryIcon" fitHeight="117.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -62,7 +68,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="reportsButton" layoutX="13.0" layoutY="572.0" mnemonicParsing="false" onAction="#reportsAction" prefHeight="137.0" prefWidth="147.0">
+                        <Button fx:id="reportsButton" layoutX="13.0" layoutY="602.0" mnemonicParsing="false" onAction="#reportsAction" prefHeight="137.0" prefWidth="147.0">
                            <graphic>
                               <ImageView fx:id="reportsIcon" fitHeight="117.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -71,7 +77,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="debtListButton" layoutX="13.0" layoutY="709.0" mnemonicParsing="false" onAction="#debtListAction" prefHeight="137.0" prefWidth="147.0">
+                        <Button fx:id="debtListButton" layoutX="13.0" layoutY="739.0" mnemonicParsing="false" onAction="#debtListAction" prefHeight="137.0" prefWidth="147.0">
                            <graphic>
                               <ImageView fx:id="debtListIcon" fitHeight="117.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -80,7 +86,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="refundReplaceButton" layoutX="13.0" layoutY="846.0" mnemonicParsing="false" onAction="#refundReplaceAction" prefHeight="137.0" prefWidth="147.0">
+                        <Button fx:id="refundReplaceButton" layoutX="13.0" layoutY="876.0" mnemonicParsing="false" onAction="#refundReplaceAction" prefHeight="137.0" prefWidth="147.0">
                            <graphic>
                               <ImageView fx:id="refundReplaceIcon" fitHeight="117.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -89,11 +95,6 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label alignment="CENTER" layoutX="13.0" layoutY="997.0" prefHeight="30.0" prefWidth="151.0" text="Today's Date">
-                           <font>
-                              <Font name="Segoe UI" size="15.0" />
-                           </font>
-                        </Label>
                      </children>
                   </AnchorPane>
                   <StackPane fx:id="stackPane" layoutX="175.0" prefHeight="1080.0" prefWidth="1366.0">

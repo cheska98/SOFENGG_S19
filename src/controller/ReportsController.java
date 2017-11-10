@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -25,7 +24,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -42,6 +40,7 @@ public class ReportsController implements Initializable {
     @FXML private ComboBox<String> monthCB;
     @FXML private ComboBox<String> yearCB;
     @FXML private TableView<ReportEntry> reportsTable;
+    @FXML private TableColumn<ReportEntry, String> transIDCol;
     @FXML private TableColumn<ReportEntry, String> itemCol;
     @FXML private TableColumn<ReportEntry, String> quantityCol;
     @FXML private TableColumn<ReportEntry, String> unitCostCol;
@@ -101,6 +100,16 @@ public class ReportsController implements Initializable {
 		yearCB.getSelectionModel().selectFirst();
 		
 	}
+	
+	public void initialize() {
+
+		reportLabel.setText("Daily Report for");
+		setCurrDate();
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		datePicker.setValue(LocalDate.parse(formatter.format(LocalDate.now())));
+		monthCB.getSelectionModel().selectFirst();
+		yearCB.getSelectionModel().selectFirst();
+	}
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -108,6 +117,10 @@ public class ReportsController implements Initializable {
 		setCurrDate();
 		setMonthCB();
 		setYearCB();
+		
+		transIDCol.setCellValueFactory(
+			    new PropertyValueFactory<ReportEntry, String>("transID")
+			);
 		
     	itemCol.setCellValueFactory(
 		    new PropertyValueFactory<ReportEntry, String>("item")
@@ -125,28 +138,18 @@ public class ReportsController implements Initializable {
 		priceCol.setCellValueFactory(
 				new PropertyValueFactory<ReportEntry, String>("price")
 		);
-			
-    	reportsTable.setRowFactory( tv -> {
-            TableRow<ReportEntry> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                    ReportEntry rowData = row.getItem();
-                    handleRow();
-                }
-            });
-            return row;
-        });
     	
     	data = FXCollections.observableArrayList();
 		reportsTable.setItems(data);
 		
-		generateReportRow("Hammer", 3, 70, 210);
+		generateReportRow("115", "Hammer", 3, 70, 210);
 		
 	}
     
-    private void generateReportRow(String item, int quantity, float unitCost, float price) {
+    private void generateReportRow(String transID, String item, int quantity, float unitCost, float price) {
     	
     	ReportEntry row = new ReportEntry();
+    	row.transID.set(transID);
     	row.item.set(item);
     	row.quantity.set(quantity);
     	row.unitCost.set(unitCost);
@@ -164,7 +167,6 @@ public class ReportsController implements Initializable {
         	String selectedDate = localDate.format(formatter);
     		reportLabel.setText("Daily Report for");
     		dateMonthLabel.setText(selectedDate);
-    		datePicker.setValue(LocalDate.parse(formatter.format(LocalDate.now())));
     	} else {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setTitle("ERROR");
@@ -183,8 +185,6 @@ public class ReportsController implements Initializable {
     		String selectedYear = yearCB.getValue();
     		reportLabel.setText("Monthly Report for");
     		dateMonthLabel.setText(selectedMonth + " " + selectedYear);
-    		monthCB.getSelectionModel().selectFirst();
-    		yearCB.getSelectionModel().selectFirst();
     	} else {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setTitle("ERROR");
@@ -192,25 +192,6 @@ public class ReportsController implements Initializable {
     		alert.setContentText("No month or year was selected!");
     		alert.showAndWait();
     	}
-    }
-    
-    private void handleRow() {
-    	
-    	try {
-    		stage = new Stage();
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/ReportsPopUp.fxml"));
-			Scene scene = new Scene(loader.load(), 511, 219);
-		
-			ReportsPopUpController rep = loader.getController();
-			rep.initialize(this);
-			
-			stage.setScene(scene);
-			stage.show();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    	
     }
     
     @FXML

@@ -8,47 +8,50 @@
 
 <AnchorPane fx:id="display" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DisplayController">
    <children>
-      <Button id="Search_Btn" fx:id="searchBtn" layoutX="744.0" layoutY="206.0" mnemonicParsing="false" onAction="#onSearchClick" prefHeight="25.0" prefWidth="89.0" styleClass="SearchBtn" stylesheets="@../css/Display.css" text="Search">
+      <Button id="Search_Btn" fx:id="searchBtn" layoutX="716.0" layoutY="68.0" mnemonicParsing="false" onAction="#onSearchClick" prefHeight="35.0" prefWidth="89.0" styleClass="SearchBtn" stylesheets="@../css/Display.css" text="Search">
          <font>
-            <Font name="Segoe UI" size="13.0" />
+            <Font name="Segoe UI" size="15.0" />
          </font></Button>
-      <TextField id="Search_Field" fx:id="tf_search" layoutX="177.0" layoutY="207.0" prefHeight="25.0" prefWidth="545.0" />
-      <Button id="Add_Btn" fx:id="deleteBtn" layoutX="760.0" layoutY="820.0" mnemonicParsing="false" onAction="#onDeleteClick" prefHeight="38.0" prefWidth="180.0" styleClass="DeleteBtn" stylesheets="@../css/DebtList.css" text="Delete Item" textFill="WHITE">
+      <TextField id="Search_Field" fx:id="tf_search" layoutX="138.0" layoutY="68.0" prefHeight="35.0" prefWidth="545.0">
          <font>
-            <Font name="Segoe UI" size="20.0" />
+            <Font name="Segoe UI" size="15.0" />
+         </font></TextField>
+      <Button id="Add_Btn" fx:id="deleteBtn" layoutX="745.0" layoutY="970.0" mnemonicParsing="false" onAction="#onDeleteClick" prefHeight="40.0" prefWidth="170.0" styleClass="DeleteBtn" stylesheets="@../css/DebtList.css" text="Delete Item" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
          </font>
       </Button>
-      <TableView id="Display_Table" fx:id="displayTable" editable="true" layoutX="70.0" layoutY="250.0" prefHeight="555.0" prefWidth="870.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
+      <TableView id="Display_Table" fx:id="displayTable" editable="true" layoutX="45.0" layoutY="120.0" prefHeight="820.0" prefWidth="870.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
         <columns>
-            <TableColumn fx:id="daterestockcol" prefWidth="167.0" text="LAST RESTOCK" />
-            <TableColumn fx:id="dateupdatecol" prefWidth="150.0" text="LAST UPDATE PRICE" />
-          <TableColumn fx:id="itemcol" prefWidth="231.0" text="ITEM" />
-            <TableColumn fx:id="pricecol" minWidth="5.0" prefWidth="136.0" text="PRICE" />
-          <TableColumn fx:id="quantitycol" prefWidth="154.0" text="QUANTITY/CM/KG" />
-            <TableColumn fx:id="SelectCol" prefWidth="30.0" />
+            <TableColumn fx:id="daterestockcol" maxWidth="160.0" prefWidth="160.0" text="LAST RESTOCK" />
+            <TableColumn fx:id="dateupdatecol" maxWidth="160.0" prefWidth="160.0" text="LAST UPDATE PRICE" />
+          <TableColumn fx:id="itemcol" maxWidth="259.0" prefWidth="259.0" text="ITEM" />
+            <TableColumn fx:id="pricecol" maxWidth="185.0" prefWidth="110.0" text="PRICE" />
+          <TableColumn fx:id="quantitycol" maxWidth="187.0" prefWidth="147.0" text="QUANTITY/CM/KG" />
+            <TableColumn fx:id="SelectCol" minWidth="0.0" prefWidth="33.0" />
         </columns>
       </TableView>
-      <Pane layoutX="968.0" layoutY="250.0" prefHeight="555.0" prefWidth="384.0" style="-fx-background-color: #ffffff; -fx-border-width: 1px; -fx-border-color: #f1f1f1;">
+      <Pane layoutX="951.0" layoutY="120.0" prefHeight="555.0" prefWidth="362.0" style="-fx-background-color: #ffffff; -fx-border-width: 1px; -fx-border-color: #f1f1f1;">
          <children>
-            <Button id="Add_Btn" fx:id="addBtn" layoutX="104.0" layoutY="465.0" mnemonicParsing="false" onAction="#onAddClick" prefHeight="38.0" prefWidth="180.0" styleClass="AddBtn" stylesheets="@../css/Display.css" text="Add Item">
+            <Button id="Add_Btn" fx:id="addBtn" layoutX="108.0" layoutY="464.0" mnemonicParsing="false" onAction="#onAddClick" prefHeight="38.0" prefWidth="147.0" styleClass="AddBtn" stylesheets="@../css/Display.css" text="Add Item">
                <font>
-                  <Font name="Segoe UI" size="20.0" />
+                  <Font name="Segoe UI" size="15.0" />
                </font>
             </Button>
-            <Label fx:id="itemLabel" layoutX="75.0" layoutY="56.0" text="Item:">
+            <Label fx:id="itemLabel" layoutX="62.0" layoutY="56.0" text="Item:">
                <font>
                   <Font name="Segoe UI" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="quantityLabel" layoutX="75.0" layoutY="312.0" text="Quantity/CM/KG:">
+            <Label fx:id="quantityLabel" layoutX="59.0" layoutY="315.0" text="Quantity/CM/KG:">
                <font>
                   <Font name="Segoe UI" size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_item" layoutX="75.0" layoutY="120.0" prefHeight="38.0" prefWidth="238.0" />
-            <TextField fx:id="tf_quantity" layoutX="75.0" layoutY="373.0" prefHeight="38.0" prefWidth="238.0" />
-            <TextField fx:id="tf_price" layoutX="75.0" layoutY="239.0" prefHeight="38.0" prefWidth="238.0" />
-            <Label fx:id="priceLabel" layoutX="75.0" layoutY="182.0" text="Price:">
+            <TextField fx:id="tf_item" layoutX="62.0" layoutY="122.0" prefHeight="38.0" prefWidth="238.0" />
+            <TextField fx:id="tf_quantity" layoutX="59.0" layoutY="374.0" prefHeight="38.0" prefWidth="238.0" />
+            <TextField fx:id="tf_price" layoutX="59.0" layoutY="240.0" prefHeight="38.0" prefWidth="238.0" />
+            <Label fx:id="priceLabel" layoutX="60.0" layoutY="183.0" text="Price:">
                <font>
                   <Font name="Segoe UI" size="25.0" />
                </font>

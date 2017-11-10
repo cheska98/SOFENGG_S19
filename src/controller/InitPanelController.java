@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -15,13 +16,15 @@ import javafx.stage.Stage;
 
 public class InitPanelController {
 
+	@FXML private AnchorPane initial;
     @FXML private Button loginbtn; 
     @FXML private Button registerBtn; 
     @FXML private TextField username; 
     @FXML private PasswordField password;
     private Stage primaryStage;
     private String uname = null;
-    SuperMainController smc;
+    SuperMainController mainPaneController;
+    MainController mainController;
     
 
     @FXML
@@ -63,7 +66,7 @@ public class InitPanelController {
     }
     
     public void setUsername() {
-    	smc.setUsername(uname);
+    	mainPaneController.setUsername(uname);
     }
     
     private void setFields() {
@@ -79,6 +82,26 @@ public class InitPanelController {
     	
     }
     
+    public void setInitialStage(InitPanelController initialController) {
+    	
+    	System.out.println("out");
+    	try {
+    		System.out.println("in");
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/Initial.fxml"));
+			Scene scene = new Scene(loader.load(), 1541, 1080);
+			
+			initialController = loader.getController();
+			
+			primaryStage.setScene(scene);
+			primaryStage.show();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    
     private void setMainStage() {
     	
     	try {
@@ -86,7 +109,8 @@ public class InitPanelController {
 			loader.setLocation(getClass().getResource("/view/Main.fxml"));
 			Scene scene = new Scene(loader.load(), 1541, 1080);
 		
-			smc = loader.getController();
+			mainPaneController = loader.getController();
+			mainPaneController.setController(this);
 	    	setUsername();
 			
 			primaryStage.setScene(scene);
