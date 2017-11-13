@@ -4,18 +4,23 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import model.RefundReplaceEntry;
+import model.SaleEntry;
 
 public class RefundReplaceController implements Initializable{
 
@@ -35,13 +40,50 @@ public class RefundReplaceController implements Initializable{
     private Button okButton;
 
     @FXML
-    private TableView<?> tableRR;
+    private TableView<RefundReplaceEntry> tableRR;
 
     @FXML
-    private TableColumn<?, ?> itemColumn;
+    private TableColumn<RefundReplaceEntry, String> itemColumn;
 
     @FXML
-    private TableColumn<?, ?> quantityColumn;
+    private TableColumn<RefundReplaceEntry, Integer> quantityColumn;
+    
+    @FXML
+    private TableColumn<RefundReplaceEntry, Integer> transColumn;
+
+    @FXML
+    private TableColumn<RefundReplaceEntry, String> dateColumn;
+    
+
+    ObservableList<RefundReplaceEntry> data;
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+		itemColumn.setCellValueFactory(
+			    new PropertyValueFactory<RefundReplaceEntry, String>("itemName")
+			);
+		
+		dateColumn.setCellValueFactory(
+				    new PropertyValueFactory<RefundReplaceEntry, String>("date")
+					);
+		
+		transColumn.setCellValueFactory(
+			    new PropertyValueFactory<RefundReplaceEntry, Integer>("price")
+			);
+		
+		quantityColumn.setCellValueFactory(
+			    new PropertyValueFactory<RefundReplaceEntry, Integer>("price")
+			);
+			
+		
+		data = FXCollections.observableArrayList(); // create the data
+
+	    tableRR.setItems(data);
+		
+		
+	}
 
     @FXML
     void handleOK(ActionEvent event) {
@@ -78,12 +120,19 @@ public class RefundReplaceController implements Initializable{
     	
     		//rrGroup.selectToggle(null);
     }
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
-	}
+    
+    private void rrGenerator(String date, String item, int id, int qty) {
+    	
+    	RefundReplaceEntry entry = new RefundReplaceEntry();
+    	entry.date.set(date);
+    	entry.itemName.set(item);
+    	entry.id.set(id);
+    	entry.qty.set(qty);
+    	
+    	data.add(entry);
+    	
+    	
+    }
 
 }
 

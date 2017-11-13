@@ -22,6 +22,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
@@ -48,7 +49,10 @@ public class TransactionController implements Initializable {
     private TableColumn<SaleEntry, String> costCol;
 
     @FXML
-    private TableColumn<SaleEntry, Integer> priceCol;
+    private TableColumn<SaleEntry, Float> priceCol;
+
+    @FXML
+    private TableColumn<SaleEntry, Boolean> checkColumn;
 
     @FXML
     private TextField itemText;
@@ -77,10 +81,10 @@ public class TransactionController implements Initializable {
     @FXML
     private AnchorPane completePopup;
     
-    
     ObservableList<String> debtCustomer;
 
-    
+    ObservableList<SaleEntry> data;
+
     SaleEntry se;
     SaleEntry fe;
     
@@ -91,11 +95,9 @@ public class TransactionController implements Initializable {
     private float price = 0;
     DecimalFormat f = new DecimalFormat("##.00");
     
-    private AmountPaidPopup tmp;
-    
     public TransactionController() {
     	
-    	tmp = new AmountPaidPopup();
+    	//tmp = new AmountPaidPopup();
     	se = new SaleEntry();
     	fe = new SaleEntry();
     	
@@ -107,8 +109,6 @@ public class TransactionController implements Initializable {
         fe.setUcost(new SimpleStringProperty("45"));	
     	
     }
-    
-    ObservableList<SaleEntry> data;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -146,13 +146,15 @@ public class TransactionController implements Initializable {
 	                );
 			
 			priceCol.setCellValueFactory(
-			    new PropertyValueFactory<SaleEntry, Integer>("price")
+			    new PropertyValueFactory<SaleEntry, Float>("price")
 			);
 			
 			costCol.setCellValueFactory(
 					new PropertyValueFactory<SaleEntry, String>("ucost")
 			);
+			
 			costCol.setCellFactory(TextFieldTableCell.<SaleEntry>forTableColumn());
+			
 	        costCol.setOnEditCommit(
 	                new EventHandler<CellEditEvent<SaleEntry, String>>() {
 	                    @Override
@@ -163,6 +165,14 @@ public class TransactionController implements Initializable {
 	                    }
 	                }
 	                );
+	        
+	        checkColumn.setCellFactory(
+	                CheckBoxTableCell.forTableColumn(checkColumn)
+	            );
+	        
+	        checkColumn.setCellValueFactory(
+	                    new PropertyValueFactory<>("delete")
+	            );
 	        
 	        data = FXCollections.observableArrayList(); // create the data
 
@@ -180,7 +190,6 @@ public class TransactionController implements Initializable {
 	    	debtListCB.getItems().add("New Customer in Debt");
 	    	
 	    	completePopup.setVisible(false);
-	    	
 	    	
 	}
 	
