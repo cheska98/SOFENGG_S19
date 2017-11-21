@@ -1,66 +1,71 @@
 package model;
 
-import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-
 public class Customer {
-
-	private SimpleStringProperty contactno = new SimpleStringProperty("");
-	private SimpleStringProperty lasttrans = new SimpleStringProperty("");
-	private SimpleStringProperty name = new SimpleStringProperty("");
-	private SimpleFloatProperty balance = new SimpleFloatProperty();
-	private SimpleIntegerProperty transID = new SimpleIntegerProperty();
 	
-	public Customer(String contactno, String lasttrans,
-					String name, Float balance, int transID)
-	{
-		this.contactno =  new SimpleStringProperty(contactno);
-		this.lasttrans =  new SimpleStringProperty(lasttrans);
-		this.name = new SimpleStringProperty(name);
-		this.balance = new SimpleFloatProperty(balance);
-		this.transID = new SimpleIntegerProperty(transID);
+	public static final String TABLE_NAME = "customers";
+	public static final String CUSTOMER_ID = "ID";
+	public static final String CUSTOMER_NAME = "Name";
+	public static final String CUSTOMER_COMPANY = "Company";
+	public static final String CUSTOMER_CONTACT = "Contact";
+	
+	private int id;
+	private String name;
+	private String company;
+	private String contact;
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
 	}
 
-	public String getContactno() {
-		return contactno.get();
-	}
-
-	public void setContactno(SimpleStringProperty contactno) {
-		this.contactno = contactno;
-	}
-
-	public String getLasttrans() {
-		return lasttrans.get();
-	}
-
-	public void setLasttrans(SimpleStringProperty lasttrans) {
-		this.lasttrans = lasttrans;
-	}
-
+	/**
+	 * @return the name
+	 */
 	public String getName() {
-		return name.get();
+		return name;
 	}
 
-	public void setName(SimpleStringProperty name) {
+	/**
+	 * @return the company
+	 */
+	public String getCompany() {
+		return company;
+	}
+
+	/**
+	 * @return the contact
+	 */
+	public String getContact() {
+		return contact;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public Float getBalance() {
-		return balance.get();
+	/**
+	 * @param company the company to set
+	 */
+	public void setCompany(String company) {
+		this.company = company;
 	}
 
-	public void setBalance(SimpleFloatProperty balance) {
-		this.balance = balance;
+	/**
+	 * @param contact the contact to set
+	 */
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
-
-	public Integer getTransID() {
-		return transID.get();
-	}
-
-	public void setTransID(SimpleIntegerProperty transID) {
-		this.transID = transID;
-	}
-	
-	
 }

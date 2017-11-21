@@ -30,17 +30,19 @@
                               <Font name="Segoe UI" size="16.0" />
                            </font>
                         </Button>
-                        <Pane layoutX="1127.0" layoutY="870.0" prefHeight="115.0" prefWidth="361.0" style="-fx-background-color: #ffffff;" />
-                        <Label alignment="CENTER" layoutX="1127.0" layoutY="890.0" prefHeight="30.0" prefWidth="361.0" text="Today's Date">
-                           <font>
-                              <Font name="Segoe UI" size="22.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="currDateLabel" alignment="CENTER" layoutX="1127.0" layoutY="920.0" prefHeight="57.0" prefWidth="361.0">
-                           <font>
-                              <Font name="Segoe UI Bold" size="35.0" />
-                           </font>
-                        </Label>
+                        <Pane layoutX="1127.0" layoutY="823.0" prefHeight="115.0" prefWidth="361.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <Label alignment="CENTER" layoutY="10.0" prefHeight="30.0" prefWidth="361.0" text="Today's Date">
+                                 <font>
+                                    <Font name="Segoe UI" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="currDateLabel" alignment="CENTER" layoutY="50.0" prefHeight="57.0" prefWidth="361.0">
+                                 <font>
+                                    <Font name="Segoe UI Bold" size="35.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
                         <Button fx:id="transactionButton" layoutX="13.0" layoutY="191.0" mnemonicParsing="false" onAction="#transactionAction" prefHeight="137.0" prefWidth="147.0">
                            <graphic>
                               <ImageView fx:id="transactionIcon" fitHeight="117.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
