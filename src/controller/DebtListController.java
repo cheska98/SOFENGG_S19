@@ -41,7 +41,7 @@ public class DebtListController implements Initializable{
     
     @FXML
     void onClickClear(ActionEvent event) {
-
+    	tf_search.clear();
     }
     
     

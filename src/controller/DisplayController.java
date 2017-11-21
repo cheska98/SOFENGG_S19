@@ -61,7 +61,7 @@ public class DisplayController implements Initializable{
     
     @FXML
     void onClickClear(ActionEvent event) {
-
+    	tf_search.clear();
     }
     
     @FXML

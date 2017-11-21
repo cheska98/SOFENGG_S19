@@ -56,7 +56,7 @@ public class InventoryController implements Initializable{
     
     @FXML
     void onClickClear(ActionEvent event) {
-
+    	tf_search.clear();
     }
     
     
