@@ -53,7 +53,7 @@
             <TextField fx:id="tf_Unitcost" layoutX="59.0" layoutY="240.0" prefHeight="38.0" prefWidth="238.0" />
          </children>
       </Pane>
-      <Button fx:id="deleteBtn" layoutX="745.0" layoutY="970.0" mnemonicParsing="false" onAction="#onClickDelete" prefHeight="38.0" prefWidth="173.0" styleClass="DeleteBtn" stylesheets="@../css/DebtList.css" text="Delete Item" textFill="WHITE">
+      <Button fx:id="deleteBtn" layoutX="745.0" layoutY="970.0" mnemonicParsing="false" onAction="#onClickDelete" prefHeight="38.0" prefWidth="173.0" styleClass="DeleteBtn" stylesheets="@../css/DebtList.css" text="Delete" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="18.0" />
          </font>
