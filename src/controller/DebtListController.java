@@ -16,33 +16,33 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.Customer;
+import model.CustomerEntry;
 import model.Product;
 
 public class DebtListController implements Initializable{
 
 	@FXML private AnchorPane AnchorDebtList;
-    @FXML private TableColumn<Customer, Float> Balancecol;
-    @FXML private TableColumn<Customer, String> contactcol;
-    @FXML private TableColumn<Customer, String> LTDatecol;
-    @FXML private TableView<Customer> DebtListTable;
-    @FXML private TableColumn<Customer, Integer> transIDcol;
-    @FXML private TableColumn<Customer, String> CustNamecol;
+    @FXML private TableColumn<CustomerEntry, Float> Balancecol;
+    @FXML private TableColumn<CustomerEntry, String> contactcol;
+    @FXML private TableColumn<CustomerEntry, String> LTDatecol;
+    @FXML private TableView<CustomerEntry> DebtListTable;
+    @FXML private TableColumn<CustomerEntry, Integer> transIDcol;
+    @FXML private TableColumn<CustomerEntry, String> CustNamecol;
     
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-    	transIDcol.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("transID"));
-    	contactcol.setCellValueFactory(new PropertyValueFactory<Customer, String>("contactno"));
-    	LTDatecol.setCellValueFactory(new PropertyValueFactory<Customer, String>("lasttrans"));
-    	CustNamecol.setCellValueFactory(new PropertyValueFactory<Customer, String>("name"));
-    	Balancecol.setCellValueFactory(new PropertyValueFactory<Customer, Float>("balance"));
+    	transIDcol.setCellValueFactory(new PropertyValueFactory<CustomerEntry, Integer>("transID"));
+    	contactcol.setCellValueFactory(new PropertyValueFactory<CustomerEntry, String>("contactno"));
+    	LTDatecol.setCellValueFactory(new PropertyValueFactory<CustomerEntry, String>("lasttrans"));
+    	CustNamecol.setCellValueFactory(new PropertyValueFactory<CustomerEntry, String>("name"));
+    	Balancecol.setCellValueFactory(new PropertyValueFactory<CustomerEntry, Float>("balance"));
     	
     	DebtListTable.setRowFactory( tv -> {
-            TableRow<Customer> row = new TableRow<>();
+            TableRow<CustomerEntry> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                    Customer rowData = row.getItem();
+                    CustomerEntry rowData = row.getItem();
                     try {
 						AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/DebtListLoans.fxml"));
 						AnchorDebtList.getChildren().setAll(pane);
@@ -59,9 +59,9 @@ public class DebtListController implements Initializable{
     	DebtListTable.setItems(getCustomers());
 	}
     
-    public ObservableList<Customer> getCustomers(){
-        ObservableList<Customer> customers = FXCollections.observableArrayList();
-        customers.add(new Customer("09234567789","10-11-2017","John Doe",Float.valueOf(500),115));
+    public ObservableList<CustomerEntry> getCustomers(){
+        ObservableList<CustomerEntry> customers = FXCollections.observableArrayList();
+        customers.add(new CustomerEntry("09234567789","10-11-2017","John Doe",Float.valueOf(500),115));
         return customers;
     }
 

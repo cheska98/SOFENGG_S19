@@ -75,6 +75,12 @@ public class SuperMainController {
 	
 	}
 	
+	private void closeCurrStage() {
+		
+		initialController.closeStage();
+		
+	}
+	
 	public void setUsername(String username) {
 		
 		nameLabel.setText(username + "!");
@@ -107,6 +113,7 @@ public class SuperMainController {
 		alert.showAndWait();
 
 		if (alert.getResult() == ButtonType.YES) {
+			closeCurrStage();
 		    setInitialStage();
 		}
 		
