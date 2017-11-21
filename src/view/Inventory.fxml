@@ -12,7 +12,7 @@
          <font>
             <Font name="Segoe UI" size="15.0" />
          </font></Button>
-      <TextField id="Search_Field" fx:id="tf_search" layoutX="138.0" layoutY="68.0" prefHeight="35.0" prefWidth="545.0">
+      <TextField id="Search_Field" fx:id="tf_search" layoutX="138.0" layoutY="68.0" prefHeight="35.0" prefWidth="545.0" promptText="Enter Item Name">
          <font>
             <Font name="Segoe UI" size="15.0" />
          </font></TextField>
@@ -53,9 +53,14 @@
             <TextField fx:id="tf_Unitcost" layoutX="59.0" layoutY="240.0" prefHeight="38.0" prefWidth="238.0" />
          </children>
       </Pane>
-      <Button fx:id="deleteBtn" layoutX="745.0" layoutY="970.0" mnemonicParsing="false" onAction="#onClickDelete" prefHeight="38.0" prefWidth="173.0" styleClass="DeleteBtn" stylesheets="@../css/DebtList.css" text="Delete" textFill="WHITE">
+      <Button fx:id="deleteBtn" layoutX="745.0" layoutY="970.0" mnemonicParsing="false" onAction="#onClickDelete" prefHeight="38.0" prefWidth="173.0" styleClass="DeleteBtn" stylesheets="@../css/DebtList.css" text="Delete Item" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="Clearbtn" layoutX="621.0" layoutY="74.0" mnemonicParsing="false" onAction="#onClickClear" prefHeight="23.0" prefWidth="53.0" text="X CLEAR">
+         <font>
+            <Font size="10.0" />
          </font>
       </Button>
    </children>

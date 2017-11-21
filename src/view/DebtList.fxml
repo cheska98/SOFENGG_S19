@@ -17,5 +17,20 @@
           <TableColumn fx:id="Balancecol" prefWidth="163.0" text="Outstanding Balance" />
         </columns>
       </TableView>
+      <TextField id="Search_Field" fx:id="tf_search" layoutX="148.0" layoutY="78.0" prefHeight="35.0" prefWidth="545.0" promptText="Enter Transaction ID or Customer Name">
+         <font>
+            <Font name="Segoe UI" size="15.0" />
+         </font>
+      </TextField>
+      <Button id="Search_Btn" fx:id="searchBtn" layoutX="734.0" layoutY="78.0" mnemonicParsing="false" onAction="#onSearchClick" prefHeight="35.0" prefWidth="89.0" styleClass="SearchBtn" stylesheets="@../css/Display.css" text="Search">
+         <font>
+            <Font name="Segoe UI" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="Clearbtn" layoutX="630.0" layoutY="84.0" mnemonicParsing="false" onAction="#onClickClear" prefHeight="23.0" prefWidth="53.0" text="X CLEAR">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

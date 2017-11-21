@@ -12,7 +12,7 @@
          <font>
             <Font name="Segoe UI" size="15.0" />
          </font></Button>
-      <TextField id="Search_Field" fx:id="tf_search" layoutX="138.0" layoutY="68.0" prefHeight="35.0" prefWidth="545.0">
+      <TextField id="Search_Field" fx:id="tf_search" layoutX="138.0" layoutY="68.0" prefHeight="35.0" prefWidth="545.0" promptText="Enter Item Name">
          <font>
             <Font name="Segoe UI" size="15.0" />
          </font></TextField>
@@ -58,5 +58,10 @@
             </Label>
          </children>
       </Pane>
+      <Button fx:id="Clearbtn" layoutX="620.0" layoutY="74.0" mnemonicParsing="false" onAction="#onClickClear" prefHeight="23.0" prefWidth="53.0" text="X CLEAR">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

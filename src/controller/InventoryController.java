@@ -33,6 +33,7 @@ public class InventoryController implements Initializable{
     @FXML private TableColumn<Product, Float> pricecol;
     @FXML private TextField tf_Unitcost;
     @FXML private Button searchBtn;
+    @FXML private Button Clearbtn;
     @FXML private Label itemLabel;
     @FXML private Label quantityLabel;
     @FXML private TableColumn<Product, String> itemcol;
@@ -52,6 +53,12 @@ public class InventoryController implements Initializable{
     void onSearchClick(ActionEvent event) {
 
     }
+    
+    @FXML
+    void onClickClear(ActionEvent event) {
+
+    }
+    
     
     @FXML
     void onClickDelete(ActionEvent event) {

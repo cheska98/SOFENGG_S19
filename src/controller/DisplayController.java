@@ -41,6 +41,7 @@ public class DisplayController implements Initializable{
     @FXML private AnchorPane display;
     @FXML private Button searchBtn;
     @FXML private Button deleteBtn;
+    @FXML private Button Clearbtn;
     @FXML private TableColumn<Product, Integer> quantitycol;
     @FXML private Label itemLabel;
     @FXML private Label priceLabel;
@@ -55,6 +56,11 @@ public class DisplayController implements Initializable{
     
     @FXML
     void onSearchClick(ActionEvent event) {
+
+    }
+    
+    @FXML
+    void onClickClear(ActionEvent event) {
 
     }
     
