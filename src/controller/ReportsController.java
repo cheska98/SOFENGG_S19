@@ -201,7 +201,7 @@ public class ReportsController implements Initializable {
     		stage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/view/TopItemsPopUp.fxml"));
-			Scene scene = new Scene(loader.load(), 550, 500);
+			Scene scene = new Scene(loader.load(), 550, 550);
 		
 			TopItemsPopUpController top = loader.getController();
 			top.initialize(this);
