@@ -11,9 +11,9 @@
       <TableView id="DebtList_Table" fx:id="DebtListTransactionTable" layoutX="100.0" layoutY="120.0" prefHeight="820.0" prefWidth="560.0" style="-fx-font-size: 14;" stylesheets="@../css/DebtList.css">
         <columns>
             <TableColumn fx:id="TransDateCol" prefWidth="161.0" text="TRANSACTION DATE" />
-            <TableColumn fx:id="ItemCol" prefWidth="267.0" text="ITEM" />
-          <TableColumn fx:id="UnitCostCol" minWidth="7.0" prefWidth="131.0" text="PRICE" />
-            <TableColumn fx:id="SelectCol" minWidth="0.0" prefWidth="0.0" />
+            <TableColumn fx:id="ItemCol" prefWidth="235.0" text="ITEM" />
+            <TableColumn fx:id="UnitCostCol" minWidth="7.0" prefWidth="134.0" text="PRICE" />
+            <TableColumn fx:id="SelectCol" prefWidth="29.0" />
         </columns>
       </TableView>
       <Button fx:id="backbtn" layoutX="100.0" layoutY="61.0" mnemonicParsing="false" onAction="#onClickBack" prefHeight="38.0" prefWidth="150.0" styleClass="btns" stylesheets="@../css/DebtList.css" text="Back to Debt List">
