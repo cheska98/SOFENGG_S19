@@ -9,7 +9,7 @@ public class SaleEntry {
 	
 	public SimpleStringProperty itemName = new SimpleStringProperty("<Name>"); 
 	public SimpleFloatProperty price = new SimpleFloatProperty();
-	public SimpleStringProperty ucost= new SimpleStringProperty();
+	public SimpleFloatProperty ucost= new SimpleFloatProperty();
 	public SimpleIntegerProperty qty = new SimpleIntegerProperty();
 	public SimpleBooleanProperty delete = new SimpleBooleanProperty();
 	
@@ -19,6 +19,14 @@ public class SaleEntry {
 
 	public void setDelete(SimpleBooleanProperty delete) {
 		this.delete = delete;
+	}
+	
+	public boolean getSelected(){
+	    return selectedProperty().get();
+	}
+	
+	public SimpleBooleanProperty selectedProperty() {
+	    return this.delete;
 	}
 
 	public String getItemName() {
@@ -33,12 +41,12 @@ public class SaleEntry {
         return qty.get();
     } 
     
-    public String getUcost() {
+    public Float getUcost() {
 		return ucost.get();
 	}
 
-	public void setUcost(SimpleStringProperty string) {
-		this.ucost = string;
+	public void setUcost(SimpleFloatProperty ucost) {
+		this.ucost = ucost;
 	}
 	
 	public void setQty(SimpleIntegerProperty qty) {

@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -27,9 +28,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import model.SaleEntry;
-import view.AmountPaidPopup;
 
 public class TransactionController implements Initializable {
 
@@ -46,7 +47,7 @@ public class TransactionController implements Initializable {
     private TableColumn<SaleEntry, Integer> quantityCol;
 
     @FXML
-    private TableColumn<SaleEntry, String> costCol;
+    private TableColumn<SaleEntry, Float> costCol;
 
     @FXML
     private TableColumn<SaleEntry, Float> priceCol;
@@ -77,6 +78,9 @@ public class TransactionController implements Initializable {
 
     @FXML
     private Button btnCancel;
+    
+    @FXML
+    private Button btnDelete;
 
     @FXML
     private AnchorPane completePopup;
@@ -88,25 +92,24 @@ public class TransactionController implements Initializable {
     SaleEntry se;
     SaleEntry fe;
     
-    private float totalAmt = 0;
-    private String item;
-    private String ucost;
-    private int qty = 0;
-    private float price = 0;
+    private static float ucost = 0;
+    private static int qty = 1;
+    private int changeqty = 1;
+    private float changeucost = 0;
+    SaleEntry newEntry;
     DecimalFormat f = new DecimalFormat("##.00");
     
     public TransactionController() {
     	
-    	//tmp = new AmountPaidPopup();
     	se = new SaleEntry();
     	fe = new SaleEntry();
     	
         se.setItemName(new SimpleStringProperty("Test"));
-        se.setUcost(new SimpleStringProperty("35"));		
+        se.setUcost(new SimpleFloatProperty(35));		
         
 
         fe.setItemName(new SimpleStringProperty("tt"));
-        fe.setUcost(new SimpleStringProperty("45"));	
+        fe.setUcost(new SimpleFloatProperty(45));	
     	
     }
 
@@ -129,18 +132,20 @@ public class TransactionController implements Initializable {
 	                    @Override
 	                    public void handle(CellEditEvent<SaleEntry, Integer> t) {
 	                    	
+	                    	try {
 	                        ((SaleEntry) t.getTableView().getItems().get(
 	                                t.getTablePosition().getRow())
 	                                ).setQty(new SimpleIntegerProperty(t.getNewValue().intValue()));
-	                        
-	                        //setTotalAmount(t.getNewValue().intValue(), t.getTablePosition().getRow());
-	                        
-	                        
-	                        totalAmt += Float.parseFloat(ucost) * (t.getNewValue().intValue() - 1);
+	                    	} catch (Exception e) {
+								// TODO: handle exception
+	                    		System.out.println("Invalid input!");
+							}
+	                        changeqty = t.getNewValue().intValue();
 
-	                    	f.format(totalAmt);
-	                    	totalAmount.setText(f.format(totalAmt));
-	                    	
+	                        data.get(t.getTablePosition().getRow()).price.set(
+	    	                        setPrice(changeqty, data.get(t.getTablePosition().getRow()).getUcost(),t.getTablePosition().getRow()));
+
+	                        setTotal();
 	                    }
 	                }
 	                );
@@ -150,18 +155,43 @@ public class TransactionController implements Initializable {
 			);
 			
 			costCol.setCellValueFactory(
-					new PropertyValueFactory<SaleEntry, String>("ucost")
+					new PropertyValueFactory<SaleEntry, Float>("ucost")
 			);
 			
-			costCol.setCellFactory(TextFieldTableCell.<SaleEntry>forTableColumn());
+			costCol.setCellFactory(TextFieldTableCell.<SaleEntry, Float>forTableColumn(new FloatStringConverter() {
+		        @Override
+		        public Float fromString(String value) {
+		            try {
+		                return super.fromString(value);
+		            } catch(NumberFormatException e) {
+		                return Float.NaN; // An abnormal value
+		            }
+		        }
+		    }));
 			
 	        costCol.setOnEditCommit(
-	                new EventHandler<CellEditEvent<SaleEntry, String>>() {
+	                new EventHandler<CellEditEvent<SaleEntry, Float>>() {
 	                    @Override
-	                    public void handle(CellEditEvent<SaleEntry, String> t) {
-	                        ((SaleEntry) t.getTableView().getItems().get(
-	                                t.getTablePosition().getRow())
-	                                ).setUcost(new SimpleStringProperty(t.getNewValue()));
+	                    public void handle(CellEditEvent<SaleEntry, Float> t) {
+	                    	
+	                    	if(t.getNewValue().isNaN()) {	
+	                    		t.getRowValue().setUcost(new SimpleFloatProperty(t.getOldValue()));
+	                    	}
+	                    	
+	                    	else {
+	                    		
+		                        ((SaleEntry) t.getTableView().getItems().get(
+		                                t.getTablePosition().getRow())
+		                                ).setUcost(new SimpleFloatProperty(t.getNewValue().floatValue()));
+
+		                        changeucost = t.getNewValue().floatValue();
+		                        
+		                        data.get(t.getTablePosition().getRow()).price.set(
+		    	                        setPrice(data.get(t.getTablePosition().getRow()).getQty(), changeucost,t.getTablePosition().getRow()));
+	                    	}
+
+	                        setTotal();
+
 	                    }
 	                }
 	                );
@@ -171,7 +201,8 @@ public class TransactionController implements Initializable {
 	            );
 	        
 	        checkColumn.setCellValueFactory(
-	                    new PropertyValueFactory<>("delete")
+	                    //new PropertyValueFactory<SaleEntry, Boolean>("delete")
+	        		cellData -> cellData.getValue().selectedProperty()
 	            );
 	        
 	        data = FXCollections.observableArrayList(); // create the data
@@ -191,38 +222,31 @@ public class TransactionController implements Initializable {
 	    	
 	    	completePopup.setVisible(false);
 	    	
+	    	totalAmount.setText("00.00");
+	    	
 	}
-	
-	 @FXML
-	    void handleDelete(MouseEvent event) {
-		 
-		 //System.out.println("Clicked on " + (salesTable.getSelectionModel().getSelectedCells().get(0)).getColumn());
-		 	if(event.getClickCount() == 2) {
-			    Alert alert = new Alert(AlertType.CONFIRMATION);
-			    alert.setTitle("Remove Item");
-			    alert.setContentText("Are you sure you want to remove this item?");
-	
-			    Optional<ButtonType> result = alert.showAndWait();
-			    if (result.get() == ButtonType.OK){
-			    	SaleEntry selectedItem = salesTable.getSelectionModel().getSelectedItem();
-				    salesTable.getItems().remove(selectedItem);
-				    
-			    } else {
-			        // ... user chose CANCEL or closed the dialog
-			    }
-		 	}
 
-	    }
-	
 	@FXML
     void handlecomplete(ActionEvent event) {
     	
 
 		completePopup.setVisible(true);
-    	salesTable.getItems().clear();
 
-    	totalAmount.setText("00.00");
+    }
+	
+    @FXML
+    void handleDelete(ActionEvent event) {
     	
+    	  ObservableList<SaleEntry> dataListToRemove = FXCollections.observableArrayList();
+          for (SaleEntry bean : data) {
+              if (bean.getSelected()) {
+                  dataListToRemove.add(bean);
+              }
+          }
+          
+          data.removeAll(dataListToRemove);
+          setTotal();
+
     }
 	
 
@@ -238,6 +262,19 @@ public class TransactionController implements Initializable {
     void handleOK(ActionEvent event) {
     	
     	completePopup.setVisible(false);
+    	
+    	float change = Float.parseFloat((paidTF.getText())) - Float.parseFloat(totalAmount.getText());
+    	
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Customer's Change");
+    	alert.setHeaderText(null);
+    	alert.setContentText("Change: ₱ "+ f.format(change));
+
+    	alert.showAndWait();
+    	
+    	paidTF.clear();
+    	totalAmount.clear();
+    	salesTable.getItems().clear();
 
     }
     
@@ -245,10 +282,8 @@ public class TransactionController implements Initializable {
     void handleCancel(ActionEvent event) {
     	
 
-//    	Stage stage = (Stage) btnCancel.getScene().getWindow();
-//    	stage.close();
-
     	completePopup.setVisible(false);
+    	salesTable.getItems().clear();
 
     }
     
@@ -273,11 +308,16 @@ public class TransactionController implements Initializable {
 //    	
 //    	generateSaleEntry(item, Float.parseFloat(ucost) * qty, qty, ucost);
     	
-    	SaleEntry newEntry = new SaleEntry();
+    	newEntry = new SaleEntry();
     	newEntry.itemName.set(itemText.getText());
     	newEntry.qty.set(1);
     	
     	generateSaleEntry(newEntry);
+    	qty = newEntry.getQty();
+    	ucost = newEntry.getUcost();
+    	
+    	setTotal();
+    	
     	itemText.clear();
     }
 
@@ -286,20 +326,34 @@ public class TransactionController implements Initializable {
 		
 //		SaleEntry entry = new SaleEntry();
 //	    entry.itemName.set(item);
-//	    entry.price.set(price);
 //	    entry.qty.set(qty);
 //	    entry.ucost.set(ucost);
 	    data.add(entry);
+	    int i = data.indexOf(entry);
+	    entry.price.set((setPrice(qty, ucost, i)));
 	    
 	}
 	
-	private void setTotalAmount (int newqty, int row) {
+	private float setPrice(int newqty, float cost, int pos) {
 		
-//		totalAmt += Float.parseFloat(ucost) * ;
-//    	f.format(totalAmt);
-//    	totalAmount.setText(f.format(totalAmt));
+		float price = 0;
 		
+		price = cost * newqty ;
+    	data.get(pos).setPrice(new SimpleFloatProperty(price));
+    	return price;
 	
+	}
+	
+	private void setTotal() {
+
+	    float totalAmt = 0;
+	    
+		for(int i = 0; i < data.size(); i++) {
+			
+			totalAmt += data.get(i).getPrice();
+		}
+		
+    	totalAmount.setText(f.format(totalAmt));
 	}
 	
 	
