@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.TableCell;
+import model.entries.Product;
 
 public class BooleanCell extends TableCell<Product, Boolean>{
 

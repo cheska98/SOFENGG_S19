@@ -27,8 +27,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import model.BooleanCell;
-import model.Loaned;
-import model.Product;
+import model.entries.Loaned;
+import model.entries.Product;
 
 public class DebtListLoansController implements Initializable{
 

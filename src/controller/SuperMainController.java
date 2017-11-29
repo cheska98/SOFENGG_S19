@@ -1,5 +1,6 @@
 package controller;
 
+import java.sql.SQLException;
 import java.util.Calendar;
 
 import javafx.event.ActionEvent;
@@ -12,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import model.Model;
 
 public class SuperMainController {
 	
@@ -54,11 +56,11 @@ public class SuperMainController {
 	private String month = null;
 	private String day = null;
 	private String year = Integer.toString(now.get(Calendar.YEAR));
+	private static Model model;
 	
 	
 	@FXML
-	private void initialize() {
-		
+	private void initialize() throws SQLException {
 		setCurrDate();
 		setTransactionVisible();
 		
@@ -66,6 +68,13 @@ public class SuperMainController {
 	
 	public void setController(InitPanelController initialController) {
 		this.initialController = initialController;
+		System.out.println("super main controller 78");
+		try {
+			initialize();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private void setInitialStage() {
@@ -73,6 +82,10 @@ public class SuperMainController {
 		System.out.println("init");
 		initialController.setInitialStage(initialController);
 	
+	}
+	
+	private void closeCurrStage() {
+		initialController.closeStage();
 	}
 	
 	public void setUsername(String username) {
@@ -107,6 +120,7 @@ public class SuperMainController {
 		alert.showAndWait();
 
 		if (alert.getResult() == ButtonType.YES) {
+			closeCurrStage();
 		    setInitialStage();
 		}
 		
@@ -115,6 +129,7 @@ public class SuperMainController {
     @FXML
     void transactionAction(ActionEvent event) {
     	setTransactionVisible();
+    	System.out.println("1");
     }
 
     @FXML

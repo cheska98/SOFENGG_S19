@@ -29,7 +29,7 @@
             </RadioButton>
          </children>
       </Pane>
-      <TextField layoutX="138.0" layoutY="68.0" prefHeight="35.0" prefWidth="545.0" promptText="Transaction ID">
+      <TextField layoutX="138.0" layoutY="68.0" prefHeight="35.0" prefWidth="545.0" promptText="Enter Transaction ID">
          <font>
             <Font name="Segoe UI" size="15.0" />
          </font>

@@ -22,7 +22,17 @@ public class InitPanelController {
     @FXML private TextField username; 
     @FXML private PasswordField password;
     private Stage primaryStage;
+    private Stage stage;
+    private Scene initScene;
+    private Scene mainScene;
     private String uname = null;
+    private String logUser = null;
+    private String logPass = null;
+    private String regUser = null;
+    private String regPass = null;
+    private FXMLLoader initLoader;
+    private FXMLLoader mainLoader;
+    private Alert alert;
     SuperMainController mainPaneController;
     MainController mainController;
     
@@ -30,15 +40,15 @@ public class InitPanelController {
     @FXML
     void handlelogin(ActionEvent event) {
     	
-    	String logUser = username.getText();
-    	String logPass = password.getText();
+    	logUser = username.getText();
+    	logPass = password.getText();
     	uname = logUser;
     	
     	System.out.println(logUser);
-    	if (logUser != null && logPass != null)
+    	if (logUser != null && logPass != null){
     		setMainStage();
-    	else {
-    		Alert alert = new Alert(AlertType.ERROR);
+    	} else {
+    		alert = new Alert(AlertType.ERROR);
     		alert.setTitle("ERROR");
     		alert.setHeaderText(null);
     		alert.setContentText("Invalid username or password.");
@@ -51,11 +61,11 @@ public class InitPanelController {
     @FXML
     void handleregister(ActionEvent event) {
     	
-    	String regUser = username.getText();
-    	String regPass = password.getText();
+    	regUser = username.getText();
+    	regPass = password.getText();
     	
     	if (regUser != null && regPass != null) {
-    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert = new Alert(AlertType.INFORMATION);
         	alert.setTitle("NEW ACCOUNT CREATED");
         	alert.setHeaderText(null);
         	alert.setContentText("You may now login using your new account.");
@@ -66,7 +76,9 @@ public class InitPanelController {
     }
     
     public void setUsername() {
+    	
     	mainPaneController.setUsername(uname);
+    
     }
     
     private void setFields() {
@@ -84,36 +96,45 @@ public class InitPanelController {
     
     public void setInitialStage(InitPanelController initialController) {
     	
-    	System.out.println("out");
     	try {
-    		System.out.println("in");
+			initLoader = new FXMLLoader();
+			initLoader.setLocation(getClass().getResource("/view/Initial.fxml"));
+			initScene = new Scene(initLoader.load(), 1541, 1080);
 			
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/Initial.fxml"));
-			Scene scene = new Scene(loader.load(), 1541, 1080);
+			initialController = initLoader.getController();
+			if(stage == null) {
+				stage = new Stage();
+				setPrimaryStage(stage);
+			}
 			
-			initialController = loader.getController();
-			
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			stage.setTitle("Capatiran Point of Sales/Inventory System");
+			stage.setResizable(true);
+			stage.setScene(initScene);
+			stage.show();
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
     }
     
-    private void setMainStage() {
+    public void closeStage() {
     	
+    
+    }
+    
+    private void setMainStage() {
     	try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/Main.fxml"));
-			Scene scene = new Scene(loader.load(), 1541, 1080);
-		
-			mainPaneController = loader.getController();
-			mainPaneController.setController(this);
+    		System.out.println("init panel cotroller 127");
+			mainLoader = new FXMLLoader();
+			mainLoader.setLocation(getClass().getResource("/view/Main.fxml"));
+			mainScene = new Scene(mainLoader.load(), 1541, 1080);//---------------------
+			System.out.println("init panel cotroller 130");
+			mainPaneController = mainLoader.getController();
+
+			mainPaneController.setController(this); // bakit may set controller sa controller?
 	    	setUsername();
-			
-			primaryStage.setScene(scene);
+
+			primaryStage.setScene(mainScene);
 			primaryStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();

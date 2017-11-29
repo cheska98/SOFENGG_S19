@@ -15,7 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import model.TopItemEntry;
+import model.entries.TopItemEntry;
 
 public class TopItemsPopUpController implements Initializable {
 

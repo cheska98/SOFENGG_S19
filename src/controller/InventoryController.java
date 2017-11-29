@@ -1,6 +1,8 @@
 package controller;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -26,13 +28,26 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import model.BooleanCell;
-import model.Product;
+import model.Database;
+import model.Model;
+import model.entity.Customer;
+import model.entity.Debt;
+import model.entity.Item;
+import model.entity.Stock;
+import model.entity.Transaction;
+import model.entries.CustomerEntry;
+import model.entries.Product;
+import model.service.DebtService;
+import model.service.ItemService;
+import model.service.StockService;
+import model.service.TransactionService;
 
 public class InventoryController implements Initializable{
 
     @FXML private TableColumn<Product, Float> pricecol;
     @FXML private TextField tf_Unitcost;
     @FXML private Button searchBtn;
+    @FXML private Button Clearbtn;
     @FXML private Label itemLabel;
     @FXML private Label quantityLabel;
     @FXML private TableColumn<Product, String> itemcol;
@@ -46,12 +61,23 @@ public class InventoryController implements Initializable{
     @FXML private TextField tf_Quantity;
     @FXML private TableColumn<Product, Integer> quantitycol;
     @FXML private TextField tf_Item;
+    private static Model model; 
 
+    public void setModel(Model model) { 
+    	System.out.println("debt list controller 55");
+    	this.model = model; 
+    }
     
     @FXML
     void onSearchClick(ActionEvent event) {
 
     }
+    
+    @FXML
+    void onClickClear(ActionEvent event) {
+    	tf_search.clear();
+    }
+    
     
     @FXML
     void onClickDelete(ActionEvent event) {
@@ -112,7 +138,12 @@ public class InventoryController implements Initializable{
         }));
 
 		
-    	inventoryTable.setItems(getProducts());
+    	try {
+			inventoryTable.setItems(getProducts());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	quantitycol.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Integer>(){
             @Override
             public String toString(Integer object) {
@@ -128,10 +159,32 @@ public class InventoryController implements Initializable{
 
     }
     
-    public ObservableList<Product> getProducts(){
-        ObservableList<Product> products = FXCollections.observableArrayList();
-        products.add(new Product("Boysen Paint Green", 100, 600));
-        products.add(new Product("Hammer", 100, 350));
+    public ObservableList<Product> getProducts() throws SQLException{
+    	ObservableList<Product> products = FXCollections.observableArrayList();
+    	
+        ArrayList<Stock> inventory= new ArrayList<Stock>();
+        inventory = StockService.getStockList(Database.INVENTORY_TABLE);
+        
+        products.addAll(convert_product(inventory));
+        //products.add(new Product("Boysen Paint Green", 100, 600));
+        //products.add(new Product("Hammer", 100, 350));
         return products;
+    }
+    
+    public ArrayList<Product> convert_product(ArrayList<Stock> inventory) throws SQLException{
+    	ArrayList<Product> productList = new ArrayList<Product>();
+    	for(int i=0; i<inventory.size(); i++){
+    		Item item = new Item();
+    		item = getItem(inventory.get(i));
+    		Product product = new Product(null, item.getDesc(), inventory.get(i).getQuantity(), item.getUnitPrice());
+    		productList.add(product);
+    	}
+    	return productList;
+    	
+    }
+    
+    public Item getItem(Stock inventory) throws SQLException{
+    	int itemID = inventory.getId();
+    	return model.findItem(itemID);
     }
 }

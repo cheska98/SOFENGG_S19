@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="transaction" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TransactionController">
    <children>
-      <TableView id="Display_Table" fx:id="salesTable" editable="true" layoutX="45.0" layoutY="120.0" maxHeight="820.0" maxWidth="870.0" onMouseClicked="#handleDelete" prefHeight="820.0" prefWidth="870.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
+      <TableView id="Display_Table" fx:id="salesTable" editable="true" layoutX="45.0" layoutY="120.0" maxHeight="820.0" maxWidth="870.0" prefHeight="820.0" prefWidth="870.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
         <columns>
           <TableColumn fx:id="itemCol" maxWidth="371.0" minWidth="223.5" prefWidth="324.0" text="ITEM" />
           <TableColumn fx:id="quantityCol" maxWidth="236.0" minWidth="173.0" prefWidth="180.0" text="QUANTITY/CM/KG" />
@@ -40,7 +40,7 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="btnComplete" layoutX="745.0" layoutY="970.0" mnemonicParsing="false" onAction="#handlecomplete" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #289b01;" text="Complete" textFill="WHITE">
+      <Button fx:id="btnComplete" layoutX="46.0" layoutY="970.0" mnemonicParsing="false" onAction="#handlecomplete" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #289b01;" text="Complete" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="18.0" />
          </font>
@@ -79,5 +79,10 @@
             </Button>
          </children>
       </AnchorPane>
+      <Button fx:id="btnDelete" layoutX="745.0" layoutY="970.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="40.0" prefWidth="170.0" style="-fx-background-color: #dd0c0c;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

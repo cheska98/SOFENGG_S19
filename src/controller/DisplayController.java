@@ -1,8 +1,10 @@
 package controller;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -30,7 +32,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import model.BooleanCell;
-import model.Product;
+import model.Database;
+import model.Model;
+import model.entity.Item;
+import model.entity.Stock;
+import model.entries.Product;
+import model.service.ItemService;
+import model.service.StockService;
 
 public class DisplayController implements Initializable{
 
@@ -41,6 +49,7 @@ public class DisplayController implements Initializable{
     @FXML private AnchorPane display;
     @FXML private Button searchBtn;
     @FXML private Button deleteBtn;
+    @FXML private Button Clearbtn;
     @FXML private TableColumn<Product, Integer> quantitycol;
     @FXML private Label itemLabel;
     @FXML private Label priceLabel;
@@ -52,10 +61,21 @@ public class DisplayController implements Initializable{
     @FXML private TableColumn<Product, String> dateupdatecol;
     @FXML private TableColumn<Product, Float> pricecol;
     @FXML private TableColumn<Product, Boolean> SelectCol;
+    private static Model model; 
+    
+    public void setModel(Model model) { 
+    	System.out.println("debt list controller 55");
+    	this.model = model; 
+    }
     
     @FXML
     void onSearchClick(ActionEvent event) {
 
+    }
+    
+    @FXML
+    void onClickClear(ActionEvent event) {
+    	tf_search.clear();
     }
     
     @FXML
@@ -104,7 +124,12 @@ public class DisplayController implements Initializable{
         SelectCol.setCellValueFactory(new PropertyValueFactory<Product, Boolean>("checkbox"));
         SelectCol.setCellFactory(booleanCellFactory);
         SelectCol.setEditable(true);
-		displayTable.setItems(getProducts());
+		try {
+			displayTable.setItems(getProducts());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		itemcol.setCellFactory(TextFieldTableCell.forTableColumn());
 		daterestockcol.setCellFactory(TextFieldTableCell.forTableColumn());
 		dateupdatecol.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -123,10 +148,34 @@ public class DisplayController implements Initializable{
 
 	}
     
-    public ObservableList<Product> getProducts(){
-        ObservableList<Product> products = FXCollections.observableArrayList();
+    public ObservableList<Product> getProducts() throws SQLException{
+        /*ObservableList<Product> products = FXCollections.observableArrayList();
         products.add(new Product("10-15-2017","Boysen Paint Green", 100, Float.valueOf(300)));
+        return products;*/
+    	ObservableList<Product> products = FXCollections.observableArrayList();
+    	
+        ArrayList<Stock> display= new ArrayList<Stock>();
+        display = StockService.getStockList(Database.DISPLAY_TABLE);
+        
+        products.addAll(convert_product(display));
         return products;
+    }
+    
+    public ArrayList<Product> convert_product(ArrayList<Stock> display) throws SQLException{
+    	ArrayList<Product> productList = new ArrayList<Product>();
+    	for(int i=0; i<display.size(); i++){
+    		Item item = new Item();
+    		item = getItem(display.get(i));
+    		Product product = new Product(null, item.getDesc(), display.get(i).getQuantity(), item.getUnitPrice());
+    		productList.add(product);
+    	}
+    	return productList;
+    	
+    }
+    
+    public Item getItem(Stock display) throws SQLException{
+    	int itemID = display.getId();
+    	return model.findItem(itemID);
     }
    
 
