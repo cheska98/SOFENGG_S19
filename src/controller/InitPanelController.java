@@ -18,18 +18,18 @@ public class InitPanelController {
 
 	@FXML private AnchorPane initial;
     @FXML private Button loginbtn; 
-//    @FXML private Button registerBtn; 
-//    @FXML private TextField username; 
+    @FXML private Button registerBtn; 
+    @FXML private TextField username; 
     @FXML private PasswordField password;
     private Stage primaryStage;
     private Stage stage;
     private Scene initScene;
     private Scene mainScene;
-//    private String uname = null;
+    private String uname = null;
     private String logUser = null;
     private String logPass = null;
-//    private String regUser = null;
-//    private String regPass = null;
+    private String regUser = null;
+    private String regPass = null;
     private FXMLLoader initLoader;
     private FXMLLoader mainLoader;
     private Alert alert;
@@ -40,50 +40,50 @@ public class InitPanelController {
     @FXML
     void handlelogin(ActionEvent event) {
     	
-    	//logUser = username.getText();
+    	logUser = username.getText();
     	logPass = password.getText();
-    	//uname = logUser;
+    	uname = logUser;
     	
-    	//System.out.println(logUser);
-    	if (logPass != null){
+    	System.out.println(logUser);
+    	if (logUser != null && logPass != null)
     		setMainStage();
-    	} else {
+    	else {
     		alert = new Alert(AlertType.ERROR);
     		alert.setTitle("ERROR");
     		alert.setHeaderText(null);
-    		alert.setContentText("Invalid password.");
+    		alert.setContentText("Invalid username or password.");
     		alert.showAndWait();
     		setFields();
     	}
 
     }
-//
-//    @FXML
-//    void handleregister(ActionEvent event) {
-//    	
-//    	regUser = username.getText();
-//    	regPass = password.getText();
-//    	
-//    	if (regUser != null && regPass != null) {
-//    		alert = new Alert(AlertType.INFORMATION);
-//        	alert.setTitle("NEW ACCOUNT CREATED");
-//        	alert.setHeaderText(null);
-//        	alert.setContentText("You may now login using your new account.");
-//        	alert.showAndWait();
-//        	setFields();
-//    	}
-//    	
-//    }
-//    
+
+    @FXML
+    void handleregister(ActionEvent event) {
+    	
+    	regUser = username.getText();
+    	regPass = password.getText();
+    	
+    	if (regUser != null && regPass != null) {
+    		alert = new Alert(AlertType.INFORMATION);
+        	alert.setTitle("NEW ACCOUNT CREATED");
+        	alert.setHeaderText(null);
+        	alert.setContentText("You may now login using your new account.");
+        	alert.showAndWait();
+        	setFields();
+    	}
+    	
+    }
+    
     public void setUsername() {
     	
-    	mainPaneController.setUsername("Cris");
+    	mainPaneController.setUsername(uname);
     
     }
     
     private void setFields() {
     	
-    	//username.clear();
+    	username.clear();
     	password.clear();
     	
     }
@@ -102,11 +102,8 @@ public class InitPanelController {
 			initScene = new Scene(initLoader.load(), 1541, 1080);
 			
 			initialController = initLoader.getController();
-			if(stage == null) {
-				stage = new Stage();
-				setPrimaryStage(stage);
-			}
-			
+			stage = new Stage();
+			setPrimaryStage(stage);
 			stage.setTitle("Capatiran Point of Sales/Inventory System");
 			stage.setResizable(true);
 			stage.setScene(initScene);
@@ -119,18 +116,19 @@ public class InitPanelController {
     
     public void closeStage() {
     	
+    	primaryStage.close();
     
     }
     
     private void setMainStage() {
+    	
     	try {
-    		System.out.println("init panel cotroller 127");
 			mainLoader = new FXMLLoader();
 			mainLoader.setLocation(getClass().getResource("/view/Main.fxml"));
-			mainScene = new Scene(mainLoader.load(), 1541, 1080);//---------------------
+			mainScene = new Scene(mainLoader.load(), 1541, 1080);
+		
 			mainPaneController = mainLoader.getController();
-
-			mainPaneController.setController(this); // bakit may set controller sa controller?
+			mainPaneController.setController(this);
 	    	setUsername();
 
 			primaryStage.setScene(mainScene);

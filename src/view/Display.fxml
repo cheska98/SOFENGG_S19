@@ -23,11 +23,11 @@
       </Button>
       <TableView id="Display_Table" fx:id="displayTable" editable="true" layoutX="45.0" layoutY="120.0" prefHeight="820.0" prefWidth="870.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
         <columns>
-            <TableColumn fx:id="daterestockcol" maxWidth="160.0" prefWidth="160.0" text="LAST RESTOCK" />
-            <TableColumn fx:id="dateupdatecol" maxWidth="160.0" prefWidth="160.0" text="LAST UPDATE PRICE" />
-          <TableColumn fx:id="itemcol" maxWidth="259.0" prefWidth="259.0" text="ITEM" />
+            <TableColumn fx:id="restock_col" prefWidth="171.0" text="LAST RESTOCK" />
+            <TableColumn fx:id="update_col" prefWidth="158.0" text="LAST UPDATE PRICE" />
+          <TableColumn fx:id="itemcol" maxWidth="259.0" prefWidth="250.0" text="ITEM" />
             <TableColumn fx:id="pricecol" maxWidth="185.0" prefWidth="110.0" text="PRICE" />
-          <TableColumn fx:id="quantitycol" maxWidth="187.0" prefWidth="147.0" text="QUANTITY/CM/KG" />
+            <TableColumn fx:id="quantitycol" maxWidth="187.0" prefWidth="147.0" text="QUANTITY" />
             <TableColumn fx:id="SelectCol" minWidth="0.0" prefWidth="33.0" />
         </columns>
       </TableView>
@@ -48,9 +48,18 @@
                   <Font name="Segoe UI" size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_item" layoutX="62.0" layoutY="122.0" prefHeight="38.0" prefWidth="238.0" />
-            <TextField fx:id="tf_quantity" layoutX="59.0" layoutY="374.0" prefHeight="38.0" prefWidth="238.0" />
-            <TextField fx:id="tf_price" layoutX="59.0" layoutY="240.0" prefHeight="38.0" prefWidth="238.0" />
+            <TextField fx:id="tf_item" layoutX="62.0" layoutY="122.0" prefHeight="38.0" prefWidth="238.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <TextField fx:id="tf_quantity" layoutX="59.0" layoutY="374.0" prefHeight="38.0" prefWidth="238.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <TextField fx:id="tf_price" layoutX="59.0" layoutY="240.0" prefHeight="38.0" prefWidth="238.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
             <Label fx:id="priceLabel" layoutX="60.0" layoutY="183.0" text="Price:">
                <font>
                   <Font name="Segoe UI" size="25.0" />
@@ -61,6 +70,11 @@
       <Button fx:id="Clearbtn" layoutX="620.0" layoutY="74.0" mnemonicParsing="false" onAction="#onClickClear" prefHeight="23.0" prefWidth="53.0" text="X CLEAR">
          <font>
             <Font size="10.0" />
+         </font>
+      </Button>
+      <Button id="Add_Btn" fx:id="saveBtn" layoutX="45.0" layoutY="964.0" mnemonicParsing="false" onAction="#onSaveClick" prefHeight="40.0" prefWidth="170.0" styleClass="AddBtn" stylesheets="@../css/Display.css" text="Save Changes" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
          </font>
       </Button>
    </children>

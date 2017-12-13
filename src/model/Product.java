@@ -8,44 +8,35 @@ import javafx.beans.property.SimpleStringProperty;
 public class Product {
 
 	private SimpleStringProperty item = new SimpleStringProperty("");
-	private SimpleStringProperty daterestock = new SimpleStringProperty("");
-	private SimpleStringProperty dateupdate = new SimpleStringProperty("");
+	private SimpleStringProperty restock = new SimpleStringProperty("");
+	private SimpleStringProperty update = new SimpleStringProperty("");
 	private SimpleIntegerProperty quantity = new SimpleIntegerProperty();
 	private SimpleFloatProperty price = new SimpleFloatProperty();
 	private SimpleBooleanProperty checkbox = new SimpleBooleanProperty();
 	
-	public Product(String item,int quantity){
-		this.item = new SimpleStringProperty(item);
-		this.quantity = new SimpleIntegerProperty(quantity);
-	}
 	
-	public Product(String item,int quantity, float unitcost){
-		this.price = new SimpleFloatProperty(unitcost);
-		this.item = new SimpleStringProperty(item);
-		this.quantity = new SimpleIntegerProperty(quantity);
-	}
-	
-	public Product(String daterestock,String item,int quantity, float unitcost){
-		this.daterestock = new SimpleStringProperty(daterestock);
+	public Product(String update,String restock,String item,int quantity, float unitcost){
+		this.update = new SimpleStringProperty(update);
+		this.restock = new SimpleStringProperty(restock);
 		this.price = new SimpleFloatProperty(unitcost);
 		this.item = new SimpleStringProperty(item);
 		this.quantity = new SimpleIntegerProperty(quantity);
 	}
 	
 	public String getDateUpdate() {
-		return dateupdate.get();
+		return update.get();
 	}
 
 	public void setDateUpdate(SimpleStringProperty dateupdate) {
-		this.dateupdate = dateupdate;
+		this.update = dateupdate;
 	}
 	
 	public String getDateRestock() {
-		return daterestock.get();
+		return restock.get();
 	}
 
 	public void setDateRestock(SimpleStringProperty daterestock) {
-		this.daterestock = daterestock;
+		this.restock = daterestock;
 	}
 	
 	public Boolean getCheckBox() {

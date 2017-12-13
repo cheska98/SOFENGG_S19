@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -11,7 +12,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -23,6 +27,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import model.BooleanCell;
@@ -38,11 +45,13 @@ public class InventoryController implements Initializable{
     @FXML private Label quantityLabel;
     @FXML private TableColumn<Product, String> itemcol;
     @FXML private TableColumn<Product, String> daterestockcol;
+    @FXML private TableColumn<Product, String> dateupdatecol;
     @FXML private TableColumn<Product, Boolean> selectedcol;
     @FXML private TableView<Product> inventoryTable;
     @FXML private TextField tf_search;
     @FXML private Label UnitCostLabel;
     @FXML private Button addBtn1;
+    @FXML private Button saveBtn;
     @FXML private Button deleteBtn;
     @FXML private TextField tf_Quantity;
     @FXML private TableColumn<Product, Integer> quantitycol;
@@ -59,6 +68,20 @@ public class InventoryController implements Initializable{
     	tf_search.clear();
     }
     
+    @FXML
+    void onSaveClick(ActionEvent event) {
+    	try {
+    		Stage stage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/view/EnterPassword.fxml"));
+			Scene scene = new Scene(loader.load(), 272, 200);
+			
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
     
     @FXML
     void onClickDelete(ActionEvent event) {
@@ -75,7 +98,7 @@ public class InventoryController implements Initializable{
 
     @FXML
     void onAddClick(ActionEvent event) {
-    	Product nproduct = new Product("",0,0);
+    	Product nproduct = new Product("","","",0,0);
     	SimpleStringProperty name = new SimpleStringProperty(tf_Item.getText());
         nproduct.setItem(name);
         SimpleIntegerProperty quant = new SimpleIntegerProperty(Integer.parseInt(tf_Quantity.getText()));
@@ -87,11 +110,13 @@ public class InventoryController implements Initializable{
     
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+
     	itemcol.setCellValueFactory(new PropertyValueFactory<Product, String>("item"));
-    	daterestockcol.setCellValueFactory(new PropertyValueFactory<Product, String>("daterestock"));
     	quantitycol.setCellValueFactory(new PropertyValueFactory<Product, Integer>("quantity"));
     	pricecol.setCellValueFactory(new PropertyValueFactory<Product, Float>("price"));
- 
+    	daterestockcol.setCellValueFactory(new PropertyValueFactory<Product, String>("restock"));
+    	dateupdatecol.setCellValueFactory(new PropertyValueFactory<Product, String>("update"));
+    	
 		Callback<TableColumn<Product, Boolean>, TableCell<Product, Boolean>> booleanCellFactory = 
                 new Callback<TableColumn<Product, Boolean>, TableCell<Product, Boolean>>() {
                 @Override
@@ -103,8 +128,14 @@ public class InventoryController implements Initializable{
         selectedcol.setCellValueFactory(new PropertyValueFactory<Product, Boolean>("checkbox"));
         selectedcol.setCellFactory(booleanCellFactory);
         selectedcol.setEditable(true);
+        daterestockcol.setCellValueFactory(c-> new SimpleStringProperty(getProducts().get(0).getDateRestock()));
+		dateupdatecol.setCellValueFactory(c-> new SimpleStringProperty(getProducts().get(0).getDateUpdate()));
+		daterestockcol.setCellValueFactory(c-> new SimpleStringProperty(getProducts().get(1).getDateRestock()));
+		dateupdatecol.setCellValueFactory(c-> new SimpleStringProperty(getProducts().get(1).getDateUpdate()));
+        inventoryTable.setItems(getProducts());
         itemcol.setCellFactory(TextFieldTableCell.forTableColumn());
         daterestockcol.setCellFactory(TextFieldTableCell.forTableColumn());
+        dateupdatecol.setCellFactory(TextFieldTableCell.forTableColumn());
         pricecol.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Float>(){
             @Override
             public String toString(Float object) {
@@ -118,8 +149,6 @@ public class InventoryController implements Initializable{
 
         }));
 
-		
-    	inventoryTable.setItems(getProducts());
     	quantitycol.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<Integer>(){
             @Override
             public String toString(Integer object) {
@@ -137,8 +166,8 @@ public class InventoryController implements Initializable{
     
     public ObservableList<Product> getProducts(){
         ObservableList<Product> products = FXCollections.observableArrayList();
-        products.add(new Product("Boysen Paint Green", 100, 600));
-        products.add(new Product("Hammer", 100, 350));
+        products.add(new Product("10-11-2015","10-01-2016","Boysen Paint Green", 100, 600));
+        products.add(new Product("10-11-2015","10-01-2016","Hammer", 100, 350));
         return products;
     }
 }

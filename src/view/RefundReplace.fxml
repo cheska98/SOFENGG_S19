@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -53,24 +52,5 @@
           <TableColumn fx:id="quantityColumn" minWidth="183.0" prefWidth="203.0" text="QUANTITY/CM/KG" />
         </columns>
       </TableView>
-      <AnchorPane fx:id="rrpane" layoutX="951.0" layoutY="298.0" prefHeight="235.0" prefWidth="361.0" style="-fx-border-color: #2d4250; -fx-background-color: white;">
-         <children>
-            <TextField fx:id="refundreplacetext" layoutX="55.0" layoutY="84.0" prefHeight="45.0" prefWidth="252.0">
-               <font>
-                  <Font name="Segoe UI" size="24.0" />
-               </font>
-            </TextField>
-            <Label layoutX="111.0" layoutY="30.0" text="Enter Quantity">
-               <font>
-                  <Font name="Segoe UI" size="21.0" />
-               </font>
-            </Label>
-            <Button fx:id="refundreplacebtn" layoutX="138.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleRefundReplace" style="-fx-background-color: #289b01;" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI" size="20.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>

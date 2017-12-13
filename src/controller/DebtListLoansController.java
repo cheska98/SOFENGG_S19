@@ -35,6 +35,7 @@ public class DebtListLoansController implements Initializable{
 	 @FXML private Button Addtransbtn;
 	 @FXML private AnchorPane LoanAnchorPane;
 	 @FXML private TableColumn<Loaned, Float> UnitCostCol;
+	 @FXML private TableColumn<Loaned, Integer> QuantityCol;
 	 @FXML private TableView<Loaned> DebtListTransactionTable;
 	 @FXML private Label CompanyLabel;
 	 @FXML private TableColumn<Loaned, String> TransDateCol;
@@ -103,6 +104,7 @@ public class DebtListLoansController implements Initializable{
     	UnitCostCol.setCellValueFactory(new PropertyValueFactory<Loaned, Float>("unitcost"));
     	ItemCol.setCellValueFactory(new PropertyValueFactory<Loaned, String>("item"));
     	TransDateCol.setCellValueFactory(new PropertyValueFactory<Loaned, String>("transdate"));
+    	QuantityCol.setCellValueFactory(new PropertyValueFactory<Loaned, Integer>("quantity"));
     	Callback<TableColumn<Product, Boolean>, TableCell<Product, Boolean>> booleanCellFactory = 
                 new Callback<TableColumn<Product, Boolean>, TableCell<Product, Boolean>>() {
                 @Override
@@ -119,8 +121,8 @@ public class DebtListLoansController implements Initializable{
     
     public ObservableList<Loaned> getProducts(){
         ObservableList<Loaned> products = FXCollections.observableArrayList();
-        products.add(new Loaned("Boysen Paint Green", Float.valueOf(100), "10-13-2017"));
-        products.add(new Loaned("Hammer", Float.valueOf(100), "10-17-2017"));
+        products.add(new Loaned("Boysen Paint Green", Float.valueOf(100), "10-13-2017",6));
+        products.add(new Loaned("Hammer", Float.valueOf(100), "10-17-2017",5));
         return products;
     }
 
