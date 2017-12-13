@@ -39,7 +39,7 @@
              <Font name="Segoe UI" size="15.0" />
           </font>
        </TextField>
-       <Button fx:id="okButton" layoutX="838.0" layoutY="950.0" mnemonicParsing="false" onAction="#handleOK" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #289b01;" text="OK" textFill="WHITE">
+       <Button fx:id="okButton" layoutX="838.0" layoutY="960.0" mnemonicParsing="false" onAction="#handleOK" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #289b01;" text="OK" textFill="WHITE">
           <font>
              <Font name="Segoe UI" size="18.0" />
           </font>
