@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +19,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import model.RefundReplaceEntry;
@@ -26,64 +29,119 @@ public class RefundReplaceController implements Initializable{
 
     @FXML
     private AnchorPane refundReplace;
-
     @FXML
     private RadioButton replaceRB;
-
     @FXML
     private ToggleGroup rrGroup;
-
     @FXML
     private RadioButton refundRB;
-
     @FXML
     private Button okButton;
-
     @FXML
     private TableView<RefundReplaceEntry> tableRR;
-
     @FXML
     private TableColumn<RefundReplaceEntry, String> itemColumn;
-
     @FXML
     private TableColumn<RefundReplaceEntry, Integer> quantityColumn;
-    
     @FXML
     private TableColumn<RefundReplaceEntry, Integer> transColumn;
-
     @FXML
     private TableColumn<RefundReplaceEntry, String> dateColumn;
-    
+    @FXML
+    private AnchorPane rrpane;
+    @FXML
+    private TextField refundreplacetext;
+    @FXML
+    private Button refundreplacebtn;
 
     ObservableList<RefundReplaceEntry> data;
+    RefundReplaceEntry entry;
+    RefundReplaceEntry enter;
+    static RefundReplaceEntry selected;
+    static int REFUND;
+    static int pos;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
+
 		itemColumn.setCellValueFactory(
 			    new PropertyValueFactory<RefundReplaceEntry, String>("itemName")
+			);
+		
+		quantityColumn.setCellValueFactory(
+			    new PropertyValueFactory<RefundReplaceEntry, Integer>("qty")
+			);
+
+		transColumn.setCellValueFactory(
+			    new PropertyValueFactory<RefundReplaceEntry, Integer>("id")
 			);
 		
 		dateColumn.setCellValueFactory(
 				    new PropertyValueFactory<RefundReplaceEntry, String>("date")
 					);
 		
-		transColumn.setCellValueFactory(
-			    new PropertyValueFactory<RefundReplaceEntry, Integer>("date")
-			);
-		
-		quantityColumn.setCellValueFactory(
-			    new PropertyValueFactory<RefundReplaceEntry, Integer>("qty")
-			);
-			
-		
 		data = FXCollections.observableArrayList();
 
 	    tableRR.setItems(data);
+	    
+	    rrpane.setVisible(false);
+	    
+	    selected = new RefundReplaceEntry();
 		
+	    //for testing
+    	entry = new RefundReplaceEntry();
+    	
+    	entry.id.set(1);
+    	entry.date.set("October");
+    	entry.itemName.set("paimt");
+    	entry.qty.set(20);
+    	
+    	rrGenerator(entry);
+
+    	enter = new RefundReplaceEntry();
+    	
+    	enter.id.set(2);
+    	enter.date.set("Nov");
+    	enter.itemName.set("Pitou");
+    	enter.qty.set(30);
+    	rrGenerator(enter);
 		
 	}
+	
+
+    @FXML
+    void handleRefundReplace(ActionEvent event) {
+    	
+    	int i = Integer.parseInt(refundreplacetext.getText());
+    	System.out.println(selected.getQty());
+    	
+    	if (i > selected.getQty() || i < 1) {
+    		
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Invalid Quantity Entered");
+    		String s = "The quantity you have entered is invalid";
+    		alert.setHeaderText(null);
+    		alert.setContentText(s);
+    		alert.showAndWait();
+    		
+    	} else {
+    		
+    		if(REFUND == 1) {
+    			
+    			System.out.println("helloooo");
+    			int y = selected.getQty() - i;
+    			System.out.println(y);
+    			data.get(pos).setQty(new SimpleIntegerProperty(y));
+    		}
+    		rrpane.setVisible(false);
+    	}
+    	
+    	
+    	System.out.println(i);
+    	refundreplacetext.clear();
+    	
+    }
 
     @FXML
     void handleOK(ActionEvent event) {
@@ -101,6 +159,16 @@ public class RefundReplaceController implements Initializable{
     		Optional<ButtonType> result = alert.showAndWait();
     		if (result.get() == ButtonType.OK) {
     			System.out.println("Refund");
+    			
+    			REFUND = 1;
+    			selected = tableRR.getSelectionModel().getSelectedItem();
+    			pos = tableRR.getSelectionModel().getSelectedIndex();
+    			System.out.println(pos);
+    			System.out.println(selected.getItemName());
+    			
+    			refundreplacebtn.setText("Refund");
+    			rrpane.setVisible(true);
+    			
     		}
     		
     		
@@ -117,6 +185,14 @@ public class RefundReplaceController implements Initializable{
     		Optional<ButtonType> result = alert.showAndWait();
     		if (result.get() == ButtonType.OK) {
     			System.out.println("Replace");
+    			
+    			REFUND = 0;
+    			
+    			selected = tableRR.getSelectionModel().getSelectedItem();
+    			System.out.println(selected.getItemName());
+    			
+    			refundreplacebtn.setText("Replace");
+    			rrpane.setVisible(true);
     		}
     		
     	}
@@ -124,13 +200,8 @@ public class RefundReplaceController implements Initializable{
     		rrGroup.selectToggle(null);
     }
     
-    private void rrGenerator(String date, String item, int id, int qty) {
-    	
-    	RefundReplaceEntry entry = new RefundReplaceEntry();
-    	entry.date.set(date);
-    	entry.itemName.set(item);
-    	entry.id.set(id);
-    	entry.qty.set(qty);
+    
+    private void rrGenerator(RefundReplaceEntry entry) {
     	
     	data.add(entry);
     	

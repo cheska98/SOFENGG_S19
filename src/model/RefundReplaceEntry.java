@@ -10,47 +10,44 @@ public class RefundReplaceEntry {
 	public SimpleIntegerProperty id = new SimpleIntegerProperty();
 	public SimpleStringProperty date = new SimpleStringProperty("");
 	
-	public RefundReplaceEntry(SimpleStringProperty itemName, SimpleIntegerProperty qty, SimpleIntegerProperty id,
-			SimpleStringProperty date) {
-		super();
-		this.itemName = itemName;
-		this.qty = qty;
-		this.id = id;
-		this.date = date;
-	}
-	
-	public RefundReplaceEntry() {}
-
-	public SimpleStringProperty getItemName() {
-		return itemName;
-	}
-
 	public void setItemName(SimpleStringProperty itemName) {
 		this.itemName = itemName;
 	}
-
-	public SimpleIntegerProperty getQty() {
-		return qty;
+	
+	public String getItemName() {
+		
+		return itemName.get();
 	}
-
+	
+	public Integer getQty() {
+		
+		return qty.get();
+	}
+	
+	public Integer getId() {
+		
+		return id.get();
+	}
+	
+	public String getDate() {
+		
+		return date.get();
+	}
+	
 	public void setQty(SimpleIntegerProperty qty) {
+		
 		this.qty = qty;
+		
 	}
-
-	public SimpleIntegerProperty getId() {
-		return id;
-	}
-
 	public void setId(SimpleIntegerProperty id) {
+		
 		this.id = id;
+		
 	}
-
-	public SimpleStringProperty getDate() {
-		return date;
-	}
-
 	public void setDate(SimpleStringProperty date) {
+		
 		this.date = date;
+		
 	}
 	
 	
