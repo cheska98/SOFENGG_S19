@@ -54,14 +54,14 @@
                </font></Button>
          </children>
       </Pane>
-      <Button id="Add_Btn" fx:id="deleteBtn" layoutX="558.0" layoutY="960.0" mnemonicParsing="false" onAction="#onDeleteClick" prefHeight="38.0" prefWidth="180.0" styleClass="DeleteBtn" stylesheets="@../css/DebtList.css" text="Delete Item" textFill="WHITE">
+      <Button id="Add_Btn" fx:id="deleteBtn" layoutX="568.0" layoutY="960.0" mnemonicParsing="false" onAction="#onDeleteClick" prefHeight="38.0" prefWidth="180.0" styleClass="DeleteBtn" stylesheets="@../css/DebtList.css" text="Delete Item" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="20.0" />
          </font>
       </Button>
-      <ScrollPane layoutX="100.0" layoutY="120.0" prefHeight="800.0" prefWidth="638.0">
+      <ScrollPane layoutX="100.0" layoutY="120.0" prefHeight="800.0" prefWidth="648.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="636.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="638.0">
                <children>
                   <TableView id="DebtList_Table" fx:id="DebtListTransactionTable" prefHeight="800.0" prefWidth="638.0" style="-fx-font-size: 14;" stylesheets="@../css/DebtList.css">
                     <columns>

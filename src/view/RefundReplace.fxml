@@ -16,65 +16,73 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="refundReplace" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RefundReplaceController">
-   <children>
-      <Pane layoutX="951.0" layoutY="120.0" prefHeight="137.0" prefWidth="361.0" style="-fx-background-color: #ffffff;">
-         <children>
-            <RadioButton id="replaceRB" fx:id="replaceRB" layoutX="207.0" layoutY="43.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="Replace">
-               <font>
-                  <Font name="Segoe UI" size="18.0" />
-               </font>
-               <toggleGroup>
-                  <ToggleGroup fx:id="rrGroup" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton id="replaceRB" fx:id="refundRB" layoutX="49.0" layoutY="43.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="Refund" toggleGroup="$rrGroup">
-               <font>
-                  <Font name="Segoe UI" size="18.0" />
-               </font>
-            </RadioButton>
-         </children>
-      </Pane>
-      <TextField layoutX="138.0" layoutY="68.0" prefHeight="35.0" prefWidth="545.0" promptText="Enter Transaction ID">
-         <font>
-            <Font name="Segoe UI" size="15.0" />
-         </font>
-      </TextField>
-      <Button fx:id="okButton" layoutX="828.0" layoutY="960.0" mnemonicParsing="false" onAction="#handleOK" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #289b01;" text="OK" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI" size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="716.0" layoutY="68.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="89.0" style="-fx-background-color: #289b01;" text="Search" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI" size="15.0" />
-         </font>
-      </Button>
-      <TableView id="Display_Table" fx:id="tableRR" layoutX="45.0" layoutY="120.0" maxHeight="800.0" maxWidth="870.0" prefHeight="800.0" prefWidth="870.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
-        <columns>
-            <TableColumn fx:id="transColumn" prefWidth="153.6666717529297" text="Transaction ID" />
-            <TableColumn fx:id="dateColumn" prefWidth="179.0" text="Date" />
-          <TableColumn fx:id="itemColumn" minWidth="293.99998474121094" prefWidth="334.0" text="ITEM" />
-          <TableColumn fx:id="quantityColumn" minWidth="183.0" prefWidth="203.0" text="QUANTITY/CM/KG" />
-        </columns>
-      </TableView>
-      <AnchorPane fx:id="rrpane" layoutX="951.0" layoutY="298.0" prefHeight="235.0" prefWidth="361.0" style="-fx-border-color: #2d4250; -fx-background-color: white;">
-         <children>
-            <TextField fx:id="refundreplacetext" layoutX="55.0" layoutY="84.0" prefHeight="45.0" prefWidth="252.0">
-               <font>
-                  <Font name="Segoe UI" size="24.0" />
-               </font>
-            </TextField>
-            <Label layoutX="111.0" layoutY="30.0" text="Enter Quantity">
-               <font>
-                  <Font name="Segoe UI" size="21.0" />
-               </font>
-            </Label>
-            <Button fx:id="refundreplacebtn" layoutX="138.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleRefundReplace" style="-fx-background-color: #289b01;" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI" size="20.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
-   </children>
-</AnchorPane>
+    <children>
+       <Pane layoutX="951.0" layoutY="120.0" prefHeight="137.0" prefWidth="361.0" style="-fx-background-color: #ffffff;">
+          <children>
+             <RadioButton id="replaceRB" fx:id="replaceRB" layoutX="207.0" layoutY="43.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="Replace">
+                <font>
+                   <Font name="Segoe UI" size="18.0" />
+                </font>
+                <toggleGroup>
+                   <ToggleGroup fx:id="rrGroup" />
+                </toggleGroup>
+             </RadioButton>
+             <RadioButton id="replaceRB" fx:id="refundRB" layoutX="49.0" layoutY="43.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="111.0" style="-fx-background-color: transparent;" text="Refund" toggleGroup="$rrGroup">
+                <font>
+                   <Font name="Segoe UI" size="18.0" />
+                </font>
+             </RadioButton>
+          </children>
+       </Pane>
+       <TextField layoutX="138.0" layoutY="68.0" prefHeight="35.0" prefWidth="545.0" promptText="Enter Transaction ID">
+          <font>
+             <Font name="Segoe UI" size="15.0" />
+          </font>
+       </TextField>
+       <Button fx:id="okButton" layoutX="838.0" layoutY="950.0" mnemonicParsing="false" onAction="#handleOK" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #289b01;" text="OK" textFill="WHITE">
+          <font>
+             <Font name="Segoe UI" size="18.0" />
+          </font>
+       </Button>
+       <Button layoutX="716.0" layoutY="68.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="89.0" style="-fx-background-color: #289b01;" text="Search" textFill="WHITE">
+          <font>
+             <Font name="Segoe UI" size="15.0" />
+          </font>
+       </Button>
+       <AnchorPane fx:id="rrpane" layoutX="951.0" layoutY="298.0" prefHeight="235.0" prefWidth="361.0" style="-fx-border-color: #2d4250; -fx-background-color: white;">
+          <children>
+             <TextField fx:id="refundreplacetext" layoutX="55.0" layoutY="84.0" prefHeight="45.0" prefWidth="252.0">
+                <font>
+                   <Font name="Segoe UI" size="24.0" />
+                </font>
+             </TextField>
+             <Label layoutX="111.0" layoutY="30.0" text="Enter Quantity">
+                <font>
+                   <Font name="Segoe UI" size="21.0" />
+                </font>
+             </Label>
+             <Button fx:id="refundreplacebtn" layoutX="138.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleRefundReplace" style="-fx-background-color: #289b01;" textFill="WHITE">
+                <font>
+                   <Font name="Segoe UI" size="20.0" />
+                </font>
+             </Button>
+          </children>
+       </AnchorPane>
+      <ScrollPane layoutX="45.0" layoutY="120.0" prefHeight="800.0" prefWidth="880.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="870.0">
+               <children>
+                   <TableView id="Display_Table" fx:id="tableRR" maxHeight="800.0" maxWidth="870.0" prefHeight="800.0" prefWidth="870.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
+                     <columns>
+                         <TableColumn fx:id="transColumn" prefWidth="153.6666717529297" text="Transaction ID" />
+                         <TableColumn fx:id="dateColumn" prefWidth="179.0" text="Date" />
+                       <TableColumn fx:id="itemColumn" minWidth="293.99998474121094" prefWidth="334.0" text="ITEM" />
+                        <TableColumn fx:id="quantityColumn" minWidth="183.0" prefWidth="203.0" text="QUANTITY/CM/KG" />
+                      </columns>
+                    </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+     </children>
+  </AnchorPane>

@@ -18,9 +18,9 @@
             <Font name="Segoe UI" size="14.0" />
          </font>
       </Button>
-      <ScrollPane fx:id="scrollPane" layoutX="52.0" layoutY="67.0" prefHeight="413.0" prefWidth="456.0">
+      <ScrollPane fx:id="scrollPane" layoutX="42.0" layoutY="69.0" prefHeight="413.0" prefWidth="466.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="454.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="800.0" prefWidth="456.0">
                <children>
                   <TableView id="Display_Table" fx:id="topItemsTable" prefHeight="413.0" prefWidth="442.0" style="-fx-font-size: 14;" stylesheets="@../css/Display.css">
                     <columns>
