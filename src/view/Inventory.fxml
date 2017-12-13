@@ -16,16 +16,6 @@
          <font>
             <Font name="Segoe UI" size="15.0" />
          </font></TextField>
-      <TableView id="Display_Table" fx:id="inventoryTable" editable="true" layoutX="45.0" layoutY="120.0" maxHeight="820.0" maxWidth="870.0" prefHeight="820.0" prefWidth="870.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
-        <columns>
-            <TableColumn fx:id="daterestockcol" maxWidth="167.0" prefWidth="167.0" text="LAST RESTOCK" />
-            <TableColumn fx:id="dateupdatecol" maxWidth="150.0" prefWidth="150.0" text="LAST UPDATE PRICE" />
-            <TableColumn fx:id="itemcol" maxWidth="281.0" prefWidth="257.0" text="ITEM" />
-          <TableColumn fx:id="pricecol" maxWidth="176.0" minWidth="5.0" prefWidth="117.0" text="PRICE" />
-          <TableColumn fx:id="quantitycol" maxWidth="236.0" prefWidth="144.0" text="QUANTITY" />
-            <TableColumn fx:id="selectedcol" minWidth="2.0" prefWidth="33.0" />
-        </columns>
-      </TableView>
       <Pane layoutX="951.0" layoutY="120.0" prefHeight="555.0" prefWidth="362.0" style="-fx-background-color: #ffffff; -fx-border-width: 1px; -fx-border-color: #f1f1f1;">
          <children>
             <Button id="Add_Btn" fx:id="addBtn1" layoutX="108.0" layoutY="464.0" mnemonicParsing="false" onAction="#onAddClick" prefHeight="38.0" prefWidth="147.0" styleClass="AddBtn" stylesheets="@../css/Display.css" text="Add Item">
@@ -62,7 +52,7 @@
                </font></TextField>
          </children>
       </Pane>
-      <Button fx:id="deleteBtn" layoutX="745.0" layoutY="970.0" mnemonicParsing="false" onAction="#onClickDelete" prefHeight="38.0" prefWidth="173.0" styleClass="DeleteBtn" stylesheets="@../css/DebtList.css" text="Delete" textFill="WHITE">
+      <Button fx:id="deleteBtn" layoutX="742.0" layoutY="960.0" mnemonicParsing="false" onAction="#onClickDelete" prefHeight="38.0" prefWidth="173.0" styleClass="DeleteBtn" stylesheets="@../css/DebtList.css" text="Delete" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="18.0" />
          </font>
@@ -72,10 +62,28 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Button id="Add_Btn" fx:id="saveBtn" layoutX="55.0" layoutY="974.0" mnemonicParsing="false" onAction="#onSaveClick" prefHeight="40.0" prefWidth="170.0" styleClass="AddBtn" stylesheets="@../css/Display.css" text="Save Changes" textFill="WHITE">
+      <Button id="Add_Btn" fx:id="saveBtn" layoutX="45.0" layoutY="960.0" mnemonicParsing="false" onAction="#onSaveClick" prefHeight="40.0" prefWidth="170.0" styleClass="AddBtn" stylesheets="@../css/Display.css" text="Save Changes" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="18.0" />
          </font>
       </Button>
+      <ScrollPane layoutX="45.0" layoutY="120.0" prefHeight="800.0" prefWidth="870.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="868.0">
+               <children>
+                  <TableView id="Display_Table" fx:id="inventoryTable" editable="true" maxHeight="800.0" maxWidth="870.0" prefHeight="800.0" prefWidth="870.0" style="-fx-font-size: 15;" stylesheets="@../css/Display.css">
+                    <columns>
+                        <TableColumn fx:id="daterestockcol" maxWidth="167.0" prefWidth="167.0" text="LAST RESTOCK" />
+                        <TableColumn fx:id="dateupdatecol" maxWidth="150.0" prefWidth="150.0" text="LAST UPDATE PRICE" />
+                        <TableColumn fx:id="itemcol" maxWidth="281.0" prefWidth="257.0" text="ITEM" />
+                      <TableColumn fx:id="pricecol" maxWidth="176.0" minWidth="5.0" prefWidth="117.0" text="PRICE" />
+                      <TableColumn fx:id="quantitycol" maxWidth="236.0" prefWidth="144.0" text="QUANTITY" />
+                        <TableColumn fx:id="selectedcol" minWidth="2.0" prefWidth="33.0" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

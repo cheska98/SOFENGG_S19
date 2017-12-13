@@ -8,20 +8,11 @@
 
 <AnchorPane fx:id="LoanAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DebtListLoansController">
    <children>
-      <TableView id="DebtList_Table" fx:id="DebtListTransactionTable" layoutX="100.0" layoutY="120.0" prefHeight="820.0" prefWidth="638.0" style="-fx-font-size: 14;" stylesheets="@../css/DebtList.css">
-        <columns>
-            <TableColumn fx:id="TransDateCol" prefWidth="161.0" text="TRANSACTION DATE" />
-            <TableColumn fx:id="ItemCol" prefWidth="235.0" text="ITEM" />
-            <TableColumn fx:id="UnitCostCol" minWidth="7.0" prefWidth="127.0" text="PRICE" />
-            <TableColumn fx:id="QuantityCol" prefWidth="82.0" text="QUANTITY" />
-            <TableColumn fx:id="SelectCol" prefWidth="29.0" />
-        </columns>
-      </TableView>
       <Button fx:id="backbtn" layoutX="100.0" layoutY="61.0" mnemonicParsing="false" onAction="#onClickBack" prefHeight="38.0" prefWidth="150.0" styleClass="btns" stylesheets="@../css/DebtList.css" text="Back to Debt List">
                <font>
                   <Font name="Segoe UI" size="15.0" />
                </font></Button>
-      <Button fx:id="DLbtn" layoutX="100.0" layoutY="970.0" mnemonicParsing="false" onAction="#onCLickDL" prefHeight="38.0" prefWidth="180.0" styleClass="btns" stylesheets="@../css/DebtList.css" text="Download">
+      <Button fx:id="DLbtn" layoutX="100.0" layoutY="960.0" mnemonicParsing="false" onAction="#onCLickDL" prefHeight="38.0" prefWidth="180.0" styleClass="btns" stylesheets="@../css/DebtList.css" text="Download">
          <font>
             <Font name="Segoe UI" size="18.0" />
          </font></Button>
@@ -63,10 +54,27 @@
                </font></Button>
          </children>
       </Pane>
-      <Button id="Add_Btn" fx:id="deleteBtn" layoutX="480.0" layoutY="970.0" mnemonicParsing="false" onAction="#onDeleteClick" prefHeight="38.0" prefWidth="180.0" styleClass="DeleteBtn" stylesheets="@../css/DebtList.css" text="Delete Item" textFill="WHITE">
+      <Button id="Add_Btn" fx:id="deleteBtn" layoutX="558.0" layoutY="960.0" mnemonicParsing="false" onAction="#onDeleteClick" prefHeight="38.0" prefWidth="180.0" styleClass="DeleteBtn" stylesheets="@../css/DebtList.css" text="Delete Item" textFill="WHITE">
          <font>
             <Font name="Segoe UI" size="20.0" />
          </font>
       </Button>
+      <ScrollPane layoutX="100.0" layoutY="120.0" prefHeight="800.0" prefWidth="638.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="636.0">
+               <children>
+                  <TableView id="DebtList_Table" fx:id="DebtListTransactionTable" prefHeight="800.0" prefWidth="638.0" style="-fx-font-size: 14;" stylesheets="@../css/DebtList.css">
+                    <columns>
+                        <TableColumn fx:id="TransDateCol" prefWidth="161.0" text="TRANSACTION DATE" />
+                        <TableColumn fx:id="ItemCol" prefWidth="235.0" text="ITEM" />
+                        <TableColumn fx:id="UnitCostCol" minWidth="7.0" prefWidth="127.0" text="PRICE" />
+                        <TableColumn fx:id="QuantityCol" prefWidth="82.0" text="QUANTITY" />
+                        <TableColumn fx:id="SelectCol" prefWidth="29.0" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
